@@ -38,11 +38,16 @@ public class UserService {
         var user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
 
-        if (!user.getEmail().equals(userDtoRequest.email()) && userRepository.existsByEmail(userDtoRequest.email())) {
-            throw new EmailAlreadyExistsException(userDtoRequest.email());
+        if (!user.getEmail().equals(userDtoRequest.email())) {
+            userRepository.findByEmail(userDtoRequest.email())
+                    .ifPresent(existingUser -> {
+                        if (!existingUser.getId().equals(user.getId())) {
+                            throw new EmailAlreadyExistsException(userDtoRequest.email());
+                        }
+                    });
         }
 
-        user.setEmail(userDtoRequest.email());
+
         user.setPassword(userDtoRequest.password());
         userRepository.save(user);
 
