@@ -1,10 +1,10 @@
 package com.g9team04.techmind.user.internal;
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+
+import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
+    Optional<UserEntity> findByEmail(String email);
     boolean existsByEmail(String email);
-
 }
