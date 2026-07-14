@@ -34,8 +34,6 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 - Python
 - Pandas
-- Scikit-Learn
-- TF-IDF
 
 ### Back-end
 
