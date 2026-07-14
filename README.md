@@ -110,6 +110,8 @@ Tech Mind/
 
 **G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
 
+---
+
 ## 🔄 Status do Projeto
 
 ´´´
@@ -121,11 +123,12 @@ Tech Mind/
 - [ ] Dashboard
 - [ ] Deploy em produção
 - [ ] Documentação completa
-
 ´´´
 
 ✧ Seguimos em construcción ✧
 
 ✧ Em desenvolvimento ✧
+
+---
 
 ## ⭐Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9.
