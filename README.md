@@ -23,7 +23,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ---
 
-## Funcionalidades
+## ✨Funcionalidades
 
 - Classificação automática de conteúdo técnico
 - Extração de palavras-chave
