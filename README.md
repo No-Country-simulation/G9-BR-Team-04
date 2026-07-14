@@ -112,6 +112,15 @@ Tech Mind/
 
 ## 🔄 Status do Projeto
 
+- [x] Definição do escopo
+- [x] Criação do dataset
+- [x] Treinamento do modelo
+- [ ] Desenvolvimento da API
+- [ ] Integração com OCI
+- [ ] Dashboard
+- [ ] Deploy em produção
+- [ ] Documentação completa
+
 ✧ Seguimos em construcción ✧
 
 ✧ Em desenvolvimento ✧
