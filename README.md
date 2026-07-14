@@ -140,4 +140,4 @@ Tech Mind/
 
 ---
 
-## ⭐Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9.
+## ⭐Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
