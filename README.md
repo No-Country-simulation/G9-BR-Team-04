@@ -92,14 +92,16 @@ POST `/conteudo`
 
 ---
 
-## Estrutura do Projeto
+## 📂Estrutura do Projeto
 
 ```
-backend/
-ciencia-dados/
-dashboard/
-dataset/
-README.md
+sinapse/
+├── backend/ # API REST com Spring Boot
+├── ciencia-dados/ # Modelos e notebooks de ML
+├── dashboard/ # Interface de visualização
+├── dataset/ # Dados para treinamento
+└── README.md # Documentação
+
 ```
 
 ---
