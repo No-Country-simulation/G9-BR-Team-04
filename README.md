@@ -13,7 +13,11 @@ Uma solução completa para organizar, classificar e enriquecer conteúdos técn
 
 ## Objetivo
 
-Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas, como categoria, palavras-chave e conteúdos relacionados em formato JSON.
+Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas como :
+
+- Categoria
+- Palavras-chave
+- Cconteúdos relacionados em formato JSON.
 
 ---
 
