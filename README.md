@@ -95,7 +95,7 @@ POST `/conteudo`
 ## 📂Estrutura do Projeto
 
 ```
-sinapse/
+Tech Mind/
 ├── backend/ # API REST com Spring Boot
 ├── ciencia-dados/ # Modelos e notebooks de ML
 ├── dashboard/ # Interface de visualização
