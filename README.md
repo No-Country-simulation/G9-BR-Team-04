@@ -12,7 +12,7 @@ Uma solução completa para organizar, classificar e enriquecer conteúdos técn
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=FFD43B)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![OCI](https://img.shields.io/badge/☁️_OCI-F80000?style=for-the-badge&logo=oracle&logoColor=white)
+![Oracle Cloud Infrastructure](https://img.shields.io/badge/Oracle_Cloud_Infrastructure-F80000?style=for-the-badge&logo=oracle&logoColor=white)
 ---
 
 ## 🎯Objetivo
