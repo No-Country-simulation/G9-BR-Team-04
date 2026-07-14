@@ -17,7 +17,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 - Categoria
 - Palavras-chave
-- Cconteúdos relacionados em formato JSON.
+- Conteúdos relacionados em formato JSON.
 
 ---
 
