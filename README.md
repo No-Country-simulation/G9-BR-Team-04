@@ -53,7 +53,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ---
 
-## Como Executar
+## 📋Como Executar
 
 1. Clone este repositório.
 2. Instale as dependências do projeto.
