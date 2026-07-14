@@ -134,9 +134,9 @@ Tech Mind/
 
 ## 🙏 Agradecimentos
 
-- **Oracle Next Education (ONE)** - Pela oportunidade e mentoria
-- **Oracle Cloud Infrastructure** - Pela infraestrutura
-- **Mentores e organizadores** - Pelo suporte e orientação
+- **Oracle Next Education (ONE) G9 BR** - Pela oportunidade e mentoria
+- **OCI** - Pela infraestrutura
+- **Mentores e Organizadores** - Pelo suporte e orientação
 
 ---
 
