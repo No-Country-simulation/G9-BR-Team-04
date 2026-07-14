@@ -114,7 +114,7 @@ Tech Mind/
 
 ## 🔄 Status do Projeto
 
-´´´
+
 - [x] Definição do escopo
 - [x] Criação do dataset
 - [x] Treinamento do modelo
@@ -123,8 +123,6 @@ Tech Mind/
 - [ ] Dashboard
 - [ ] Deploy em produção
 - [ ] Documentação completa
-
-´´´
 
 ✧ Seguimos em construcción ✧
 
