@@ -1,11 +1,15 @@
 package com.g9team04.techmind.user;
 
+import com.g9team04.techmind.infrastructure.UserNotFoundException;
 import com.g9team04.techmind.user.internal.UserEntity;
 import com.g9team04.techmind.user.internal.UserRepository;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -17,49 +21,56 @@ public class UserService {
 
     @Transactional
     public UserDtoResponse createUser(UserDtoRequest userDtoRequest) {
-        if (userRepository.existsByEmail(userDtoRequest.email())) {
-            throw new EmailAlreadyExistsException(userDtoRequest.email());
-        }
+        Optional.of(userDtoRequest.email())
+                .filter(userRepository::existsByEmail)
+                .ifPresent(email -> {
+                    throw new EmailAlreadyExistsException(email);
+                });
 
         var user = new UserEntity(userDtoRequest.email(), userDtoRequest.password());
         userRepository.save(user);
-
         return new UserDtoResponse(user.getId(), user.getEmail());
     }
+
     @Transactional
     public UserDtoResponse getUserById(Long id) {
-        var user = userRepository.findById(id)
+        // Retorno direto do pipeline do Optional: limpo e elegante!
+        return userRepository.findById(id)
+                .map(user -> new UserDtoResponse(user.getId(), user.getEmail()))
                 .orElseThrow(() -> new UserNotFoundException(id));
-
-        return new UserDtoResponse(user.getId(), user.getEmail());
     }
+
     @Transactional
-    public UserDtoResponse updateUser(Long id, UserDtoRequest userDtoRequest) {
-        var user = userRepository.findById(id)
+    public MessageDtoResponse updatePassword(Long id, UpdatePasswordDtoRequest request) {
+        return userRepository.findById(id)
+                .map(user -> {
+                    user.setPassword(request.password());
+                    userRepository.save(user);
+                    return new MessageDtoResponse("Senha alterada com sucesso");
+                })
+                // 🌟 CORRIGIDO: Lança a sua exceção personalizada em vez do NoSuchElementException genérico
                 .orElseThrow(() -> new UserNotFoundException(id));
-
-        if (!user.getEmail().equals(userDtoRequest.email())) {
-            userRepository.findByEmail(userDtoRequest.email())
-                    .ifPresent(existingUser -> {
-                        if (!existingUser.getId().equals(user.getId())) {
-                            throw new EmailAlreadyExistsException(userDtoRequest.email());
-                        }
-                    });
-        }
-
-
-        user.setPassword(userDtoRequest.password());
-        userRepository.save(user);
-
-        return new UserDtoResponse(user.getId(), user.getEmail());
-
     }
+
     @Transactional
     public void deleteUserById(Long id) {
-        var user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(id));
-        userRepository.delete(user);
-        new UserDtoResponse(user.getId(), user.getEmail());
+        // 🌟 CORRIGIDO: Se o usuário existe, deleta. Se não, lança a exceção.
+        // Sem criar instâncias inúteis de DTO no final.
+        userRepository.findById(id)
+                .ifPresentOrElse(
+                        userRepository::delete,
+                        () -> { throw new UserNotFoundException(id); }
+                );
     }
 
+    public ResponseEntity<List<UserDtoResponse>> getAllUsers(Pageable pageable) {
+        return Optional.of(userRepository.findAll(pageable))
+                .filter(page -> !page.isEmpty())
+                .map(page -> page.stream()
+                        .map(user -> new UserDtoResponse(user.getId(), user.getEmail()))
+                        .toList()
+                )
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.noContent().build());
+    }
 }

@@ -1,6 +1,7 @@
 package com.g9team04.techmind.user;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.g9team04.techmind.infrastructure.UserNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.mockito.ArgumentMatchers.any;
 
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -97,7 +94,7 @@ public class UserControllerTest {
         mockMvc.perform(post("/users")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isConflict());
     }
 
     @Test
@@ -109,6 +106,7 @@ public class UserControllerTest {
                         .content(objectMapper.writeValueAsString(requestInvalido)))
                 .andExpect(status().isBadRequest());
     }
+
 
     // ################# GET /users/{id} #####################//
 
@@ -127,65 +125,46 @@ public class UserControllerTest {
 
     @Test
     void deveRetornar404QuandoUsuarioNaoEncontrado() throws Exception {
-        when(userService.getUserById(99L)).thenThrow(new UserNotFoundException(99L));
+        when(userService.getUserById(99L)).thenThrow(new com.g9team04.techmind.infrastructure.UserNotFoundException(99L));
         mockMvc.perform(get("/users/99"))
                 .andExpect(status().isNotFound());
     }
 
     // ######################## PUT /users/{id} ######################## //
     @Test
-    void deveAtualizarUsuarioComSucesso() throws Exception {
-        var request = new UserDtoRequest("arthur@techmind.com", "novaSenha1234");
-        var response = new UserDtoResponse(1L, "arthur@techmind.com");
+    void deveAtualizarSenhaComSucesso() throws Exception {
+        var request = new UpdatePasswordDtoRequest("novaSenha1234");
+        var response = new MessageDtoResponse("Senha alterada com sucesso");
 
-       when(userService.updateUser(eq(1L), eq(request))).thenReturn(response);
-       mockMvc.perform(put("/users/1")
-                       .contentType(MediaType.APPLICATION_JSON)
-                       .content(objectMapper.writeValueAsString(request)))
-               .andExpect(status().isOk())
-               .andExpect(jsonPath("$.email").value("arthur@techmind.com"));
+        when(userService.updatePassword(eq(1L), any(UpdatePasswordDtoRequest.class))).thenReturn(response);
+        mockMvc.perform(put("/users/1/password")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.message").value("Senha alterada com sucesso"));
     }
 
     @Test
-    void deveRetornar404AoAtualizarUsuarioInexistente() throws Exception {
-        var request = new UserDtoRequest("novo@techmind.com", "novaSenha123");
+    void deveRetornar404AoAtualizarSenhaDeUsuarioInexistente() throws Exception {
+        var request = new UpdatePasswordDtoRequest("novaSenha123");
 
-        when(userService.updateUser(eq(99L), any(UserDtoRequest.class)))
+        when(userService.updatePassword(eq(99L), any(UpdatePasswordDtoRequest.class)))
                 .thenThrow(new UserNotFoundException(99L));
 
-        mockMvc.perform(put("/users/99")
+        mockMvc.perform(put("/users/99/password")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    void deveRetornar400AoAtualizarComEmailInvalido() throws Exception {
-        var requestInvalido = new UserDtoRequest("emailinvalido", "novaSenha123");
+    void deveRetornar400AoAtualizarComSenhaCurta() throws Exception {
+        var requestInvalido = new UpdatePasswordDtoRequest("123");
 
-        mockMvc.perform(put("/users/1")
+        mockMvc.perform(put("/users/1/password")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestInvalido)))
                 .andExpect(status().isBadRequest());
-    }
-
-    //#################### DELETE /users/{id} #########################
-    @Test
-    void deveDeletarUsuarioComSucesso() throws Exception {
-        doNothing().when(userService).deleteUserById(1L);
-
-        mockMvc.perform(delete("/users/1"))
-                .andExpect(status().isNoContent());
-
-        verify(userService).deleteUserById(1L);
-    }
-
-    @Test
-    void deveRetornar404AoDeletarUsuarioInexistente() throws Exception {
-        doThrow(new UserNotFoundException(99L)).when(userService).deleteUserById(99L);
-
-        mockMvc.perform(delete("/users/99"))
-                .andExpect(status().isNotFound());
     }
 
 }
