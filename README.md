@@ -132,4 +132,12 @@ Tech Mind/
 
 ---
 
+## 🙏 Agradecimentos
+
+- **Oracle Next Education (ONE)** - Pela oportunidade e mentoria
+- **Oracle Cloud Infrastructure** - Pela infraestrutura
+- **Mentores e organizadores** - Pelo suporte e orientação
+
+---
+
 ## ⭐Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9.
