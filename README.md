@@ -113,6 +113,7 @@ Tech Mind/
 ## 🔄 Status do Projeto
 
 ✧ Seguimos em construcción ✧
+
 ✧ Em desenvolvimento ✧
 
 ## ⭐Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9.
