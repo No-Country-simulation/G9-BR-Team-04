@@ -123,6 +123,7 @@ Tech Mind/
 - [ ] Dashboard
 - [ ] Deploy em produção
 - [ ] Documentação completa
+
 ´´´
 
 ✧ Seguimos em construcción ✧
