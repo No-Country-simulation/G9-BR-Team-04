@@ -1,7 +1,7 @@
 # Projeto do G9-BR-Team-04 (SolutionSquad/Esquadrão das Soluções) #
 
 # TechMind
-## Sobre o Projeto
+## 📌Sobre o Projeto
 
 Uma solução completa para organizar, classificar e enriquecer conteúdos técnicos usando técnicas de Ciência de Dados, integrada com a Oracle Cloud Infrastructure (OCI).
 
@@ -11,7 +11,7 @@ Uma solução completa para organizar, classificar e enriquecer conteúdos técn
 
 ---
 
-## Objetivo
+## 🎯Objetivo
 
 Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas como :
 
@@ -32,7 +32,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ---
 
-## Tecnologias Utilizadas
+## 🛠️Tecnologias Utilizadas
 
 ### Ciência de Dados
 
@@ -61,7 +61,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ---
 
-## Como Utilizar a API
+## 📡Como Utilizar a API
 
 ### Endpoint
 
@@ -106,8 +106,12 @@ Tech Mind/
 
 ---
 
-## Equipe
+## 🤝Equipe
 
 **G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
 
-Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9.
+## 🔄 Status do Projeto
+
+Em desenvolvimento
+
+## ⭐Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9.
