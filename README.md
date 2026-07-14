@@ -1,8 +1,10 @@
 # TechMind 
-Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções) #
+# Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções)
 
 [![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge&logo=oracle)](https://www.oracle.com/br/education/next-education/)
 ![Team](https://img.shields.io/badge/Team-SolutionSquad_/_Esquadrão_das_Soluções-6C2BD9?style=for-the-badge)
+
+---
 
 ## 📌Sobre o Projeto
 
