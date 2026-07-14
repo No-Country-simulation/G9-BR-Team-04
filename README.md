@@ -1,6 +1,6 @@
 # Projeto do G9-BR-Team-04 (SolutionSquad/Esquadrão das Soluções) #
 
-# TECHMIND
+# TechMind
 ## Sobre o Projeto
 
 Uma solução completa para organizar, classificar e enriquecer conteúdos técnicos usando técnicas de Ciência de Dados, integrada com a Oracle Cloud Infrastructure (OCI).
