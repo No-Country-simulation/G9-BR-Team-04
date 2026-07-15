@@ -34,7 +34,6 @@ public class UserService {
 
     @Transactional
     public UserDtoResponse getUserById(Long id) {
-        // Retorno direto do pipeline do Optional: limpo e elegante!
         return userRepository.findById(id)
                 .map(user -> new UserDtoResponse(user.getId(), user.getEmail()))
                 .orElseThrow(() -> new UserNotFoundException(id));
@@ -54,8 +53,6 @@ public class UserService {
 
     @Transactional
     public void deleteUserById(Long id) {
-        // 🌟 CORRIGIDO: Se o usuário existe, deleta. Se não, lança a exceção.
-        // Sem criar instâncias inúteis de DTO no final.
         userRepository.findById(id)
                 .ifPresentOrElse(
                         userRepository::delete,
