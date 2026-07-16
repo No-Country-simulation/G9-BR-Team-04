@@ -115,12 +115,19 @@ Tech Mind/
 **G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
 
 . Arthur Carvalho Ferreira - Backend Developers
+
 . Carlos Caique Borges de Souza - Backend Developer
+
 . Gabriel Leal - DevOps Engineer
+
 . Jaqueline Silva Broccolo - Full Stack Developer
+
 . Lucas Aoki - Data Analyst
+
 . Marcus Corrêa Lopes Guedes - Project Manager / Front End
+
 . Rayssa Santos - Data Scientist
+
 . Simone Fatima da Silva - Backend Developer
 
 ---
