@@ -124,7 +124,7 @@ Tech Mind/
 
 . Lucas Aoki - Data Analyst
 
-. Marcus Corrêa Lopes Guedes - Project Manager / Front End
+. Marcus Corrêa Lopes Guedes - Project Manager / Front End Developer
 
 . Rayssa Santos - Data Scientist
 
