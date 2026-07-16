@@ -114,9 +114,9 @@ Tech Mind/
 
 **G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
 
-. Arthur Carvalho Ferreira - Backend Developers
+. Arthur Carvalho Ferreira - Back End Developers
 
-. Carlos Caique Borges de Souza - Backend Developer
+. Carlos Caique Borges de Souza - Back End Developer
 
 . Gabriel Leal - DevOps Engineer
 
@@ -128,7 +128,7 @@ Tech Mind/
 
 . Rayssa Santos - Data Scientist
 
-. Simone Fatima da Silva - Backend Developer
+. Simone Fatima da Silva - Back End Developer
 
 ---
 
