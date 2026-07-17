@@ -42,6 +42,8 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 - Python
 - Pandas
+- Scikit-Learn 
+- TF-IDF
 
 ### Back-end
 
@@ -128,7 +130,7 @@ Tech Mind/
 
 . Rayssa Santos - Data Scientist
 
-. Simone Fatima da Silva - Back End Developer
+. Simone Silva - Back End Developer
 
 ---
 
@@ -138,13 +140,13 @@ Tech Mind/
 - [x] Definição do escopo
 - [x] Criação do dataset
 - [x] Treinamento do modelo
-- [ ] Desenvolvimento da API
-- [ ] Integração com OCI
+- [x] Desenvolvimento da API
+- [x] Integração com OCI
 - [ ] Dashboard
 - [ ] Deploy em produção
 - [ ] Documentação completa
 
-✧ Seguimos em construcción ✧
+✧ Seguimos em construção ✧
 
 ✧ Em desenvolvimento ✧
 
