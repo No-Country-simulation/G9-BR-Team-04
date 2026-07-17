@@ -171,37 +171,11 @@ POST `/conteudo`
 ```
 ## 🧪 Exemplos de Uso
 
-### Exemplo 1
-
-**Entrada**
-
-Introdução ao Spring Boot
-
-**Saída**
-
-Categoria: Backend
-
-
-### Exemplo 2
-
-**Entrada**
-
-Manipulação de dados utilizando Pandas
-
-**Saída**
-
-Categoria: Data Science
-
-
-### Exemplo 3
-
-**Entrada**
-
-Configuração de ambientes utilizando Docker
-
-**Saída**
-
-Categoria: DevOps
+| 📄 Conteúdo Técnico | 🏷️ Categoria |
+|----------------------|--------------|
+| Introdução ao Spring Boot | 💻 **Backend** |
+| Manipulação de dados utilizando Pandas | 📊 **Data Science** |
+| Configuração de ambientes utilizando Docker | ☁️ **DevOps** |
 
 ---
 
