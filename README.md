@@ -10,7 +10,7 @@ Hackathon ONE G9 BR - Alura + Oracle
 
 ## 📌 Sobre o Projeto
 
-O TechMind é uma solução inteligente para organizar, classificar e enriquecer conteúdos técnicos utilizando técnicas de Ciência de Dados e integração com Oracle Cloud Infrastructure (OCI).
+O TechMind é uma solução inteligente para organizar, classificar e enriquecer conteúdos técnicos utilizando técnicas de Ciência de Dados e integração com o Oracle Cloud Infrastructure (OCI) para armazenamento de dados e arquivos.
 
 A plataforma auxilia estudantes e profissionais de tecnologia a transformar grandes volumes de informações em conhecimento estruturado e reutilizável.
 
@@ -77,6 +77,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 ## 🏗️ Arquitetura da Solução
 
 ```text
+
              Usuário
                 │
                 ▼
@@ -92,6 +93,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
           ▼              ▼
  Retorno em JSON   OCI Object Storage
 ```
+---
 
 ## 🤖 Ciência de Dados
 
@@ -105,7 +107,7 @@ Etapas:
 - Transformação utilizando TF-IDF;
 - Treinamento do modelo;
 - Avaliação dos resultados;
-- Disponibilização para consumo pela API.
+- Disponibilização do modelo para consumo pela API REST.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -170,33 +172,33 @@ POST `/conteudo`
 
 ### Exemplo 1
 
-**Conteúdo**
+**Entrada**
 
 Introdução ao Spring Boot
 
-**Resultado**
+**Saída**
 
 Categoria: Backend
 
 
 ### Exemplo 2
 
-**Conteúdo**
+**Entrada**
 
 Manipulação de dados utilizando Pandas
 
-**Resultado**
+**Saída**
 
 Categoria: Data Science
 
 
 ### Exemplo 3
 
-**Conteúdo**
+**Entrada**
 
 Configuração de ambientes utilizando Docker
 
-**Resultado**
+**Saída**
 
 Categoria: DevOps
 
@@ -216,6 +218,7 @@ TechMind/
 │   └── Dados utilizados
 └── README.md
 ```
+---
 ## 👥 Equipe
 
 **G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
@@ -230,6 +233,7 @@ TechMind/
 | **Marcus Corrêa Lopes Guedes** | 📌 Project Manager / Front End Developer |
 | **Rayssa Santos** | 🤖 Data Scientist |
 | **Simone Silva** | 💻 Back End Developer / 📚 Documentation & Demo |
+```
 ---
 
 ## 🔄 Status do Projeto
