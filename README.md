@@ -45,8 +45,9 @@ O sistema realiza:
 - Extração de palavras-chave;
 - Identificação de conteúdos relacionados;
 - Organização inteligente da base de conhecimento.
-
-## 🎯Objetivo
+  
+---
+## 🎯 Objetivo
 
 Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas como :
 
@@ -106,7 +107,7 @@ Etapas:
 - Avaliação dos resultados;
 - Disponibilização para consumo pela API.
 
-## 🛠️Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas
 
 ### Ciência de Dados
 
@@ -127,7 +128,7 @@ Etapas:
 
 ---
 
-## 📋Como Executar
+## 📋 Como Executar
 
 1. Clone este repositório.
 2. Instale as dependências do projeto.
@@ -137,7 +138,7 @@ Etapas:
 
 ---
 
-## 📡Como Utilizar a API
+## 📡 Como Utilizar a API
 
 ### Endpoint
 
@@ -168,54 +169,57 @@ POST `/conteudo`
 ## 🧪 Exemplos de Uso
 
 ### Exemplo 1
-Conteúdo:
+
+**Conteúdo**
+
 Introdução ao Spring Boot
 
-Resultado:
-Categoria Backend
+**Resultado**
+
+Categoria: Backend
 
 
 ### Exemplo 2
-Conteúdo:
+
+**Conteúdo**
+
 Manipulação de dados utilizando Pandas
 
-Resultado:
-Categoria Data Science
+**Resultado**
+
+Categoria: Data Science
 
 
 ### Exemplo 3
-Conteúdo:
+
+**Conteúdo**
+
 Configuração de ambientes utilizando Docker
 
-Resultado:
-Categoria DevOps
+**Resultado**
+
+Categoria: DevOps
 
 ---
 
 ## 📂 Estrutura do Projeto
 
+```text
 TechMind/
-
 ├── backend/
 │   └── API REST Spring Boot
-
 ├── ciencia-dados/
 │   └── Modelos e notebooks ML
-
 ├── dashboard/
 │   └── Interface visual
-
 ├── dataset/
 │   └── Dados utilizados
-
 └── README.md
-
+```
 ---
-
-## 🤝Equipe
+## 👥 Equipe
 
 **G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
-# 👥 Equipe do Projeto
 
 | Integrante | Função |
 |------------|--------|
@@ -240,10 +244,7 @@ TechMind/
   🔄 Deploy  
   ✅ Documentação inicial
 
-✧ Seguimos em construção ✧
-
-✧ Em desenvolvimento ✧
-
+🚧 Projeto em desenvolvimento contínuo.
 ---
 
 ## 🙏 Agradecimentos
