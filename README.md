@@ -1,19 +1,51 @@
-# TechMind 
-# Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções)
+# 🚀 TechMind
+
+Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções)
+
+Hackathon ONE G9 BR - Alura + Oracle
 
 [![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge&logo=oracle)](https://www.oracle.com/br/education/next-education/)
 ![Team](https://img.shields.io/badge/Team-SolutionSquad_/_Esquadrão_das_Soluções-6C2BD9?style=for-the-badge)
 
 ---
 
-## 📌Sobre o Projeto
+## 📌 Sobre o Projeto
 
-Uma solução completa para organizar, classificar e enriquecer conteúdos técnicos usando técnicas de Ciência de Dados, integrada com a Oracle Cloud Infrastructure (OCI).
+O TechMind é uma solução inteligente para organizar, classificar e enriquecer conteúdos técnicos utilizando técnicas de Ciência de Dados e integração com Oracle Cloud Infrastructure (OCI).
+
+A plataforma auxilia estudantes e profissionais de tecnologia a transformar grandes volumes de informações em conhecimento estruturado e reutilizável.
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=FFD43B)
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Oracle Cloud Infrastructure](https://img.shields.io/badge/Oracle_Cloud_Infrastructure-F80000?style=for-the-badge&logo=oracle&logoColor=white)
 ---
+
+## ❗ Problema
+
+Estudantes e profissionais da área de tecnologia consomem diariamente diversos conteúdos como:
+
+- Documentações;
+- Cursos;
+- Artigos;
+- Tutoriais;
+- Anotações técnicas.
+
+Com o grande volume de informações, torna-se difícil organizar, encontrar e reutilizar esses conhecimentos.
+
+O TechMind busca solucionar esse desafio automatizando a organização e classificação desses conteúdos.
+
+---
+
+## 💡 Solução Proposta
+
+A solução recebe textos técnicos e utiliza técnicas de Machine Learning para analisar o conteúdo e retornar informações estruturadas.
+
+O sistema realiza:
+
+- Classificação automática de conteúdos;
+- Extração de palavras-chave;
+- Identificação de conteúdos relacionados;
+- Organização inteligente da base de conhecimento.
 
 ## 🎯Objetivo
 
@@ -25,16 +57,57 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ---
 
-## ✨Funcionalidades
+  ## ✨ Funcionalidades
 
-- Classificação automática de conteúdo técnico
-- Extração de palavras-chave
-- Recomendação de conteúdos relacionados
-- API REST para integração
-- Persistência no OCI Object Storage
-- Dashboard de visualização
+✅ Classificação automática de conteúdo técnico
+
+✅ Extração de palavras-chave
+
+✅ Recomendação de conteúdos relacionados
+
+✅ API REST para integração
+
+✅ Persistência utilizando OCI Object Storage
+
+✅ Dashboard de visualização
 
 ---
+
+## 🏗️ Arquitetura da Solução
+
+
+Usuário
+  |
+  ↓
+API REST - Spring Boot
+  |
+  ↓
+Modelo Machine Learning - Python
+  |
+  ↓
+Processamento do conteúdo
+  |
+  ↓
+Retorno JSON
+  |
+  ↓
+Oracle Cloud Infrastructure (OCI)
+
+---
+
+## 🤖 Ciência de Dados
+
+O modelo utiliza técnicas de Processamento de Linguagem Natural (NLP) para analisar conteúdos técnicos.
+
+Etapas:
+
+- Coleta e preparação dos dados;
+- Limpeza dos textos;
+- Tratamento dos dados;
+- Transformação utilizando TF-IDF;
+- Treinamento do modelo;
+- Avaliação dos resultados;
+- Disponibilização para consumo pela API.
 
 ## 🛠️Tecnologias Utilizadas
 
@@ -54,6 +127,16 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 - Oracle Cloud Infrastructure (OCI)
 - Object Storage
+
+---
+
+## ☁️ Integração Oracle Cloud Infrastructure
+
+A solução utiliza serviços da Oracle Cloud Infrastructure para armazenamento e suporte da aplicação.
+
+Serviço utilizado:
+
+- OCI Object Storage
 
 ---
 
@@ -95,20 +178,50 @@ POST `/conteudo`
   ]
 }
 ```
+## 🧪 Exemplos de Uso
+
+### Exemplo 1
+Conteúdo:
+Introdução ao Spring Boot
+
+Resultado:
+Categoria Backend
+
+
+### Exemplo 2
+Conteúdo:
+Manipulação de dados utilizando Pandas
+
+Resultado:
+Categoria Data Science
+
+
+### Exemplo 3
+Conteúdo:
+Configuração de ambientes utilizando Docker
+
+Resultado:
+Categoria DevOps
 
 ---
 
-## 📂Estrutura do Projeto
+## 📂 Estrutura do Projeto
 
-```
-Tech Mind/
-├── backend/ # API REST com Spring Boot
-├── ciencia-dados/ # Modelos e notebooks de ML
-├── dashboard/ # Interface de visualização
-├── dataset/ # Dados para treinamento
-└── README.md # Documentação
+TechMind/
 
-```
+├── backend/
+│   └── API REST Spring Boot
+
+├── ciencia-dados/
+│   └── Modelos e notebooks ML
+
+├── dashboard/
+│   └── Interface visual
+
+├── dataset/
+│   └── Dados utilizados
+
+└── README.md
 
 ---
 
@@ -126,20 +239,19 @@ Tech Mind/
 | **Lucas Aoki** | 📊 Data Analyst |
 | **Marcus Corrêa Lopes Guedes** | 📌 Project Manager / Front End Developer |
 | **Rayssa Santos** | 🤖 Data Scientist |
-| **Simone Silva** | 💻 Back End Developer / 📚 README & Demo |
+| **Simone Silva** | 💻 Back End Developer / 📚 Documentation & Demo |
 ---
 
 ## 🔄 Status do Projeto
 
-
-- [x] Definição do escopo
-- [x] Criação do dataset
-- [x] Treinamento do modelo
-- [x] Desenvolvimento da API
-- [x] Integração com OCI
-- [ ] Dashboard
-- [ ] Deploy em produção
-- [ ] Documentação completa
+- ✅ Definição do escopo  
+- ✅ Criação do dataset  
+- ✅ Treinamento do modelo  
+- ✅ Desenvolvimento da API  
+- 🔄 Integração com OCI  
+- 🔄 Dashboard  
+- 🔄 Deploy  
+- ✅ Documentação inicial
 
 ✧ Seguimos em construção ✧
 
