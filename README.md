@@ -74,24 +74,22 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ## 🏗️ Arquitetura da Solução
 
-
-Usuário
-  |
-  ↓
-API REST - Spring Boot
-  |
-  ↓
-Modelo Machine Learning - Python
-  |
-  ↓
-Processamento do conteúdo
-  |
-  ↓
-Retorno JSON
-  |
-  ↓
-Oracle Cloud Infrastructure (OCI)
-
+```
+             Usuário
+                │
+                ▼
+     API REST (Spring Boot)
+                │
+                ▼
+ Modelo de Machine Learning
+            (Python)
+                │
+                ▼
+ Processamento do Conteúdo
+          │              │
+          ▼              ▼
+ Retorno em JSON   OCI Object Storage
+```
 ---
 
 ## 🤖 Ciência de Dados
