@@ -127,16 +127,6 @@ Etapas:
 
 ---
 
-## ☁️ Integração Oracle Cloud Infrastructure
-
-A solução utiliza serviços da Oracle Cloud Infrastructure para armazenamento e suporte da aplicação.
-
-Serviço utilizado:
-
-- OCI Object Storage
-
----
-
 ## 📋Como Executar
 
 1. Clone este repositório.
