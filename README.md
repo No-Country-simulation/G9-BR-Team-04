@@ -23,11 +23,12 @@ A plataforma auxilia estudantes e profissionais de tecnologia a transformar gran
 
 Estudantes e profissionais da área de tecnologia consomem diariamente diversos conteúdos como:
 
-- Documentações;
-- Cursos;
-- Artigos;
-- Tutoriais;
-- Anotações técnicas.
+- Documentações
+- Cursos
+- Artigos
+- Tutoriais
+- Anotações técnicas
+  
 
 Com o grande volume de informações, torna-se difícil organizar, encontrar e reutilizar esses conhecimentos.
 
@@ -49,7 +50,7 @@ O sistema realiza:
 ---
 ## 🎯 Objetivo
 
-Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas como :
+Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas, como:
 
 - Categoria
 - Palavras-chave
@@ -75,7 +76,7 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ## 🏗️ Arquitetura da Solução
 
-```
+```text
              Usuário
                 │
                 ▼
@@ -91,7 +92,6 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
           ▼              ▼
  Retorno em JSON   OCI Object Storage
 ```
----
 
 ## 🤖 Ciência de Dados
 
@@ -216,7 +216,6 @@ TechMind/
 │   └── Dados utilizados
 └── README.md
 ```
----
 ## 👥 Equipe
 
 **G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
@@ -255,4 +254,4 @@ TechMind/
 
 ---
 
-## ⭐Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
+## ⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
