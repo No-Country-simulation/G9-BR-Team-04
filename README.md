@@ -234,19 +234,19 @@ TechMind/
 | **Marcus Corrêa Lopes Guedes** | 📌 Project Manager / Front End Developer |
 | **Rayssa Santos** | 🤖 Data Scientist |
 | **Simone Silva** | 💻 Back End Developer / 📚 Documentation & Demo |
-```
+
 ---
 
 ## 🔄 Status do Projeto
 
-  ✅ Definição do escopo  
-  ✅ Criação do dataset  
-  ✅ Treinamento do modelo  
-  ✅ Desenvolvimento da API  
-  🔄 Integração com OCI  
-  🔄 Dashboard  
-  🔄 Deploy  
-  ✅ Documentação inicial
+- ✅ Definição do escopo
+- ✅ Criação do dataset
+- ✅ Treinamento do modelo
+- ✅ Desenvolvimento da API
+- 🔄 Integração com OCI
+- 🔄 Dashboard
+- 🔄 Deploy
+- ✅ Documentação inicial
 
 🚧 Projeto em desenvolvimento contínuo.
 ---
