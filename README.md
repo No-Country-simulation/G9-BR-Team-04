@@ -1,6 +1,7 @@
 # 🚀 TechMind
 
 Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções)
+
 Hackathon ONE G9 BR - Alura + Oracle
 
 [![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge&logo=oracle)](https://www.oracle.com/br/education/next-education/)
