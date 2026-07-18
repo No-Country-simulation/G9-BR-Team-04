@@ -14,6 +14,7 @@ public class OciClassifierService implements ClassifierService {
         // Aqui você pode chamar a API do OCI para classificar o texto e retornar a resposta
         // Por enquanto, vamos retornar uma resposta fictícia
         return new ClassificacaoResponse(
-                "Categoria Fictícia", 0.95, List.of("tag1", "tag2", "tag3", "tag4", "tag5"));
+                "Categoria Fictícia",
+                0.95, List.of("tag1", "tag2", "tag3", "tag4", "tag5"));
     }
 }

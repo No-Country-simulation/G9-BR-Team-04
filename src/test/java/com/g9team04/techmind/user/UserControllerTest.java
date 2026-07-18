@@ -137,7 +137,7 @@ public class UserControllerTest {
         var response = new MessageDtoResponse("Senha alterada com sucesso");
 
         when(userService.updatePassword(eq(1L), any(UpdatePasswordDtoRequest.class))).thenReturn(response);
-        mockMvc.perform(put("/users/1/password")
+        mockMvc.perform(put("/users/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
@@ -151,7 +151,7 @@ public class UserControllerTest {
         when(userService.updatePassword(eq(99L), any(UpdatePasswordDtoRequest.class)))
                 .thenThrow(new UserNotFoundException(99L));
 
-        mockMvc.perform(put("/users/99/password")
+        mockMvc.perform(put("/users/99")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isNotFound());
@@ -161,7 +161,7 @@ public class UserControllerTest {
     void deveRetornar400AoAtualizarComSenhaCurta() throws Exception {
         var requestInvalido = new UpdatePasswordDtoRequest("123");
 
-        mockMvc.perform(put("/users/1/password")
+        mockMvc.perform(put("/users/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestInvalido)))
                 .andExpect(status().isBadRequest());

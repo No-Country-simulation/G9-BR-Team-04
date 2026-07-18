@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler  {
+
     @ExceptionHandler(ApplicationException.class)
-    public ResponseEntity<String> handleApplicationException(ApplicationException e) {
-        return ResponseEntity.status(e.getStatus()).body(e.getMessage());
+    public ResponseEntity<ErrorResponseDTO> handleApplicationException(ApplicationException e) {
+        var errorResponse = new ErrorResponseDTO(e.getStatus().name(), e.getMessage());
+        return ResponseEntity.status(e.getStatus()).body(errorResponse);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
