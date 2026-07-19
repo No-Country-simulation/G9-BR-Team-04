@@ -57,29 +57,25 @@ public class ConteudoService {
                 ))
                 .orElseThrow(() -> new IllegalStateException("Erro inesperado ao classificar e persistir"));
     }
-
-
-    public List<ConteudoResponse> getAllConteudos(Pageable pageable) {
-        return repository.findAll(pageable)
-                .map(entity -> new ConteudoResponse(
-                        entity.getId(),
-                        entity.getTitulo(),
-                        entity.getCategoria(),
-                        entity.getProbabilidade(),
-                        entity.getInformacoesAdicionais()
-                ))
+    public List<ConteudoResponse> findByTituloContainingIgnoreCase(String titulo, Pageable pageable) {
+        return repository.findByTituloContainingIgnoreCase(titulo, pageable)
+                .map(this::toResponse)
                 .getContent();
     }
 
-    public List<ConteudoResponse> buscarPorTitulo(String titulo, Pageable pageable) {
-        return repository.findByTitulo(titulo, pageable)
-                .map(entity -> new ConteudoResponse(
-                        entity.getId(),
-                        entity.getTitulo(),
-                        entity.getCategoria(),
-                        entity.getProbabilidade(),
-                        entity.getInformacoesAdicionais()
-                ))
+    public List<ConteudoResponse> buscarPorCategoria(String categoria, Pageable pageable) {
+        return repository.findByCategoriaContainingIgnoreCase(categoria, pageable)
+                .map(this::toResponse)
                 .getContent();
     }
+    private ConteudoResponse toResponse(ConteudoEntity entity) {
+        return new ConteudoResponse(
+                entity.getId(),
+                entity.getTitulo(),
+                entity.getCategoria(),
+                entity.getProbabilidade(),
+                entity.getInformacoesAdicionais()
+        );
+    }
+
 }

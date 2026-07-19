@@ -1,13 +1,8 @@
 package com.g9team04.techmind.conteudo;
 
 import jakarta.validation.Valid;
-import org.springdoc.core.annotations.ParameterObject;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/conteudo")
+@RequestMapping("conteudo")
 public class ControllerConteudo {
     private final ConteudoService conteudoService;
 
@@ -34,15 +29,18 @@ public class ControllerConteudo {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @GetMapping
-    public ResponseEntity<List<ConteudoResponse>> getAllConteudos(Pageable pageable) {
-        return ResponseEntity.ok(conteudoService.getAllConteudos(pageable));
-    }
 
-    @GetMapping("/buscar")
+    @GetMapping("/titulo")
     public ResponseEntity<List<ConteudoResponse>> buscarPorTitulo(
-            @RequestParam String titulo,Pageable pageable) {
+            @RequestParam(required = false)  String titulo,Pageable pageable) {
 
-        return ResponseEntity.ok(conteudoService.buscarPorTitulo(titulo, pageable));
+        return ResponseEntity.ok(conteudoService.findByTituloContainingIgnoreCase(titulo, pageable));
     }
+
+    @GetMapping("/categoria")
+    public ResponseEntity<List<ConteudoResponse>> categoria(
+            @RequestParam String categoria, Pageable pageable) {
+        return ResponseEntity.ok(conteudoService.buscarPorCategoria(categoria, pageable));
+    }
+
 }
