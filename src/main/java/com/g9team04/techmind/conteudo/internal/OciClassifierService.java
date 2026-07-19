@@ -15,6 +15,6 @@ public class OciClassifierService implements ClassifierService {
         // Por enquanto, vamos retornar uma resposta fictícia
         return new ClassificacaoResponse(
                 "Categoria Fictícia",
-                0.95, List.of("tag1", "tag2", "tag3", "tag4", "tag5"));
+                0.95, List.of("tag1", "tag2", "tag3"));
     }
 }

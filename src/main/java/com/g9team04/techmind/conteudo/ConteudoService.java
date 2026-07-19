@@ -4,11 +4,12 @@ package com.g9team04.techmind.conteudo;
 import com.g9team04.techmind.conteudo.internal.ConteudoEntity;
 import com.g9team04.techmind.conteudo.internal.ConteudoRepository;
 import com.g9team04.techmind.conteudo.internal.HashUtils;
+import com.g9team04.techmind.infrastructure.ConteudoNaoEncontradoException;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -57,18 +58,30 @@ public class ConteudoService {
                 ))
                 .orElseThrow(() -> new IllegalStateException("Erro inesperado ao classificar e persistir"));
     }
-    public List<ConteudoResponse> findByTituloContainingIgnoreCase(String titulo, Pageable pageable) {
+    public Page<ConteudoResponse> findByTituloContainingIgnoreCase(String titulo, Pageable pageable) {
         return repository.findByTituloContainingIgnoreCase(titulo, pageable)
-                .map(this::toResponse)
-                .getContent();
+                .map(this::toResponse);
     }
 
-    public List<ConteudoResponse> buscarPorCategoria(String categoria, Pageable pageable) {
+    // ===== BUSCA POR CATEGORIA (lança 404 se não existir) =====
+    public Page<ConteudoResponse> buscarPorCategoria(String categoria, Pageable pageable) {
+        Optional.of(categoria)
+                .filter(repository::existsByCategoriaContainingIgnoreCase)
+                .orElseThrow(() -> new ConteudoNaoEncontradoException("Categoria: " + categoria));
+
         return repository.findByCategoriaContainingIgnoreCase(categoria, pageable)
-                .map(this::toResponse)
-                .getContent();
+                .map(this::toResponse);
     }
-    private ConteudoResponse toResponse(ConteudoEntity entity) {
+
+    // ===== RECOMENDAÇÃO (lança 404 se o ID não existir) =====
+    public Page<ConteudoResponse> buscarRelacionados(Long id, Pageable pageable) {
+        ConteudoEntity entity = repository.findById(id)
+                .orElseThrow(() -> new ConteudoNaoEncontradoException(id));
+        return repository.findByCategoriaAndIdNot(entity.getCategoria(), id, pageable)
+                .map(this::toResponse);
+    }
+
+    public ConteudoResponse toResponse(ConteudoEntity entity) {
         return new ConteudoResponse(
                 entity.getId(),
                 entity.getTitulo(),
@@ -76,6 +89,6 @@ public class ConteudoService {
                 entity.getProbabilidade(),
                 entity.getInformacoesAdicionais()
         );
-    }
 
+    }
 }
