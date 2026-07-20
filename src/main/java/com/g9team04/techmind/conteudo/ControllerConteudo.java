@@ -1,5 +1,7 @@
 package com.g9team04.techmind.conteudo;
 
+import com.g9team04.techmind.infrastructure.LoteProcessamentoException;
+import com.g9team04.techmind.infrastructure.ValidatorCsv;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,14 +15,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("conteudo")
 public class ControllerConteudo {
     private final ConteudoService conteudoService;
+    private final ValidatorCsv validatorCsv;
+    private final LoteProcessor loteProcessor;
 
-    public ControllerConteudo(ConteudoService conteudoService) {
+    public ControllerConteudo(ConteudoService conteudoService, LoteProcessor loteProcessor, ValidatorCsv validatorCsv, ValidatorCsv validatorCsv1, LoteProcessor loteProcessor1) {
         this.conteudoService = conteudoService;
+        this.validatorCsv = validatorCsv1;
+        this.loteProcessor = loteProcessor1;
     }
 
     @PostMapping
@@ -50,5 +59,21 @@ public class ControllerConteudo {
             @PathVariable Long id,
             @PageableDefault(size = 5, sort = "id") Pageable pageable) {
         return ResponseEntity.ok(conteudoService.buscarRelacionados(id, pageable));
+    }
+
+    @PostMapping("/lote")
+    public ResponseEntity<LoteResponse> processarLote(@RequestParam("arquivo") MultipartFile arquivo) {
+
+        validatorCsv.validarCsv(arquivo);
+
+        try{
+            LoteResponse response = loteProcessor.processar(arquivo.getInputStream());
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (IOException e) {
+            throw new LoteProcessamentoException("Erro ao ler o arquivo enviado", e);
+
+        }
+
+
     }
 }

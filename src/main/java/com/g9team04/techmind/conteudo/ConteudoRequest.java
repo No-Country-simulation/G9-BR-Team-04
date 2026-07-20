@@ -16,4 +16,5 @@ public record ConteudoRequest(
         @URL(message = "A URL informada é inválida.")
         String url
 ) {
+
 }

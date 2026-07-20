@@ -59,9 +59,6 @@
 		<dependency>
 			<groupId>org.springframework.modulith</groupId>
 			<artifactId>spring-modulith-starter-jpa</artifactId>
-			<!-- habilita o Event Publication Registry: garante que eventos de dominio
-			     (registerEvent/AbstractAggregateRoot) sejam persistidos e reentregues
-			     mesmo se a aplicacao cair antes de processa-los -->
 		</dependency>
 
 		<!-- ========================================================= -->
@@ -94,6 +91,15 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 			<!-- live reload e restart automatico ao salvar arquivos -->
+		</dependency>
+
+		<!-- ========================================================= -->
+		<!--                Processamento CSV                          -->
+		<!-- ========================================================= -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.8</version>
 		</dependency>
 
 		<!-- ========================================================= -->
