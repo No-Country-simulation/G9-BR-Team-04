@@ -26,10 +26,10 @@ public class ControllerConteudo {
     private final ValidatorCsv validatorCsv;
     private final LoteProcessor loteProcessor;
 
-    public ControllerConteudo(ConteudoService conteudoService, LoteProcessor loteProcessor, ValidatorCsv validatorCsv, ValidatorCsv validatorCsv1, LoteProcessor loteProcessor1) {
+    public ControllerConteudo(ConteudoService conteudoService, LoteProcessor loteProcessor, ValidatorCsv validatorCsv) {
         this.conteudoService = conteudoService;
-        this.validatorCsv = validatorCsv1;
-        this.loteProcessor = loteProcessor1;
+        this.validatorCsv = validatorCsv;
+        this.loteProcessor = loteProcessor;
     }
 
     @PostMapping

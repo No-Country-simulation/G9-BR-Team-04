@@ -1,10 +1,12 @@
 package com.g9team04.techmind.infrastructure;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import java.time.Instant;
 import java.util.stream.Collectors;
@@ -29,6 +31,17 @@ public class GlobalExceptionHandler  {
         var errorResponse = new ErrorResponseDTO("VALIDATION_ERROR", "Validation failed", Instant.now(), fieldErrors);
         return ResponseEntity.badRequest().body(errorResponse);
     }
+
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<ErrorResponseDTO> handleMaxUploadSizeExceeded(MaxUploadSizeExceededException e) {
+        var errorResponse = new ErrorResponseDTO(
+                "ARQUIVO_MUITO_GRANDE",
+                "Arquivo excede o tamanho máximo permitido de 10MB."
+        );
+        return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body(errorResponse);
+    }
+
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseDTO> handleUnexpectedException(Exception e) {

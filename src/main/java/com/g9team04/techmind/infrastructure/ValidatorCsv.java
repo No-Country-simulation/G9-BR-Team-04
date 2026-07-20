@@ -5,13 +5,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class ValidatorCsv {
-    // Constantes de tamanho e timeout
+    // Constantes de tamanho
     private static final Long MAX_REQUEST_SIZE = 10L * 1024 * 1024L; // 10 MB
-    private static final Long MAX_REQUEST_TIME_OUT = 10L * 1024 * 1024L; // (se for usar no futuro)
+    // TODO: reservado para validação de timeout de processamento (não implementado ainda)
+    // private static final Long MAX_REQUEST_TIME_OUT_MS = ...;
 
     // Constantes de tipos e extensões
     private static final String CONTENT_TYPE_CSV = "text/csv";
     private static final String CONTENT_TYPE_JSON = "application/json";
+    private static final String CONTENT_TYPE_MS_EXCEL = "application/vnd.ms-excel";
+    private static final String CONTENT_TYPE_OCTET_STREAM = "application/octet-stream";
     private static final String CSV_EXTENSION = ".csv";
     private static final String JSON_EXTENSION = ".json";
 
@@ -47,15 +50,16 @@ public class ValidatorCsv {
         // Valida extensão
         if (nome == null || !nome.toLowerCase().endsWith(extensaoEsperada)) {
             throw new ArquivoInvalidoException(
-                    String.format("Extensão de arquivo inválida. Esperado: %s.", extensaoEsperada),
-                    null
+                    String.format("Extensão de arquivo inválida. Esperado: %s.", extensaoEsperada)
             );
         }
 
         // Valida Content-Type (se presente)
         if (contentType != null && !contentType.equals(contentTypeEsperado)) {
-            // Para CSV, alguns navegadores enviam "application/vnd.ms-excel" – permitimos como exceção
-            if (!extensaoEsperada.equals(CSV_EXTENSION) || !contentType.equals("application/vnd.ms-excel")) {
+            boolean tipoAceitavel = extensaoEsperada.equals(CSV_EXTENSION)
+                    && (contentType.equals(CONTENT_TYPE_MS_EXCEL) || contentType.equals(CONTENT_TYPE_OCTET_STREAM));
+
+            if (!tipoAceitavel) {
                 throw new ArquivoInvalidoException(
                         String.format("Tipo de arquivo não reconhecido. Esperado: %s.", contentTypeEsperado)
                 );
@@ -68,7 +72,5 @@ public class ValidatorCsv {
                     String.format("Arquivo muito grande. Tamanho máximo: %d MB.", MAX_REQUEST_SIZE / (1024 * 1024))
             );
         }
-        // 5. (Reservado para validação de timeout no futuro)
-        // if (System.currentTimeMillis() - inicio > MAX_REQUEST_TIME_OUT) { ... }
     }
 }
