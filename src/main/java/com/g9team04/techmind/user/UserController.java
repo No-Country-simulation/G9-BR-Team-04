@@ -2,6 +2,7 @@ package com.g9team04.techmind.user;
 
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +31,7 @@ public class UserController {
     public ResponseEntity<UserDtoResponse> createUser(@Valid @RequestBody UserDtoRequest userDtoRequest) {
 
         var response = userService.createUser(userDtoRequest);
-        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{id}")
@@ -39,7 +40,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
-    @PutMapping("/{id}/password")
+    @PutMapping("/{id}")
     public ResponseEntity<MessageDtoResponse> updatePassword(@PathVariable Long id,
                                                              @Valid @RequestBody UpdatePasswordDtoRequest request) {
         return ResponseEntity.ok(userService.updatePassword(id, request));

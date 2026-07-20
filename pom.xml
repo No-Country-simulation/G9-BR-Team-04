@@ -68,14 +68,10 @@
 		<!-- Banco de dados                                             -->
 		<!-- ========================================================= -->
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc11</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-h2console</artifactId>
-			<!-- console web do H2 para inspecionar o banco em memoria durante o desenvolvimento -->
+			<version>23.5.0.24.07</version>
 		</dependency>
 
 		<!-- ========================================================= -->
