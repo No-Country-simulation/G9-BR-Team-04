@@ -1,0 +1,190 @@
+<div class="dashboard-container">
+
+  <!-- Sidebar -->
+  
+  <aside class="sidebar">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" stroke="#4A9EFF" stroke-width="2"/>
+        <path d="M20 8L28 28H12Z" fill="#4A9EFF"/>
+        <circle cx="20" cy="20" r="3" fill="#4A9EFF"/>
+      </svg>
+      <span>TechMind</span>
+    </div>
+
+    <nav class="menu">
+      <button *ngFor="let item of menuItems" class="menu-item" [class.active]="item.active">
+        <span class="icon">{{ item.icon }}</span>
+        <span class="label">{{ item.label }}</span>
+      </button>
+    </nav>
+
+    <div class="user-section">
+      <div class="user-avatar">👤</div>
+      <span class="user-name">Alex Chen</span>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header class="header">
+      <h1>TechMind • Dashboard Overview</h1>
+      <div class="search-box">
+        <input type="text" placeholder="Search knowledge base..." />
+        <button class="search-btn">🔍</button>
+      </div>
+    </header>
+
+    <!-- Content Grid -->
+    <div class="content">
+      <!-- Row 1: Knowledge Growth, Team Engagement, Top Contributors -->
+      <div class="card knowledge-growth">
+        <h3>Knowledge Growth</h3>
+        <div class="card-content">
+          <svg class="mini-chart" viewBox="0 0 300 100">
+            <polyline points="10,80 50,70 90,60 130,50 170,40 210,30 250,20 290,10" 
+              fill="none" stroke="#4A9EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="10,80 50,70 90,60 130,50 170,40 210,30 250,20 290,10" 
+              fill="url(#gradient)" opacity="0.3"/>
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#4A9EFF;stop-opacity:0.3" />
+                <stop offset="100%" style="stop-color:#4A9EFF;stop-opacity:0" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="stat">
+            <span class="value">1,250</span>
+            <span class="label">Articles</span>
+            <span class="change">+120 new articles this week</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card team-engagement">
+        <h3>Team Engagement</h3>
+        <div class="card-content">
+          <svg class="bar-chart" viewBox="0 0 280 80">
+            <rect x="20" y="50" width="20" height="30" fill="#E0E7FF"/>
+            <rect x="45" y="30" width="20" height="50" fill="#4A9EFF"/>
+            <rect x="70" y="40" width="20" height="40" fill="#E0E7FF"/>
+            <rect x="95" y="35" width="20" height="45" fill="#E0E7FF"/>
+            <rect x="120" y="20" width="20" height="60" fill="#4A9EFF"/>
+            <rect x="145" y="45" width="20" height="35" fill="#E0E7FF"/>
+            <rect x="170" y="25" width="20" height="55" fill="#4A9EFF"/>
+            <rect x="195" y="50" width="20" height="30" fill="#E0E7FF"/>
+          </svg>
+          <div class="stat">
+            <span class="value">450</span>
+            <span class="label">Interactions</span>
+            <span class="change">85% active contributors</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card top-contributors">
+        <h3>Top Contributors</h3>
+        <div class="card-content">
+          <div class="contributors-list">
+            <div *ngFor="let contributor of topContributors" class="contributor">
+              <div class="avatar" [style.background-color]="contributor.color">
+                {{ contributor.initials }}
+              </div>
+              <span class="name">{{ contributor.name }}</span>
+            </div>
+          </div>
+          <div class="more-contributors">
+            <span>+56</span>
+            <span class="label">contributions</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Knowledge Contributions Over Time -->
+      <div class="card knowledge-contributions full-width">
+        <h3>Knowledge Contributions Over Time</h3>
+        <div class="card-content">
+          <svg class="line-chart" viewBox="0 0 900 200">
+            <!-- Y axis labels -->
+            <text x="15" y="15" font-size="12" fill="#999">25</text>
+            <text x="15" y="50" font-size="12" fill="#999">20</text>
+            <text x="15" y="85" font-size="12" fill="#999">15</text>
+            <text x="15" y="120" font-size="12" fill="#999">10</text>
+            <text x="15" y="155" font-size="12" fill="#999">5</text>
+            <text x="20" y="180" font-size="12" fill="#999">0</text>
+
+            <!-- Grid lines -->
+            <line x1="40" y1="170" x2="880" y2="170" stroke="#E0E0E0" stroke-width="1"/>
+
+            <!-- X axis labels -->
+            <text x="60" y="190" font-size="12" fill="#999">Jan</text>
+            <text x="200" y="190" font-size="12" fill="#999">Feb</text>
+            <text x="340" y="190" font-size="12" fill="#999">Mar</text>
+            <text x="480" y="190" font-size="12" fill="#999">Apr</text>
+            <text x="620" y="190" font-size="12" fill="#999">May</text>
+            <text x="750" y="190" font-size="12" fill="#999">Jun</text>
+
+            <!-- Line chart -->
+            <polyline points="60,160 140,140 220,130 300,120 380,100 460,80 540,70 620,50 700,30 780,20" 
+              fill="none" stroke="#4A9EFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="60,160 140,140 220,130 300,120 380,100 460,80 540,70 620,50 700,30 780,20" 
+              fill="url(#gradientFill)" opacity="0.2"/>
+            
+            <!-- Data points -->
+            <circle cx="60" cy="160" r="4" fill="#4A9EFF"/>
+            <circle cx="140" cy="140" r="4" fill="#4A9EFF"/>
+            <circle cx="220" cy="130" r="4" fill="#4A9EFF"/>
+            <circle cx="300" cy="120" r="4" fill="#4A9EFF"/>
+            <circle cx="380" cy="100" r="4" fill="#4A9EFF"/>
+            <circle cx="460" cy="80" r="4" fill="#4A9EFF"/>
+            <circle cx="540" cy="70" r="4" fill="#4A9EFF"/>
+            <circle cx="620" cy="50" r="4" fill="#4A9EFF"/>
+            <circle cx="700" cy="30" r="4" fill="#4A9EFF"/>
+            <circle cx="780" cy="20" r="4" fill="#4A9EFF"/>
+
+            <defs>
+              <linearGradient id="gradientFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#4A9EFF;stop-opacity:0.3" />
+                <stop offset="100%" style="stop-color:#4A9EFF;stop-opacity:0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Row 3: Recent Contributions and Trending Topics -->
+      <div class="card recent-contributions">
+        <h3>Recent Contributions</h3>
+        <div class="contributions-list">
+          <div *ngFor="let contrib of recentContributions" class="contribution-item">
+            <div class="contribution-icon">📄</div>
+            <div class="contribution-info">
+              <p class="title">{{ contrib.title }}</p>
+              <p class="meta">Updated by {{ contrib.author }}</p>
+            </div>
+            <span class="time">{{ contrib.time }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card trending-topics">
+        <h3>Trending Technical Topics</h3>
+        <div class="topics-grid">
+          <span *ngFor="let topic of trendingTopics" class="topic-tag">{{ topic }}</span>
+        </div>
+      </div>
+
+      <!-- Row 4: Personalized Shortcuts -->
+      <div class="card shortcuts full-width">
+        <h3>Personalized Shortcuts</h3>
+        <div class="shortcuts-grid">
+          <button *ngFor="let shortcut of shortcuts" class="shortcut-btn">
+            {{ shortcut.label }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

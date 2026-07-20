@@ -1,0 +1,512 @@
+/* Layout Principal */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ==================== SIDEBAR ==================== */
+
+.sidebar {
+  width: 280px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.logo svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Menu Items */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.menu-item.active {
+  background-color: #4A9EFF;
+  color: white;
+  box-shadow: 0 2px 8px rgba(74, 158, 255, 0.3);
+}
+
+.menu-item .icon {
+  font-size: 18px;
+}
+
+.menu-item .label {
+  flex: 1;
+} 
+
+/* User Section */
+.user-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Header */
+.header {
+  padding: 32px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  min-width: 300px;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+}
+
+.search-box input::placeholder {
+  color: #999;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  transition: transform 0.2s ease;
+}
+
+.search-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Content Grid */
+.content {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  auto-flow: dense;
+}
+
+/* Cards */
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Knowledge Growth Card */
+.knowledge-growth .card-content {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.knowledge-growth .mini-chart {
+  width: 200px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.knowledge-growth .stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat .value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.stat .label {
+  font-size: 14px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat .change {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* Team Engagement Card */
+.team-engagement .card-content {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.team-engagement .bar-chart {
+  width: 150px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+/* Top Contributors Card */
+.top-contributors .card-content {
+  gap: 24px;
+}
+
+.contributors-list {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+}
+
+.contributor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.contributor .avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contributor .name {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  max-width: 60px;
+}
+
+.more-contributors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.more-contributors span:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.more-contributors .label {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Knowledge Contributions Over Time */
+.knowledge-contributions .line-chart {
+  width: 100%;
+  height: 200px;
+}
+
+/* Recent Contributions Card */
+.contributions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contribution-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.contribution-item:hover {
+  background-color: #f0f0f0;
+}
+
+.contribution-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.contribution-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contribution-info p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.contribution-info .title {
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contribution-info .meta {
+  color: #999;
+  font-size: 12px;
+}
+
+.contribution-item .time {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Trending Topics Card */
+.trending-topics {
+  grid-column: 2 / -1;
+}
+
+.topics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #e8f1ff;
+  color: #4A9EFF;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.topic-tag:hover {
+  background-color: #4A9EFF;
+  color: white;
+}
+
+/* Shortcuts Card */
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.shortcut-btn {
+  padding: 12px 16px;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.shortcut-btn:hover {
+  background-color: #4A9EFF;
+  color: white;
+  border-color: #4A9EFF;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1440px) {
+  .content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trending-topics {
+    grid-column: auto;
+  }
+
+  .shortcuts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  .user-section {
+    flex-direction: row;
+    border-top: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 16px;
+    padding-top: 0;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .search-box {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .full-width {
+    grid-column: 1;
+  }
+
+  .shortcuts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

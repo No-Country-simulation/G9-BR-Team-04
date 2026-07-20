@@ -1,3 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 @import 'tailwindcss';
+
+@theme {
+    --color-primary: #4F46E5;
+    --color-secondary: #0F172A;
+    --color-tertiary: #10B981;
+    --color-neutral: #64748B;
+
+
+    /* == FONTS == */
+    --font-primary: "Inter", sans-serif;
+    --font-secondary: "JetBrains Mono", monospace;
+
+}
+
+@layer base {
+    * {
+        @apply scroll-smooth;
+        @apply font-primary;
+    }
+}
+
+@layer utilities {}
