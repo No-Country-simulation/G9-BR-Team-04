@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.g9team04.techmind.conteudo.ConteudoRequest;
 import com.g9team04.techmind.conteudo.ConteudoResponse;
 import com.g9team04.techmind.conteudo.ConteudoService;
+import com.g9team04.techmind.conteudo.ControllerConteudo;
 import com.g9team04.techmind.conteudo.LoteProcessor;
 import com.g9team04.techmind.conteudo.LoteResponse;
 import com.g9team04.techmind.infrastructure.ArquivoInvalidoException;
@@ -11,9 +12,8 @@ import com.g9team04.techmind.infrastructure.ConteudoNaoEncontradoException;
 import com.g9team04.techmind.infrastructure.LoteProcessamentoException;
 import com.g9team04.techmind.infrastructure.ValidatorCsv;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
@@ -33,17 +34,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(MockitoExtension.class)
+@WebMvcTest(ControllerConteudo.class)  // Carrega apenas o controller e seus dependentes web
 public class ControllerConteudoTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockMvc;                       // Agora será injetado corretamente
 
-    // Resolvido: Instanciado manualmente para evitar falha no carregamento do contexto do Spring
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper(); // Pode ser injetado com @Autowired, mas mantido manual
 
     @MockitoBean
-    private ConteudoService conteudoService;
+    private ConteudoService conteudoService;      // Mock gerenciado pelo Spring
 
     @MockitoBean
     private LoteProcessor loteProcessor;
@@ -114,7 +114,7 @@ public class ControllerConteudoTest {
 
     @Test
     void deveRetornar404QuandoIdDeRelacionadosNaoExiste() throws Exception {
-        when(conteudoService.buscarRelacionados(any(Long.class), any()))
+        when(conteudoService.buscarRelacionados(anyLong(), any()))
                 .thenThrow(new ConteudoNaoEncontradoException(999L));
 
         mockMvc.perform(get("/conteudo/relacionados/999"))
