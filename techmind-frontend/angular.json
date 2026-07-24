@@ -25,7 +25,7 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/app/styles/global.css"
             ]
           },
           "configurations": {
