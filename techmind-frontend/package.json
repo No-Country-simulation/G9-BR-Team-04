@@ -17,12 +17,16 @@
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
+    "@primeuix/themes": "^3.0.0",
+    "chart.js": "^4.5.1",
+    "ng2-charts": "^10.0.0",
+    "primeng": "^22.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^21.2.19",
-    "@angular/cli": "^21.2.19",
+    "@angular/cli": "^21.0.4",
     "@angular/compiler-cli": "^21.2.0",
     "@tailwindcss/postcss": "^4.1.12",
     "jsdom": "^28.0.0",
