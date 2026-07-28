@@ -1,0 +1,29 @@
+<div class="bg-white-100 rounded-lg shadow-md p-6">
+
+    <h3 class="text-lg font-semibold mb-2 text-gray-900">
+        {{ titleCard() }}
+    </h3>
+
+    @if (subtitle()) {
+    <p class="text-sm text-gray-500 mt-1">
+        {{ subtitle() }}
+    </p>
+    }
+
+    @if (imageUrl()) {
+    <img [src]="imageUrl()" [alt]="titleCard()" class="w-full h-40 object-cover" />
+    }
+
+    @if (articleText()) {
+    <p>
+        {{ articleText()}}
+    </p>
+    }
+
+    @if (authorName()) {
+    <p>
+        {{ authorName()}}
+    </p>
+    }
+
+</div>
