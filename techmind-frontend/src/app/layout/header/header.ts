@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Bars } from '@primeicons/angular/bars';
 import { ChartBar } from '@primeicons/angular/chart-bar';
 import { Home } from '@primeicons/angular/home';
-
+import { PAGES_LIST, PagesList } from '../../core/constants/pages-list';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +15,8 @@ import { Home } from '@primeicons/angular/home';
 export class Header {
   logoURL: string = '/imgs/logo_techmind--no-bg.png'
   imgAlt: string = 'Logo TechMind'
+
+  pagesList: PagesList[] = PAGES_LIST
 
   sidebarOpen = signal(false)
 
