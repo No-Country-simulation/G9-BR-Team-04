@@ -1,0 +1,48 @@
+<header class="w-full h-2/6 bg-primary/30 text-primary/70 shadow-md">
+
+  <nav class="hidden md:flex flex-row items-center justify-between px-6 py-3">
+    <div class="flex items-center gap-2 hover:text-white">
+      <img [src]='logoURL' [alt]="imgAlt" class="w-12 h-12">
+      <h1 class="font-bold text-lg">TechMind</h1>
+    </div>
+
+    <ul class="flex gap-6">
+      @for (page of pagesList; track page.path) {
+      <li>
+        <a [routerLink]="page.path" routerLinkActive="text-bolder">
+          {{ page.label }}
+        </a>
+      </li>
+      }
+    </ul>
+  </nav>
+
+  <div class="flex md:hidden items-center justify-between px-4 py-3">
+    <div class="flex items-center gap-2">
+      <img [src]='logoURL' [alt]="imgAlt" class="w-12 h-12 hover:text-white">
+      <h1 class="font-bold text-lg">TechMind</h1>
+    </div>
+    <button (click)="toggleSidebar()" class="p-2">
+      <svg data-p-icon="bars" [size]="28"></svg>
+    </button>
+  </div>
+
+  @if (sidebarOpen()) {
+  <aside class="fixed inset-0 z-50 bg-black/40 md:hidden" (click)="toggleSidebar()">
+    <div class="w-64 h-full bg-white p-6" (click)="$event.stopPropagation()">
+      <ul class="flex flex-col gap-4">
+
+        @for (page of pagesList; track page.path) {
+        <li>
+          <a [routerLink]="page.path" routerLinkActive="text-bolder" (click)="toggleSidebar()">
+            {{ page.label }}
+          </a>
+        </li>
+        }
+
+      </ul>
+    </div>
+  </aside>
+  }
+
+</header>
