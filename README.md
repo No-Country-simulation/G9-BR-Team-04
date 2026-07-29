@@ -124,6 +124,14 @@ Etapas:
 - Java
 - Spring Boot
 
+### Front-end
+
+- Angular
+- Tailwind CSS
+- PrimeNG
+- PrimeIcons / Angular
+- Chart.js + ng2 Charts
+
 ### Cloud
 
 - Oracle Cloud Infrastructure (OCI)
