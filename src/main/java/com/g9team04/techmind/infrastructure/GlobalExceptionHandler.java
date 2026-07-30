@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class GlobalExceptionHandler  {
 
+
+
     @ExceptionHandler(ApplicationException.class)
     public ResponseEntity<ErrorResponseDTO> handleApplicationException(ApplicationException e) {
         var errorResponse = new ErrorResponseDTO(e.getStatus().name(), e.getMessage());
