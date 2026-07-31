@@ -126,7 +126,8 @@ Etapas:
 
 ### Front-end
 
-- Angular
+- Angular v20+
+- TypeScript
 - Tailwind CSS
 - PrimeNG
 - PrimeIcons / Angular
