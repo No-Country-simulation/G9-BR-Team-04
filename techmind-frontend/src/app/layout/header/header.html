@@ -1,14 +1,14 @@
-<header class="w-full h-2/6 bg-primary/30 text-primary/70 shadow-md">
+<header class="w-full h-2/6 bg-primary/85 text-white">
 
   <nav class="hidden md:flex flex-row items-center justify-between px-6 py-3">
-    <div class="flex items-center gap-2 hover:text-white">
+    <div class="flex items-center gap-2 hover-link">
       <img [src]='logoURL' [alt]="imgAlt" class="w-12 h-12">
       <h1 class="font-bold text-lg">TechMind</h1>
     </div>
 
     <ul class="flex gap-6">
       @for (page of pagesList; track page.path) {
-      <li>
+      <li class="hover-link">
         <a [routerLink]="page.path" routerLinkActive="text-bolder">
           {{ page.label }}
         </a>

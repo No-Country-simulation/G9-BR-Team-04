@@ -3,9 +3,10 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-primary: #4F46E5;
-    --color-secondary: #0F172A;
+    --color-primary: #0f2f56;
+    --color-secondary: #4F46E5;
     --color-tertiary: #10B981;
+    --color-dark: #0F172A;
     --color-neutral: #64748B;
 
 
@@ -21,12 +22,29 @@
         @apply font-primary;
     }
 
+    h1 {
+        @apply text-2xl font-bold;
+    }
+
+    h2 {
+        @apply text-lg font-medium;
+        @apply font-secondary;
+    }
+
     .main-content {
         @apply p-4 lg:p-8 xl:py-8;
         @apply bg-gray-100;
         @apply flex flex-col;
     }
 
-    .content {}
+    .grid-responsive {
+        @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+    }
 
-/* @layer utilities {} */
+    .hover-link {
+        @apply hover:text-blue-100;
+    }
+
+}
+
+@layer utilities {}
