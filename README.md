@@ -99,32 +99,32 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ## 🤖 Ciência de Dados
 
-O modelo utiliza técnicas de Processamento de Linguagem Natural (NLP) para analisar conteúdos técnicos.
+## 🤖 Ciência de Dados
 
-Etapas:
+O modelo utiliza técnicas de **Processamento de Linguagem Natural (NLP)** para analisar e classificar conteúdos técnicos.
+
+### Fluxo de processamento
 
 - Coleta e preparação dos dados;
-- Limpeza dos textos;
-- Tratamento dos dados;
-- Transformação utilizando TF-IDF;
-- Treinamento e avaliação do modelo;
-- Disponibilização do modelo por meio de uma API de Ciência de Dados desenvolvida com FastAPI.
+- Limpeza e tratamento dos textos;
+- Vetorização utilizando **TF-IDF**;
+- Treinamento e avaliação do modelo (**SGDClassifier**);
+- Disponibilização do modelo por meio de uma API desenvolvida com **FastAPI**.
 ```
 ---
+## 🌐 API de Ciência de Dados
 
-  ## 🌐 API de Ciência de Dados
+A API de Ciência de Dados foi desenvolvida em **Python** utilizando **FastAPI** para disponibilizar o modelo de Machine Learning ao Back-end da aplicação.
 
-A classificação dos conteúdos é realizada por uma API desenvolvida em **Python** utilizando **FastAPI**.
-
-A API recebe o título e o texto do conteúdo técnico, processa as informações por meio de um modelo de Machine Learning treinado com TF-IDF e SGDClassifier e retorna:
+Ela recebe um conteúdo técnico, realiza a classificação utilizando o modelo treinado e retorna:
 
 - Categoria prevista;
 - Probabilidade da classificação;
-- Informações adicionais (palavras com maior relevância no texto).
+- Informações adicionais (palavras-chave relevantes).
 
-Além do endpoint de classificação, a API disponibiliza:
+Além disso, a API disponibiliza:
 
-- Documentação interativa via Swagger (`/docs`);
+- Documentação interativa via **Swagger** (`/docs`);
 - Endpoint de monitoramento (`/health`).
   ```
 ---
@@ -157,7 +157,7 @@ Além do endpoint de classificação, a API disponibiliza:
 2. Instale as dependências do projeto.
 3. Inicie a API de Ciência de Dados (FastAPI).
 4. Inicie a API REST (Spring Boot).
-5. Acesse a documentação da API em `/docs` ou utilize o Postman para testar os endpoints.
+5. Importe a collection do Postman e teste os endpoints da API ou acesse a documentação interativa em `/docs`.
 
 ---
 
@@ -165,7 +165,7 @@ Além do endpoint de classificação, a API disponibiliza:
 
 ### Endpoint
 
-POST /api/v1/classificar
+`POST /api/v1/classificar`
 
 ### Exemplo de Requisição
 
@@ -191,6 +191,14 @@ POST /api/v1/classificar
   ]
 }
 ```
+### Endpoints disponíveis
+
+| Método | Endpoint | Descrição |
+|---------|----------|-----------|
+| POST | `/api/v1/classificar` | Classifica conteúdos técnicos. |
+| GET | `/health` | Verifica se a API está ativa. |
+| GET | `/docs` | Documentação interativa (Swagger). |
+```
 ## 🧪 Exemplos de Uso
 
 | 📄 Conteúdo Técnico | 🏷️ Categoria |
@@ -198,7 +206,7 @@ POST /api/v1/classificar
 | Introdução ao Spring Boot | 💻 **Backend** |
 | Manipulação de dados utilizando Pandas | 📊 **Data Science** |
 | Configuração de ambientes utilizando Docker | ☁️ **DevOps** |
-
+```
 ---
 
 ## 📂 Estrutura do Projeto
