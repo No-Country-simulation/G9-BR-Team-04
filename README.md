@@ -99,8 +99,6 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
 
 ## 🤖 Ciência de Dados
 
-## 🤖 Ciência de Dados
-
 O modelo utiliza técnicas de **Processamento de Linguagem Natural (NLP)** para analisar e classificar conteúdos técnicos.
 
 ### Fluxo de processamento
@@ -110,8 +108,9 @@ O modelo utiliza técnicas de **Processamento de Linguagem Natural (NLP)** para 
 - Vetorização utilizando **TF-IDF**;
 - Treinamento e avaliação do modelo (**SGDClassifier**);
 - Disponibilização do modelo por meio de uma API desenvolvida com **FastAPI**.
-```
+
 ---
+
 ## 🌐 API de Ciência de Dados
 
 A API de Ciência de Dados foi desenvolvida em **Python** utilizando **FastAPI** para disponibilizar o modelo de Machine Learning ao Back-end da aplicação.
@@ -214,13 +213,17 @@ Além disso, a API disponibiliza:
 ```text
 TechMind/
 ├── backend/
-│   └── API REST Spring Boot
+│   └── API REST (Spring Boot)
 ├── ciencia-dados/
-│   └── Modelos e notebooks ML
+│   ├── API FastAPI
+│   ├── Modelos
+│   └── Notebooks
 ├── dashboard/
 │   └── Interface visual
 ├── dataset/
 │   └── Dados utilizados
+├── postman/
+│   └── Collection da API
 └── README.md
 ```
 ---
