@@ -82,41 +82,60 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
              Usuário
                 │
                 ▼
-     API REST (Spring Boot)
+      API REST (Spring Boot)
                 │
                 ▼
- Modelo de Machine Learning
-            (Python)
+ API de Ciência de Dados (FastAPI)
                 │
                 ▼
- Processamento do Conteúdo
-          │              │
-          ▼              ▼
+      Modelo de Machine Learning
+      (TF-IDF + SGDClassifier)
+                │
+        ┌───────┴────────┐
+        ▼                ▼
  Retorno em JSON   OCI Object Storage
 ```
 ---
 
 ## 🤖 Ciência de Dados
 
-O modelo utiliza técnicas de Processamento de Linguagem Natural (NLP) para analisar conteúdos técnicos.
+O modelo utiliza técnicas de **Processamento de Linguagem Natural (NLP)** para analisar e classificar conteúdos técnicos.
 
-Etapas:
+### Fluxo de processamento
 
 - Coleta e preparação dos dados;
-- Limpeza dos textos;
-- Tratamento dos dados;
-- Transformação utilizando TF-IDF;
-- Treinamento do modelo;
-- Avaliação dos resultados;
-- Disponibilização do modelo para consumo pela API REST.
+- Limpeza e tratamento dos textos;
+- Vetorização utilizando **TF-IDF**;
+- Treinamento e avaliação do modelo (**SGDClassifier**);
+- Disponibilização do modelo por meio de uma API desenvolvida com **FastAPI**.
+
+---
+
+## 🌐 API de Ciência de Dados
+
+A API de Ciência de Dados foi desenvolvida em **Python** utilizando **FastAPI** para disponibilizar o modelo de Machine Learning ao Back-end da aplicação.
+
+Ela recebe um conteúdo técnico, realiza a classificação utilizando o modelo treinado e retorna:
+
+- Categoria prevista;
+- Probabilidade da classificação;
+- Informações adicionais (palavras-chave relevantes).
+
+Além disso, a API disponibiliza:
+
+- Documentação interativa via **Swagger** (`/docs`);
+- Endpoint de monitoramento (`/health`).
+
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
 ### Ciência de Dados
 
 - Python
+- FastAPI
 - Pandas
-- Scikit-Learn 
+- Scikit-Learn
 - TF-IDF
 
 ### Back-end
@@ -144,9 +163,9 @@ Etapas:
 
 1. Clone este repositório.
 2. Instale as dependências do projeto.
-3. Execute o modelo treinado.
-4. Inicie a API REST.
-5. Utilize o Postman para testar os endpoints.
+3. Inicie a API de Ciência de Dados (FastAPI).
+4. Inicie a API REST (Spring Boot).
+5. Importe a collection do Postman e teste os endpoints da API ou acesse a documentação interativa em `/docs`.
 
 ---
 
@@ -154,7 +173,7 @@ Etapas:
 
 ### Endpoint
 
-POST `/conteudo`
+`POST /api/v1/classificar`
 
 ### Exemplo de Requisição
 
@@ -169,14 +188,24 @@ POST `/conteudo`
 
 ```json
 {
-  "categoria": "Backend",
-  "probabilidade": 0.94,
-  "palavras_chave": [
-    "Java",
-    "Spring Boot",
-    "API REST"
+  "categoria": "Tecnologia",
+  "probabilidade": 0.61,
+  "informacoes_adicionais": [
+    "java",
+    "apis",
+    "introdução",
+    "utilizando",
+    "básicos"
   ]
 }
+```
+### Endpoints disponíveis
+
+| Método | Endpoint | Descrição |
+|---------|----------|-----------|
+| POST | `/api/v1/classificar` | Classifica conteúdos técnicos. |
+| GET | `/health` | Verifica se a API está ativa. |
+| GET | `/docs` | Documentação interativa (Swagger). |
 ```
 ## 🧪 Exemplos de Uso
 
@@ -185,7 +214,7 @@ POST `/conteudo`
 | Introdução ao Spring Boot | 💻 **Backend** |
 | Manipulação de dados utilizando Pandas | 📊 **Data Science** |
 | Configuração de ambientes utilizando Docker | ☁️ **DevOps** |
-
+```
 ---
 
 ## 📂 Estrutura do Projeto
@@ -193,13 +222,17 @@ POST `/conteudo`
 ```text
 TechMind/
 ├── backend/
-│   └── API REST Spring Boot
+│   └── API REST (Spring Boot)
 ├── ciencia-dados/
-│   └── Modelos e notebooks ML
+│   ├── API FastAPI
+│   ├── Modelos
+│   └── Notebooks
 ├── dashboard/
 │   └── Interface visual
 ├── dataset/
 │   └── Dados utilizados
+├── postman/
+│   └── Collection da API
 └── README.md
 ```
 ---
@@ -226,6 +259,7 @@ TechMind/
 - ✅ Criação do dataset
 - ✅ Treinamento do modelo
 - ✅ Desenvolvimento da API
+- ✅ API de Ciência de Dados (FastAPI)  
 - 🔄 Integração com OCI
 - 🔄 Dashboard
 - 🔄 Deploy
