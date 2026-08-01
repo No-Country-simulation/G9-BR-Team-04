@@ -125,7 +125,7 @@ Além disso, a API disponibiliza:
 
 - Documentação interativa via **Swagger** (`/docs`);
 - Endpoint de monitoramento (`/health`).
-  
+
 ---
 
 ## 🛠️ Tecnologias Utilizadas
