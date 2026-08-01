@@ -109,7 +109,8 @@ Etapas:
 - Transformação utilizando TF-IDF;
 - Treinamento e avaliação do modelo;
 - Disponibilização do modelo por meio de uma API de Ciência de Dados desenvolvida com FastAPI.
-  ---
+```
+---
 
   ## 🌐 API de Ciência de Dados
 
