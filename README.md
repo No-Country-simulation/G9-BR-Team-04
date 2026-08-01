@@ -82,16 +82,17 @@ Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Lear
              Usuário
                 │
                 ▼
-     API REST (Spring Boot)
+      API REST (Spring Boot)
                 │
                 ▼
- Modelo de Machine Learning
-            (Python)
+ API de Ciência de Dados (FastAPI)
                 │
                 ▼
- Processamento do Conteúdo
-          │              │
-          ▼              ▼
+      Modelo de Machine Learning
+      (TF-IDF + SGDClassifier)
+                │
+        ┌───────┴────────┐
+        ▼                ▼
  Retorno em JSON   OCI Object Storage
 ```
 ---
@@ -106,17 +107,35 @@ Etapas:
 - Limpeza dos textos;
 - Tratamento dos dados;
 - Transformação utilizando TF-IDF;
-- Treinamento do modelo;
-- Avaliação dos resultados;
-- Disponibilização do modelo para consumo pela API REST.
+- Treinamento e avaliação do modelo;
+- Disponibilização do modelo por meio de uma API de Ciência de Dados desenvolvida com FastAPI.
+  ---
+
+  ## 🌐 API de Ciência de Dados
+
+A classificação dos conteúdos é realizada por uma API desenvolvida em **Python** utilizando **FastAPI**.
+
+A API recebe o título e o texto do conteúdo técnico, processa as informações por meio de um modelo de Machine Learning treinado com TF-IDF e SGDClassifier e retorna:
+
+- Categoria prevista;
+- Probabilidade da classificação;
+- Informações adicionais (palavras com maior relevância no texto).
+
+Além do endpoint de classificação, a API disponibiliza:
+
+- Documentação interativa via Swagger (`/docs`);
+- Endpoint de monitoramento (`/health`).
+  ```
+---
 
 ## 🛠️ Tecnologias Utilizadas
 
 ### Ciência de Dados
 
 - Python
+- FastAPI
 - Pandas
-- Scikit-Learn 
+- Scikit-Learn
 - TF-IDF
 
 ### Back-end
@@ -135,9 +154,9 @@ Etapas:
 
 1. Clone este repositório.
 2. Instale as dependências do projeto.
-3. Execute o modelo treinado.
-4. Inicie a API REST.
-5. Utilize o Postman para testar os endpoints.
+3. Inicie a API de Ciência de Dados (FastAPI).
+4. Inicie a API REST (Spring Boot).
+5. Acesse a documentação da API em `/docs` ou utilize o Postman para testar os endpoints.
 
 ---
 
@@ -145,7 +164,7 @@ Etapas:
 
 ### Endpoint
 
-POST `/conteudo`
+POST /api/v1/classificar
 
 ### Exemplo de Requisição
 
@@ -160,12 +179,14 @@ POST `/conteudo`
 
 ```json
 {
-  "categoria": "Backend",
-  "probabilidade": 0.94,
-  "palavras_chave": [
-    "Java",
-    "Spring Boot",
-    "API REST"
+  "categoria": "Tecnologia",
+  "probabilidade": 0.61,
+  "informacoes_adicionais": [
+    "java",
+    "apis",
+    "introdução",
+    "utilizando",
+    "básicos"
   ]
 }
 ```
@@ -217,6 +238,7 @@ TechMind/
 - ✅ Criação do dataset
 - ✅ Treinamento do modelo
 - ✅ Desenvolvimento da API
+- ✅ API de Ciência de Dados (FastAPI)  
 - 🔄 Integração com OCI
 - 🔄 Dashboard
 - 🔄 Deploy
