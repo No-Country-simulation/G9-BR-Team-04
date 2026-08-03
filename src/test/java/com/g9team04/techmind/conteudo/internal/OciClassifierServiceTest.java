@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OciClassifierServiceTest {
 
-    private final OciClassifierService classifierService = new OciClassifierService();
+    private final OciClassifierService classifierService = new OciClassifierService(null); // Passando null para o RestClient, pois não será usado nos testes
 
     @Test
     void deveRetornarClassificacaoNaoNulaParaQualquerTexto() {
