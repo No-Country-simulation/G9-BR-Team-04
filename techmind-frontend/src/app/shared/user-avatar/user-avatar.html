@@ -1,0 +1,12 @@
+<div class="rounded-full w-14 h-14 flex flex-col justify-center items-center  bg-amber-300">
+
+    <p class="text-center text-sm font-bold text-amber-800">
+        @if (contributorName()) {
+            {{ contributorName() }}
+        }
+        @else {
+            {{ contributorInitials() }}
+        }
+    </p>
+
+</div>
