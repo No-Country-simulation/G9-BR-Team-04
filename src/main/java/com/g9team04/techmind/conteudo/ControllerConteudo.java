@@ -22,6 +22,7 @@ import java.io.IOException;
 @RestController
 @RequestMapping("conteudo")
 public class ControllerConteudo {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ControllerConteudo.class);
     private final ConteudoService conteudoService;
     private final ValidatorCsv validatorCsv;
     private final LoteProcessor loteProcessor;
@@ -51,6 +52,7 @@ public class ControllerConteudo {
     public ResponseEntity<Page<ConteudoResponse>> categoria(
             @RequestParam String categoria,
             @PageableDefault(size = 10, sort = "id") Pageable pageable) {
+        log.info("Thread atual: {}", Thread.currentThread());
         return ResponseEntity.ok(conteudoService.buscarPorCategoria(categoria, pageable));
     }
 
