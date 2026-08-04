@@ -1,9 +1,10 @@
 <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 p-2">
+
     @for (item of words(); track item.word) {
-    <span [style.font-size.rem]="item-size" [title]="item.count + ' ocorrências'"
+    <p [style.font-size.rem]="item.size" [title]="item.count + ' ocorrências'"
         class="font-medium text-primary hover:text-primary/40 cursor-default transition-colors">
         {{ item.word }}
-    </span>
+    </p>
     }
 
 </div>
