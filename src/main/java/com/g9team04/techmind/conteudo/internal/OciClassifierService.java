@@ -1,6 +1,5 @@
 package com.g9team04.techmind.conteudo.internal;
 
-import com.g9team04.techmind.conteudo.ClassificacaoResponse;
 import com.g9team04.techmind.conteudo.ClassifierService;
 import com.g9team04.techmind.conteudo.MlPredicaoResponse;
 import com.g9team04.techmind.infrastructure.MlClassificacaoException;
@@ -11,7 +10,6 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.List;
 
 
 @Component

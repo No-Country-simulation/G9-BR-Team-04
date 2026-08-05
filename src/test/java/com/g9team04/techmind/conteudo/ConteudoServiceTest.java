@@ -1,5 +1,6 @@
 package com.g9team04.techmind.conteudo;
 
+import com.g9team04.techmind.conteudo.internal.ClassificacaoResponse;
 import com.g9team04.techmind.conteudo.internal.ConteudoEntity;
 import com.g9team04.techmind.conteudo.internal.ConteudoRepository;
 import com.g9team04.techmind.infrastructure.ConteudoNaoEncontradoException;
@@ -8,7 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 

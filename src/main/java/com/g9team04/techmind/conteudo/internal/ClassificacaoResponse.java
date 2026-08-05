@@ -1,4 +1,4 @@
-package com.g9team04.techmind.conteudo;
+package com.g9team04.techmind.conteudo.internal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
