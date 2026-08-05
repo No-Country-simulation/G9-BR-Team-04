@@ -29,13 +29,14 @@
 
   @if (sidebarOpen()) {
   <aside class="fixed inset-0 z-50 bg-black/40 md:hidden" (click)="toggleSidebar()">
-    <div class="w-64 h-full bg-white p-6" (click)="$event.stopPropagation()">
-      <ul class="flex flex-col gap-4">
+    <div class="w-64 h-full bg-primary/88 p-6" (click)="$event.stopPropagation()">
+      <ul class="flex flex-col gap-6">
 
         @for (page of pagesList; track page.path) {
         <li>
-          <a [routerLink]="page.path" routerLinkActive="text-bolder" (click)="toggleSidebar()">
-            {{ page.label }}
+          <a [routerLink]="page.path" routerLinkActive="text-bolder" (click)="toggleSidebar()"
+            class="flex flex-row gap-2">
+            <svg [pIcon]="page.icon"></svg> {{ page.label }}
           </a>
         </li>
         }
