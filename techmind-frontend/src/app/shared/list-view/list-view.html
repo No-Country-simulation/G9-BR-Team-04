@@ -1,0 +1,23 @@
+<div class="flex flex-row gap-2 p-4 border-b border-gray-100">
+
+    <div class="flex flex-row flex-1">
+
+        <svg data-p-icon="file" [size]="24"></svg>
+
+        <div class="flex gap-3 ml-1.5">
+            <p class="font-bold text-1xl">
+                {{ titleContent() }}
+            </p>
+            <span class="flex justify-center items-center">•</span>
+            <p>
+                {{ author() }}
+            </p>
+        </div>
+
+        <div class="flex flex-row ml-auto">
+            <p class="">
+                {{ createdAt()}}
+            </p>
+        </div>
+    </div>
+</div>

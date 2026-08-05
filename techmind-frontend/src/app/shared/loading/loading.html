@@ -1,0 +1,12 @@
+<div class="flex h-svh justify-center items-center">
+
+    <button pButton iconOnly [disabled]="loading()" 
+    (click)="load()" aria-label="Search">
+        @if (loading()) {
+        <svg data-p-icon="spinner" class="animate-spin"></svg>
+        } @else {
+        <svg data-p-icon="check"></svg>
+        }
+    </button>
+
+</div>
