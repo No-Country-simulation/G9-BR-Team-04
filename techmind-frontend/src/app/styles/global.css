@@ -7,10 +7,11 @@
     --color-secondary: #4F46E5;
     --color-tertiary: #10B981;
     --color-dark: #0F172A;
+    --color-lightblue: #72b4f1;
     --color-neutral: #64748B;
 
 
-    /* == FONTS == */
+    /** FONTS */
     --font-primary: "Inter", sans-serif;
     --font-secondary: "JetBrains Mono", monospace;
 
@@ -28,7 +29,6 @@
 
     h2 {
         @apply text-lg font-medium;
-        @apply font-secondary;
     }
 
     .main-content {
@@ -37,8 +37,19 @@
         @apply flex flex-col;
     }
 
-    .grid-responsive {
+    .grid-3-responsive {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+        @apply mb-4;
+    }
+
+    .grid-2-responsive {
         @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+        @apply mb-4;
+    }
+
+    .grid-1-responsive {
+        @apply grid grid-cols-1 gap-4;
+        @apply mb-4;
     }
 
     .hover-link {
