@@ -111,11 +111,40 @@ O serviço de Ciência de Dados disponibiliza um modelo de Machine Learning trei
 
 ---
 
-## 🌐 API de Ciência de Dados
+## 🛠️ Tecnologias Utilizadas
 
-# Documentação da API — Serviço de Classificação (Ciência de Dados)
+### Ciência de Dados
 
-## Visão geral
+- Python
+- FastAPI
+- Pandas
+- Scikit-Learn
+- TF-IDF
+
+### Back-end
+
+- Java
+- Spring Boot
+
+### Front-end
+
+- Angular v20+
+- TypeScript
+- Tailwind CSS
+- PrimeNG
+- PrimeIcons / Angular
+- Chart.js + ng2 Charts
+
+### Cloud
+
+- Oracle Cloud Infrastructure (OCI)
+- Object Storage
+
+---
+
+## 🌐 Documentação da API de Ciência de Dados
+
+### Visão geral
 
 Este serviço expõe um modelo de Machine Learning treinado para classificar
 conteúdos técnicos por categoria e extrair palavras-chave relevantes. É um
@@ -131,7 +160,7 @@ Java), conforme a seção 3 do contrato de APIs do TechMind.
 
 ---
 
-## Endpoints
+### Endpoints
 
 ### 1. `GET /health`
 
@@ -192,7 +221,7 @@ Content-Type: application/json
 
 ---
 
-## Exemplos de uso
+### Exemplos de uso
 
 ### Exemplo 1 — Conteúdo de Backend
 
@@ -263,7 +292,7 @@ curl -X POST http://127.0.0.1:8001/api/v1/classificar \
 
 ---
 
-## Como o resultado é gerado
+### Como o resultado é gerado
 
 1. **Classificação (`categoria` e `probabilidade`):** `titulo` e `texto` são
    concatenados (`"titulo texto"`) e transformados em vetor TF-IDF usando o
@@ -276,7 +305,7 @@ curl -X POST http://127.0.0.1:8001/api/v1/classificar \
 
 ---
 
-## Integração com o Back-End
+### Integração com o Back-End
 
 O `ConteudoService` (Java) deve chamar este endpoint internamente ao
 processar um novo conteúdo (`POST /conteudo` no Front-End), usando a
@@ -288,7 +317,7 @@ ambiente), já que mudará conforme o ambiente de deploy (ex: OCI Compute).
 
 ---
 
-## Versionamento do modelo
+### Versionamento do modelo
 
 Os artefatos `vectorizer.pkl` e `modelo.pkl` foram gerados no notebook do
 Colab com **scikit-learn 1.6.1**. Ao atualizar o modelo (novo treinamento),
@@ -298,87 +327,17 @@ lembre-se de:
   serviço é compatível com a usada no treino, para evitar
   `InconsistentVersionWarning` ou erros de deserialização
 
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-### Ciência de Dados
-
-- Python
-- FastAPI
-- Pandas
-- Scikit-Learn
-- TF-IDF
-
-### Back-end
-
-- Java
-- Spring Boot
-
-### Front-end
-
-- Angular v20+
-- TypeScript
-- Tailwind CSS
-- PrimeNG
-- PrimeIcons / Angular
-- Chart.js + ng2 Charts
-
-### Cloud
-
-- Oracle Cloud Infrastructure (OCI)
-- Object Storage
-
 ---
 
 ## 📋 Como Executar
 
-1. Clone este repositório.
-2. Instale as dependências do projeto.
+1. Clone o repositório.
+2. Instale as dependências do Back-end e da API de Ciência de Dados.
 3. Inicie a API de Ciência de Dados (FastAPI).
 4. Inicie a API REST (Spring Boot).
-5. Importe a collection do Postman e teste os endpoints da API ou acesse a documentação interativa em `/docs`.
+5. Acesse a documentação da API em `/docs` ou utilize a collection do Postman para testar os endpoints.
 
----
 
-## 📡 Como Utilizar a API
-
-### Endpoint
-
-`POST /api/v1/classificar`
-
-### Exemplo de Requisição
-
-```json
-{
-  "titulo": "Introdução ao Spring Boot",
-  "texto": "Neste conteúdo são apresentados os conceitos básicos para criação de APIs REST utilizando Java e Spring Boot."
-}
-```
-
-### Exemplo de Resposta
-
-```json
-{
-  "categoria": "Tecnologia",
-  "probabilidade": 0.61,
-  "informacoes_adicionais": [
-    "java",
-    "apis",
-    "introdução",
-    "utilizando",
-    "básicos"
-  ]
-}
-```
-### Endpoints disponíveis
-
-| Método | Endpoint | Descrição |
-|---------|----------|-----------|
-| POST | `/api/v1/classificar` | Classifica conteúdos técnicos. |
-| GET | `/health` | Verifica se a API está ativa. |
-| GET | `/docs` | Documentação interativa (Swagger). |
 ```
 ## 🧪 Exemplos de Uso
 
