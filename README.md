@@ -393,7 +393,7 @@ TechMind/
 - ✅ Desenvolvimento da API
 - ✅ API de Ciência de Dados (FastAPI)  
 - 🔄 Integração com OCI
-- 🔄 Dashboard
+- ✅ Dashboard
 - 🔄 Deploy
 - ✅ Documentação inicial
 
