@@ -143,6 +143,15 @@ Além disso, a API disponibiliza:
 - Java
 - Spring Boot
 
+### Front-end
+
+- Angular v20+
+- TypeScript
+- Tailwind CSS
+- PrimeNG
+- PrimeIcons / Angular
+- Chart.js + ng2 Charts
+
 ### Cloud
 
 - Oracle Cloud Infrastructure (OCI)
