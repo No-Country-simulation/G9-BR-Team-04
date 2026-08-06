@@ -16,7 +16,7 @@ import { extractWordFrequency } from '../../utils/word-frequency';
 @Component({
   selector: 'dashboard-page',
   imports: [BaseChartDirective, ButtonModule, CommonModule, Card, UserAvatar, WordCloud, ListView, RouterLink],
-  templateUrl: './dashboard-page.html',
+  templateUrl: './dashboard.html',
 })
 export class DashboardPage implements OnInit {
   private articleService = inject(ArticleService)
