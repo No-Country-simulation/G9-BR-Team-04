@@ -4,6 +4,8 @@ import { RectangleXmark } from '@primeicons/angular/rectangle-xmark';
 @Component({
   selector: 'notfound-page',
   imports: [RectangleXmark],
-  templateUrl: './notfound-page.html',
+  templateUrl: './notfound.html',
 })
-export class NotFoundPage { }
+export class NotFoundPage {
+
+}
