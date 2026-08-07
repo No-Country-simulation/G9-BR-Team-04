@@ -5,6 +5,8 @@ import { ChartConfiguration, ChartData } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { ButtonModule } from 'primeng/button';
 import { Article, ArticleService } from '../../core/services/article.service';
+import { Footer } from '../../layout/footer/footer';
+import { Header } from '../../layout/header/header';
 import { Card } from '../../shared/card/card';
 import { ListView } from '../../shared/list-view/list-view';
 import { UserAvatar } from '../../shared/user-avatar/user-avatar';
@@ -15,7 +17,7 @@ import { extractWordFrequency } from '../../utils/word-frequency';
 
 @Component({
   selector: 'dashboard-page',
-  imports: [BaseChartDirective, ButtonModule, CommonModule, Card, UserAvatar, WordCloud, ListView, RouterLink],
+  imports: [BaseChartDirective, ButtonModule, CommonModule, Card, UserAvatar, WordCloud, ListView, RouterLink, Header, Footer],
   templateUrl: './dashboard.html',
 })
 export class DashboardPage implements OnInit {
