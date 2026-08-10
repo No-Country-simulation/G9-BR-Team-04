@@ -1,162 +1,411 @@
-# TechMind - Serviço de Classificação (Ciência de Dados)
+# 🚀 TechMind
 
-API interna em **Python + FastAPI** que carrega o modelo treinado pelo time
-de Ciência de Dados (TF-IDF + SGDClassifier calibrado) e expõe um endpoint
-para o **Back-End Java** consumir, conforme o contrato do projeto.
+Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções)
 
-Esse README parte do princípio de que você nunca mexeu com Python/FastAPI —
-siga na ordem.
+Hackathon ONE G9 BR - Alura + Oracle
 
-## 1. Estrutura do projeto
+[![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge&logo=oracle)](https://www.oracle.com/br/education/next-education/)
+![Team](https://img.shields.io/badge/Team-SolutionSquad_/_Esquadrão_das_Soluções-6C2BD9?style=for-the-badge)
 
+---
+
+## 📌 Sobre o Projeto
+
+O TechMind é uma solução inteligente para organizar, classificar e enriquecer conteúdos técnicos utilizando técnicas de Ciência de Dados e integração com o Oracle Cloud Infrastructure (OCI) para armazenamento de dados e arquivos.
+
+A plataforma auxilia estudantes e profissionais de tecnologia a transformar grandes volumes de informações em conhecimento estruturado e reutilizável.
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=FFD43B)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Oracle Cloud Infrastructure](https://img.shields.io/badge/Oracle_Cloud_Infrastructure-F80000?style=for-the-badge&logo=oracle&logoColor=white)
+---
+
+## ❗ Problema
+
+Estudantes e profissionais da área de tecnologia consomem diariamente diversos conteúdos como:
+
+- Documentações
+- Cursos
+- Artigos
+- Tutoriais
+- Anotações técnicas
+  
+
+Com o grande volume de informações, torna-se difícil organizar, encontrar e reutilizar esses conhecimentos.
+
+O TechMind busca solucionar esse desafio automatizando a organização e classificação desses conteúdos.
+
+---
+
+## 💡 Solução Proposta
+
+A solução recebe textos técnicos e utiliza técnicas de Machine Learning para analisar o conteúdo e retornar informações estruturadas.
+
+O sistema realiza:
+
+- Classificação automática de conteúdos;
+- Extração de palavras-chave;
+- Identificação de conteúdos relacionados;
+- Organização inteligente da base de conhecimento.
+  
+---
+## 🎯 Objetivo
+
+Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas, como:
+
+- Categoria
+- Palavras-chave
+- Conteúdos relacionados em formato JSON.
+
+---
+
+  ## ✨ Funcionalidades
+
+✅ Classificação automática de conteúdo técnico
+
+✅ Extração de palavras-chave
+
+✅ Recomendação de conteúdos relacionados
+
+✅ API REST para integração
+
+✅ Persistência utilizando OCI Object Storage
+
+✅ Dashboard de visualização
+
+---
+
+## 🏗️ Arquitetura da Solução
+
+```text
+
+             Usuário
+                │
+                ▼
+      API REST (Spring Boot)
+                │
+                ▼
+ API de Ciência de Dados (FastAPI)
+                │
+                ▼
+      Modelo de Machine Learning
+      (TF-IDF + SGDClassifier)
+                │
+        ┌───────┴────────┐
+        ▼                ▼
+ Retorno em JSON   OCI Object Storage
 ```
-techmind-ds-service/
-├── app/
-│   ├── main.py            # define os endpoints da API
-│   ├── model_service.py   # carrega o modelo e faz a classificação
-│   └── schemas.py         # formato dos dados de entrada/saída
-├── models/
-│   ├── vectorizer.pkl      # <- você precisa colocar aqui
-│   └── modelo.pkl          # <- você precisa colocar aqui
-├── requirements.txt
-└── README.md
+---
+
+## 🤖 Ciência de Dados
+
+O serviço de Ciência de Dados disponibiliza um modelo de Machine Learning treinado para classificar conteúdos técnicos por categoria e extrair palavras-chave relevantes utilizando técnicas de Processamento de Linguagem Natural (NLP).
+
+### Fluxo de processamento
+
+- Coleta e preparação dos dados;
+- Limpeza e tratamento dos textos;
+- Vetorização utilizando **TF-IDF**;
+- Treinamento e avaliação do modelo (**SGDClassifier**);
+- Disponibilização do modelo por meio de uma API desenvolvida com **FastAPI**.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Ciência de Dados
+
+- Python
+- FastAPI
+- Pandas
+- Scikit-Learn
+- TF-IDF
+
+### Back-end
+
+- Java
+- Spring Boot
+
+### Front-end
+
+- Angular v20+
+- TypeScript
+- Tailwind CSS
+- PrimeNG
+- PrimeIcons / Angular
+- Chart.js + ng2 Charts
+
+### Cloud
+
+- Oracle Cloud Infrastructure (OCI)
+- Object Storage
+
+---
+
+## 🌐 Documentação da API de Ciência de Dados
+
+### Visão geral
+
+Este serviço expõe um modelo de Machine Learning treinado para classificar
+conteúdos técnicos por categoria e extrair palavras-chave relevantes. É um
+serviço **interno**, consumido pela API principal do projeto (Back-End
+Java), conforme a seção 3 do contrato de APIs do TechMind.
+
+| | |
+|---|---|
+| **Base URL (local)** | `http://127.0.0.1:8001` |
+| **Formato** | JSON (`application/json`) |
+| **Autenticação** | Nenhuma (serviço interno, não exposto publicamente) |
+| **Documentação interativa** | `GET /docs` (Swagger UI, gerado automaticamente) |
+
+---
+
+### Endpoints
+
+### 1. `GET /health`
+
+Verifica se o serviço está no ar e se o modelo foi carregado com sucesso.
+Útil para checagens de disponibilidade (ex: liveness probe em produção).
+
+**Requisição**
+```
+GET /health
 ```
 
-## 2. Pré-requisitos
-
-- Python 3.11 ou 3.12 instalado (`python3 --version` no terminal)
-- Os dois arquivos `.pkl` baixados do Colab (veja
-  `models/COLOQUE_OS_ARQUIVOS_AQUI.txt` para o passo a passo de download)
-
-## 3. Instalação
-
-Abra o terminal na pasta do projeto e rode:
-
-```bash
-# 1. Cria um ambiente virtual (isola as dependências desse projeto)
-python3 -m venv .venv
-
-# 2. Ativa o ambiente virtual
-# No Linux/Mac:
-source .venv/bin/activate
-# No Windows (PowerShell):
-.venv\Scripts\Activate.ps1
-
-# 3. Instala as dependências
-pip install -r requirements.txt
-```
-
-Você vai saber que o ambiente virtual está ativo porque o terminal passa a
-mostrar `(.venv)` no início da linha.
-
-## 4. Colocando o modelo no lugar certo
-
-Copie os arquivos `vectorizer.pkl` e `modelo.pkl` (baixados do Colab) para
-dentro da pasta `models/`. Sem eles, a API sobe mas o endpoint de
-classificação retorna erro 503 avisando que o modelo não foi encontrado.
-
-**Atenção com a versão do scikit-learn:** o `pickle` guarda os objetos na
-versão exata da biblioteca usada para treinar. Se aparecer erro ao carregar
-o modelo, verifique no notebook do Colab qual versão do scikit-learn foi
-usada (rode `!pip show scikit-learn` lá) e ajuste o `requirements.txt` deste
-projeto para a mesma versão.
-
-## 5. Rodando a API localmente
-
-```bash
-uvicorn app.main:app --reload --port 8001
-```
-
-- `--reload` reinicia a API automaticamente quando você edita o código
-  (útil durante o desenvolvimento, tire isso em produção)
-- Escolhi a porta `8001` para não bater com a porta padrão do Spring Boot
-  (`8080`) — ajuste como preferir
-
-Se tudo der certo, você verá no terminal algo como:
-```
-[OK] Modelo e vectorizer carregados com sucesso.
-INFO:     Uvicorn running on http://127.0.0.1:8001
-```
-
-## 6. Testando
-
-FastAPI gera documentação interativa automaticamente. Com a API rodando,
-abra no navegador:
-
-```
-http://127.0.0.1:8001/docs
-```
-
-Lá dá pra testar o endpoint clicando em "Try it out", sem precisar de
-Postman nem nada.
-
-### Checagem rápida de saúde
-```bash
-curl http://127.0.0.1:8001/health
-```
+**Resposta — 200 OK**
 ```json
-{"status": "ok", "modelo_carregado": true}
+{
+  "status": "ok",
+  "modelo_carregado": true
+}
 ```
 
-### Endpoint principal
+Se `modelo_carregado` vier `false`, os arquivos `vectorizer.pkl` e/ou
+`modelo.pkl` não foram encontrados na pasta `models/` — o serviço sobe
+normalmente, mas o endpoint de classificação retornará erro até os
+arquivos serem disponibilizados.
 
-**POST** `/api/v1/classificar`
+---
 
-Requisição:
+### 2. `POST /api/v1/classificar`
+
+Recebe um conteúdo técnico (título + texto) e retorna a categoria prevista,
+a probabilidade dessa previsão e uma lista de palavras-chave relevantes.
+
+**Requisição**
+```
+POST /api/v1/classificar
+Content-Type: application/json
+```
+
+| Campo | Tipo | Obrigatório | Descrição |
+|---|---|---|---|
+| `titulo` | string | Sim | Título do conteúdo técnico (não pode ser vazio) |
+| `texto` | string | Sim | Corpo do conteúdo técnico (não pode ser vazio) |
+
+**Resposta — 200 OK**
+
+| Campo | Tipo | Descrição |
+|---|---|---|
+| `categoria` | string | Categoria prevista pelo modelo |
+| `probabilidade` | float (0 a 1) | Confiança do modelo na categoria prevista |
+| `informacoes_adicionais` | array de strings | Até 5 palavras-chave extraídas do texto (termos com maior peso TF-IDF) |
+
+**Respostas de erro**
+
+| Código | Quando ocorre |
+|---|---|
+| `422 Unprocessable Entity` | `titulo` ou `texto` ausentes/vazios (validação automática) |
+| `503 Service Unavailable` | Modelo não carregado (arquivos `.pkl` ausentes) |
+| `500 Internal Server Error` | Erro inesperado ao processar a requisição |
+
+---
+
+### Exemplos de uso
+
+### Exemplo 1 — Conteúdo de Backend
+
+**Requisição**
 ```bash
 curl -X POST http://127.0.0.1:8001/api/v1/classificar \
   -H "Content-Type: application/json" \
   -d '{
-    "titulo": "Introdução ao Machine Learning",
-    "texto": "Machine Learning é uma área da inteligência artificial que permite que sistemas aprendam padrões a partir de dados."
+    "titulo": "Introdução ao Spring Boot",
+    "texto": "Neste conteúdo são apresentados os conceitos básicos para criação de APIs REST utilizando Java e Spring Boot."
   }'
 ```
 
-Resposta (200 OK):
+**Resposta**
 ```json
 {
   "categoria": "Tecnologia",
-  "probabilidade": 0.87,
-  "informacoes_adicionais": ["machine", "learning", "aprendam", "dados", "sistemas"]
+  "probabilidade": 0.6129,
+  "informacoes_adicionais": ["java", "apis", "introdução", "utilizando", "básicos"]
 }
 ```
 
-Se `titulo` ou `texto` vierem vazios, o FastAPI já retorna `422 Unprocessable
-Entity` automaticamente (validação feita pelo `schemas.py`), antes mesmo de
-chegar no modelo.
+### Exemplo 2 — Conteúdo de Machine Learning
 
-## 7. Como o Back-End Java deve chamar essa API
+**Requisição**
+```bash
+curl -X POST http://127.0.0.1:8001/api/v1/classificar \
+  -H "Content-Type: application/json" \
+  -d '{
+    "titulo": "O que é Machine Learning",
+    "texto": "Machine Learning é uma área da inteligência artificial que permite que sistemas aprendam padrões a partir de dados, sem programação explícita para cada tarefa."
+  }'
+```
 
-O `ConteudoService` do seu Back-End deve fazer um `POST` HTTP para
-`http://<host-do-servico-ds>:8001/api/v1/classificar`, mandando exatamente o
-`titulo` e `texto` recebidos, e usar a resposta (`categoria`,
-`probabilidade`, `informacoes_adicionais`) para montar o
-`ClassificacaoResponse`/salvar o conteúdo — exatamente como descrito na
-seção 3.1 do contrato de APIs.
+**Resposta (formato)**
+```json
+{
+  "categoria": "Ciência",
+  "probabilidade": 0.78,
+  "informacoes_adicionais": ["machine", "learning", "dados", "aprendam", "sistemas"]
+}
+```
 
-Em produção (ex: OCI Compute ou containerizado), troque a URL pela do
-ambiente real, e considere colocar `SGD_SERVICE_URL` como variável de
-ambiente configurável no lado Java, em vez de hardcoded.
+### Exemplo 3 — Campo obrigatório ausente (erro de validação)
 
-## 8. Como funciona por dentro (resumo)
+**Requisição**
+```bash
+curl -X POST http://127.0.0.1:8001/api/v1/classificar \
+  -H "Content-Type: application/json" \
+  -d '{
+    "titulo": "",
+    "texto": "Texto de exemplo"
+  }'
+```
 
-1. `model_service.py` carrega `vectorizer.pkl` (TF-IDF) e `modelo.pkl`
-   (classificador) uma única vez, quando a API sobe — não a cada
-   requisição, porque isso seria lento.
-2. Ao receber `titulo` + `texto`, a API concatena os dois campos
-   (`"titulo texto"`) exatamente como foi feito no treinamento do modelo,
-   e transforma esse texto em vetor usando o `vectorizer`.
-3. O modelo prevê a categoria mais provável e sua probabilidade
-   (`predict_proba`).
-4. As palavras-chave em `informacoes_adicionais` são calculadas separado do
-   modelo: pegamos os termos com maior peso TF-IDF dentro do próprio texto
-   recebido (usando o vocabulário do `vectorizer`) — essa parte não estava
-   pronta no notebook, foi implementada direto na API.
+**Resposta — 422 Unprocessable Entity**
+```json
+{
+  "detail": [
+    {
+      "type": "string_too_short",
+      "loc": ["body", "titulo"],
+      "msg": "String should have at least 1 character"
+    }
+  ]
+}
+```
 
-## 9. Próximos passos sugeridos
+---
 
-- [ ] Testar com os 3 exemplos mínimos exigidos pelo hackathon
-- [ ] Subir esse serviço num OCI Compute (ou containerizar com Docker) para
-      o Back-End Java conseguir chamá-lo fora do seu localhost
-- [ ] Definir a URL final do serviço e configurá-la no `ConteudoService` Java
-- [ ] (Opcional) Adicionar testes automatizados para `/api/v1/classificar`
+### Como o resultado é gerado
+
+1. **Classificação (`categoria` e `probabilidade`):** `titulo` e `texto` são
+   concatenados (`"titulo texto"`) e transformados em vetor TF-IDF usando o
+   `vectorizer.pkl`. O vetor é então passado para o modelo
+   (`SGDClassifier` calibrado com `CalibratedClassifierCV`), que retorna a
+   categoria de maior probabilidade.
+2. **Palavras-chave (`informacoes_adicionais`):** calculadas separadamente,
+   pegando os termos com maior peso TF-IDF dentro do próprio texto recebido
+   (usando o vocabulário já aprendido pelo `vectorizer`).
+
+---
+
+### Integração com o Back-End
+
+O `ConteudoService` (Java) deve chamar este endpoint internamente ao
+processar um novo conteúdo (`POST /conteudo` no Front-End), usando a
+resposta para preencher `categoria`, `probabilidade` e
+`informacoes_adicionais` no `ClassificacaoResponse` devolvido ao Front-End.
+
+Em produção, a URL base deste serviço deve ser configurável (variável de
+ambiente), já que mudará conforme o ambiente de deploy (ex: OCI Compute).
+
+---
+
+### Versionamento do modelo
+
+Os artefatos `vectorizer.pkl` e `modelo.pkl` foram gerados no notebook do
+Colab com **scikit-learn 1.6.1**. Ao atualizar o modelo (novo treinamento),
+lembre-se de:
+- Substituir os dois arquivos em `models/`
+- Confirmar que a versão do `scikit-learn` no `requirements.txt` deste
+  serviço é compatível com a usada no treino, para evitar
+  `InconsistentVersionWarning` ou erros de deserialização
+
+---
+
+## 📋 Como Executar
+
+1. Clone o repositório.
+2. Instale as dependências do Back-end e da API de Ciência de Dados.
+3. Inicie a API de Ciência de Dados (FastAPI).
+4. Inicie a API REST (Spring Boot).
+5. Acesse a documentação da API em `/docs` ou utilize a collection do Postman para testar os endpoints.
+
+
+```
+## 🧪 Exemplos de Uso
+
+| 📄 Conteúdo Técnico | 🏷️ Categoria |
+|----------------------|--------------|
+| Introdução ao Spring Boot | 💻 **Backend** |
+| Manipulação de dados utilizando Pandas | 📊 **Data Science** |
+| Configuração de ambientes utilizando Docker | ☁️ **DevOps** |
+```
+---
+
+## 📂 Estrutura do Projeto
+
+```text
+TechMind/
+├── backend/
+│   └── API REST (Spring Boot)
+├── ciencia-dados/
+│   ├── API FastAPI
+│   ├── Modelos
+│   └── Notebooks
+├── dashboard/
+│   └── Interface visual
+├── dataset/
+│   └── Dados utilizados
+├── postman/
+│   └── Collection da API
+└── README.md
+```
+---
+## 👥 Equipe
+
+**G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)**
+
+| Integrante | Função |
+|------------|--------|
+| **Arthur Carvalho Ferreira** | 💻 Back End Developer |
+| **Carlos Caique Borges de Souza** | 💻 Back End Developer |
+| **Gabriel Leal** | ☁️ DevOps Engineer |
+| **Jaqueline Silva Broccolo** | 🔗 Full Stack Developer |
+| **Lucas Aoki** | 📊 Data Analyst |
+| **Marcus Corrêa Lopes Guedes** | 📌 Project Manager / Front End Developer |
+| **Rayssa Santos** | 🤖 Data Scientist |
+| **Simone Silva** | 💻 Back End Developer / 📚 Documentation & Demo |
+
+---
+
+## 🔄 Status do Projeto
+
+- ✅ Definição do escopo
+- ✅ Criação do dataset
+- ✅ Treinamento do modelo
+- ✅ Desenvolvimento da API
+- ✅ API de Ciência de Dados (FastAPI)  
+- 🔄 Integração com OCI
+- ✅ Dashboard
+- 🔄 Deploy
+- ✅ Documentação inicial
+
+🚧 Projeto em desenvolvimento contínuo.
+---
+
+## 🙏 Agradecimentos
+
+- **Oracle Next Education (ONE) G9 BR** - Pela Oportunidade e Mentoria
+- **OCI** - Pela Infraestrutura
+- **Mentores e Organizadores** - Pelo Suporte e Orientação
+
+---
+
+## ⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
