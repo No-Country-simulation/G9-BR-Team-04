@@ -1,15 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Bars } from '@primeicons/angular/bars';
-import { ChartBar } from '@primeicons/angular/chart-bar';
-import { Home } from '@primeicons/angular/home';
 import { PIcon } from '@primeicons/angular/p-icon';
 
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, PIcon, Bars, Home, ChartBar],
+  imports: [RouterLink, RouterLinkActive, Bars, PIcon],
   templateUrl: './header.html',
 })
 export class Header {
@@ -17,9 +15,9 @@ export class Header {
   imgAlt: string = 'Logo TechMind'
 
   pagesList = [
-    { icon: 'home', label: 'Início', path: '' },
-
-    { icon: 'chart-bar', label: 'Dashboard', path: '' },
+    { icon: 'chart-bar', label: 'Dashboard', path: '/' },
+    { icon: 'plus-circle', label: 'Novo Conteúdo', path: '/new-article' },
+    { icon: 'list', label: 'Artigos', path: '/articles-list' }
   ]
 
   sidebarOpen = signal(false)
@@ -27,4 +25,5 @@ export class Header {
   toggleSidebar() {
     this.sidebarOpen.update(open => !open)
   }
+
 }
