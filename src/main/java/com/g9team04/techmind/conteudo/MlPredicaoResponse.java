@@ -9,7 +9,9 @@ public record MlPredicaoResponse(
         double confianca,
         @JsonProperty("palavras_chave") List<String> palavrasChave
 ) {
-    public MlPredicaoResponse(String texto) {
-        this(null, 0.0, List.of());
+    public MlPredicaoResponse(String categoria, double confianca, List<String> palavrasChave) {
+        this.categoria = categoria;
+        this.confianca = confianca;
+        this.palavrasChave = palavrasChave;
     }
 }

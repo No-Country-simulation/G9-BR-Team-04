@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -63,11 +64,10 @@ public class ControllerConteudo {
         return ResponseEntity.ok(conteudoService.buscarRelacionados(id, pageable));
     }
 
-    @PostMapping("/lote")
+    @PostMapping(value = "/lote", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<LoteResponse> processarLote(@RequestParam("arquivo") MultipartFile arquivo) {
 
         validatorCsv.validarCsv(arquivo);
-
         try{
             LoteResponse response = loteProcessor.processar(arquivo.getInputStream());
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -75,7 +75,6 @@ public class ControllerConteudo {
             throw new LoteProcessamentoException("Erro ao ler o arquivo enviado", e);
 
         }
-
 
     }
 }
