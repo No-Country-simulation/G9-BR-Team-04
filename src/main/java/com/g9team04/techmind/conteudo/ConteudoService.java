@@ -27,7 +27,7 @@ public class ConteudoService {
     public ConteudoResponse processar(ConteudoRequest request) {
         var hash = HashUtils.sha256(request.texto());
         // Cache: verifica se já existe conteúdo igual
-        return repository.findByTituloAndTextoHash(request.titulo(),hash)
+        return repository.findByTextoHash(hash)
                 .map(entity -> new ConteudoResponse(
                         entity.getId(),
                         entity.getTitulo(),

@@ -14,9 +14,11 @@ public class ClassifierRestClientConfig {
 
     @Bean
     RestClient ociClassifierRestClient(
-            @Value("${techmind.classificador.base-url:http://localhost:8000}") String baseUrl) {
+            @Value("${techmind.classificador.base-url:http://localhost:8000}") String baseUrl,
+            @Value("${techmind.classificador.api-key:dev-key-troque-em-producao}") String apiKey) {
 
         HttpClient httpClient = HttpClient.newBuilder()
+                .version(HttpClient.Version.HTTP_1_1) // evita upgrade h2c, incompatível com uvicorn
                 .connectTimeout(Duration.ofSeconds(3))
                 .build();
 
@@ -25,6 +27,7 @@ public class ClassifierRestClientConfig {
 
         return RestClient.builder()
                 .baseUrl(baseUrl)
+                .defaultHeader("X-Internal-Api-Key", apiKey)
                 .requestFactory(requestFactory)
                 .build();
     }
