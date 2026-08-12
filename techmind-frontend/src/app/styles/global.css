@@ -4,7 +4,11 @@
 
 @theme {
     --color-primary: #0f2f56;
+    
     --color-secondary: #4F46E5;
+    --color-secondary-60: #8582FF;
+    --color-secondary-70: #A4A1FF;
+
     --color-tertiary: #10B981;
     --color-dark: #0F172A;
     --color-lightblue: #72b4f1;
@@ -56,6 +60,19 @@
         @apply hover:text-blue-100;
     }
 
+    .forms-block {
+        @apply flex flex-col;
+
+    }
+
+    label {
+        @apply text-sm pt-4 pb-1;
+    }
+
+    .forms-block input, textarea {
+        @apply border rounded-md p-2 mb-3;
+    }
+    
 }
 
 @layer utilities {}
