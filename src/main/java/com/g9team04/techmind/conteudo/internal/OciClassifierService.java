@@ -3,6 +3,11 @@ package com.g9team04.techmind.conteudo.internal;
 import com.g9team04.techmind.conteudo.ClassifierService;
 import com.g9team04.techmind.conteudo.MlPredicaoResponse;
 import com.g9team04.techmind.infrastructure.MlClassificacaoException;
+// 1. Imports do Resilience4j necessários:
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -11,10 +16,12 @@ import org.springframework.web.client.RestClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 @Component
 public class OciClassifierService implements ClassifierService {
     private static final Logger log = LoggerFactory.getLogger(OciClassifierService.class);
+
+    // Constante para mapear o nome das instâncias lá no application.properties
+    private static final String INSTANCIA = "classificador";
 
     private final RestClient restClient;
 
@@ -23,6 +30,10 @@ public class OciClassifierService implements ClassifierService {
     }
 
     @Override
+    // 2. Anotações de resiliência aplicadas na ordem correta
+    @Retry(name = INSTANCIA)
+    @CircuitBreaker(name = INSTANCIA, fallbackMethod = "fallbackClassificar")
+    @Bulkhead(name = INSTANCIA)
     public ClassificacaoResponse classificar(String texto) {
         try {
             var resposta = restClient.post()
@@ -60,5 +71,16 @@ public class OciClassifierService implements ClassifierService {
                     e.getMessage());
             throw new MlClassificacaoException("Não foi possível conectar à API de classificação.", e);
         }
+    }
+
+    /**
+     * 3. Método de Fallback obrigatório para o Circuit Breaker.
+     * ATENÇÃO: Os parâmetros devem ser exatamente os mesmos do método original
+     * mais o 'Throwable t' no final.
+     */
+    private ClassificacaoResponse fallbackClassificar(String texto, Throwable t) {
+        log.error("Fallback acionado para o classificador. Causa: {}", t.getMessage());
+        throw new MlClassificacaoException(
+                "Serviço de classificação está temporariamente indisponível. Tente novamente em instantes.", t);
     }
 }
