@@ -1,184 +1,107 @@
-# Documentação da API — Serviço de Classificação (Ciência de Dados)
+# TechMind - Serviço de Classificação (Ciência de Dados)
 
-## Visão geral
-
-Este serviço expõe um modelo de Machine Learning treinado para classificar
-conteúdos técnicos por categoria e extrair palavras-chave relevantes. É um
-serviço **interno**, consumido pela API principal do projeto (Back-End
-Java), conforme a seção 3 do contrato de APIs do TechMind.
-
-| | |
-|---|---|
-| **Base URL (local)** | `http://127.0.0.1:8001` |
-| **Formato** | JSON (`application/json`) |
-| **Autenticação** | Nenhuma (serviço interno, não exposto publicamente) |
-| **Documentação interativa** | `GET /docs` (Swagger UI, gerado automaticamente) |
+Serviço interno desenvolvido em Python (FastAPI) para classificar conteúdos técnicos. Esta API é consumida pelo serviço principal (Back-End Java) e utiliza modelos de Machine Learning pré-treinados para categorizar textos e extrair palavras-chave relevantes.
 
 ---
 
-## Endpoints
+## 📌 Visão Geral da Arquitetura
 
-### 1. `GET /health`
+O serviço depende de artefatos gerados previamente via treinamento de Machine Learning (`scikit-learn`):
+* `vectorizer.pkl`: Um `TfidfVectorizer` treinado para vetorização principal.
+* `modelo.pkl`: Um modelo `CalibratedClassifierCV(SGDClassifier)` treinado para a classificação.
+* `tfidf_keywords.pkl` *(Opcional)*: Vetorizador dedicado a capturar termos compostos (n-grams) na extração de palavras-chave.
 
-Verifica se o serviço está no ar e se o modelo foi carregado com sucesso.
-Útil para checagens de disponibilidade (ex: liveness probe em produção).
-
-**Requisição**
-```
-GET /health
-```
-
-**Resposta — 200 OK**
-```json
-{
-  "status": "ok",
-  "modelo_carregado": true
-}
-```
-
-Se `modelo_carregado` vier `false`, os arquivos `vectorizer.pkl` e/ou
-`modelo.pkl` não foram encontrados na pasta `models/` — o serviço sobe
-normalmente, mas o endpoint de classificação retornará erro até os
-arquivos serem disponibilizados.
+⚠️ **Atenção:** Estes arquivos devem ser alocados na pasta `/models` na raiz do projeto. A API inicializará normalmente sem eles, mas o endpoint de predição retornará erro `503` até que sejam inseridos.
 
 ---
 
-### 2. `POST /api/v1/classificar`
+## 🚀 Endpoints
 
-Recebe um conteúdo técnico (título + texto) e retorna a categoria prevista,
-a probabilidade dessa previsão e uma lista de palavras-chave relevantes.
+### 1. Health Check
+Verifica se a API está no ar e se os modelos de Machine Learning foram carregados corretamente na memória.
 
-**Requisição**
-```
-POST /api/v1/classificar
-Content-Type: application/json
-```
+* **URL:** `/health`
+* **Método:** `GET`
 
-| Campo | Tipo | Obrigatório | Descrição |
-|---|---|---|---|
-| `titulo` | string | Sim | Título do conteúdo técnico (não pode ser vazio) |
-| `texto` | string | Sim | Corpo do conteúdo técnico (não pode ser vazio) |
-
-**Resposta — 200 OK**
-
-| Campo | Tipo | Descrição |
-|---|---|---|
-| `categoria` | string | Categoria prevista pelo modelo |
-| `probabilidade` | float (0 a 1) | Confiança do modelo na categoria prevista |
-| `informacoes_adicionais` | array de strings | Até 5 palavras-chave extraídas do texto (termos com maior peso TF-IDF) |
-
-**Respostas de erro**
-
-| Código | Quando ocorre |
-|---|---|
-| `422 Unprocessable Entity` | `titulo` ou `texto` ausentes/vazios (validação automática) |
-| `503 Service Unavailable` | Modelo não carregado (arquivos `.pkl` ausentes) |
-| `500 Internal Server Error` | Erro inesperado ao processar a requisição |
-
----
-
-## Exemplos de uso
-
-### Exemplo 1 — Conteúdo de Backend
-
-**Requisição**
-```bash
-curl -X POST http://127.0.0.1:8001/api/v1/classificar \
-  -H "Content-Type: application/json" \
-  -d '{
-    "titulo": "Introdução ao Spring Boot",
-    "texto": "Neste conteúdo são apresentados os conceitos básicos para criação de APIs REST utilizando Java e Spring Boot."
-  }'
-```
-
-**Resposta**
-```json
-{
-  "categoria": "Tecnologia",
-  "probabilidade": 0.6129,
-  "informacoes_adicionais": ["java", "apis", "introdução", "utilizando", "básicos"]
-}
-```
-
-### Exemplo 2 — Conteúdo de Machine Learning
-
-**Requisição**
-```bash
-curl -X POST http://127.0.0.1:8001/api/v1/classificar \
-  -H "Content-Type: application/json" \
-  -d '{
-    "titulo": "O que é Machine Learning",
-    "texto": "Machine Learning é uma área da inteligência artificial que permite que sistemas aprendam padrões a partir de dados, sem programação explícita para cada tarefa."
-  }'
-```
-
-**Resposta (formato)**
-```json
-{
-  "categoria": "Ciência",
-  "probabilidade": 0.78,
-  "informacoes_adicionais": ["machine", "learning", "dados", "aprendam", "sistemas"]
-}
-```
-
-### Exemplo 3 — Campo obrigatório ausente (erro de validação)
-
-**Requisição**
-```bash
-curl -X POST http://127.0.0.1:8001/api/v1/classificar \
-  -H "Content-Type: application/json" \
-  -d '{
-    "titulo": "",
-    "texto": "Texto de exemplo"
-  }'
-```
-
-**Resposta — 422 Unprocessable Entity**
-```json
-{
-  "detail": [
+#### Resposta de Sucesso (200 OK)
     {
-      "type": "string_too_short",
-      "loc": ["body", "titulo"],
-      "msg": "String should have at least 1 character"
+      "status": "ok",
+      "modelo_carregado": true
     }
-  ]
-}
-```
 
 ---
 
-## Como o resultado é gerado
+### 2. Predizer Categoria e Palavras-Chave
+Recebe o título e o texto técnico, concatena-os, realiza a predição da categoria e extrai as top 5 palavras-chave relevantes (TF-IDF).
 
-1. **Classificação (`categoria` e `probabilidade`):** `titulo` e `texto` são
-   concatenados (`"titulo texto"`) e transformados em vetor TF-IDF usando o
-   `vectorizer.pkl`. O vetor é então passado para o modelo
-   (`SGDClassifier` calibrado com `CalibratedClassifierCV`), que retorna a
-   categoria de maior probabilidade.
-2. **Palavras-chave (`informacoes_adicionais`):** calculadas separadamente,
-   pegando os termos com maior peso TF-IDF dentro do próprio texto recebido
-   (usando o vocabulário já aprendido pelo `vectorizer`).
+* **URL:** `/predizer`
+* **Método:** `POST`
+* **Content-Type:** `application/json`
+
+#### Request Body
+Espelha o record `MlPredicaoRequest` do serviço consumidor. Ambos os campos devem ter no mínimo 1 caractere.
+    {
+      "titulo": "Introdução ao Machine Learning",
+      "texto": "Machine Learning é uma área da inteligência artificial focado no desenvolvimento de algoritmos..."
+    }
+
+#### Resposta de Sucesso (200 OK)
+Retorna os dados mapeados para o record `MlPredicaoResponse` do serviço consumidor.
+    {
+      "categoria": "Inteligência Artificial",
+      "confianca": 0.9542,
+      "palavras_chave": [
+        "machine learning",
+        "inteligência",
+        "artificial",
+        "algoritmos"
+      ]
+    }
+
+#### Respostas de Erro
+
+* **422 Unprocessable Entity:** Payload de requisição inválido (ex: `titulo` ou `texto` ausentes/vazios).
+    {
+      "detail": [
+        {
+          "loc": ["body", "texto"],
+          "msg": "field required",
+          "type": "value_error.missing"
+        }
+      ]
+    }
+
+* **503 Service Unavailable:** Os artefatos `.pkl` não foram encontrados ou não foram carregados na inicialização da aplicação.
+    {
+      "detail": "Arquivos do modelo não encontrados em [...]/models. Copie vectorizer.pkl e modelo.pkl para essa pasta (veja o README)."
+    }
+
+* **500 Internal Server Error:** Um erro não mapeado ocorreu durante o processamento da requisição (tratado globalmente para não vazar a *stack trace* para o Back-End consumidor).
+    {
+      "detail": "Erro interno ao processar a requisição: [mensagem_do_erro]"
+    }
 
 ---
 
-## Integração com o Back-End
+## 🛠 Modelos de Dados (Schemas)
 
-O `ConteudoService` (Java) deve chamar este endpoint internamente ao
-processar um novo conteúdo (`POST /conteudo` no Front-End), usando a
-resposta para preencher `categoria`, `probabilidade` e
-`informacoes_adicionais` no `ClassificacaoResponse` devolvido ao Front-End.
+A API utiliza o Pydantic para validação estrita dos dados que entram e saem, garantindo que o contrato com a API consumidora não seja quebrado.
 
-Em produção, a URL base deste serviço deve ser configurável (variável de
-ambiente), já que mudará conforme o ambiente de deploy (ex: OCI Compute).
+### `MlPredicaoRequest`
+| Campo    | Tipo   | Regras                | Descrição                            |
+|----------|--------|-----------------------|--------------------------------------|
+| `titulo` | String | Obrigatório, min len: 1 | Título do conteúdo técnico           |
+| `texto`  | String | Obrigatório, min len: 1 | Conteúdo técnico a ser classificado  |
+
+### `MlPredicaoResponse`
+| Campo            | Tipo         | Descrição                                                         |
+|------------------|--------------|-------------------------------------------------------------------|
+| `categoria`      | String       | Categoria predita pelo modelo (ex: "Tecnologia").                 |
+| `confianca`      | Float        | Probabilidade de certeza da predição (arredondado para 4 casas).|
+| `palavras_chave` | Array[String]| Top 5 palavras-chave extraídas usando os pesos do TF-IDF.       |
 
 ---
 
-## Versionamento do modelo
-
-Os artefatos `vectorizer.pkl` e `modelo.pkl` foram gerados no notebook do
-Colab com **scikit-learn 1.6.1**. Ao atualizar o modelo (novo treinamento),
-lembre-se de:
-- Substituir os dois arquivos em `models/`
-- Confirmar que a versão do `scikit-learn` no `requirements.txt` deste
-  serviço é compatível com a usada no treino, para evitar
-  `InconsistentVersionWarning` ou erros de deserialização
+## 💡 Notas de Desenvolvimento
+* **Extração de Palavras-Chave:** É feita de forma independente da classificação (aproveitando o TF-IDF). Termos com peso `0` ou menor não são considerados.
+* **Middleware de Debug:** Atualmente, a API contém um middleware (`debug_log_body`) que realiza o log do payload bruto recebido. Útil para debugar problemas de desserialização (como o erro `422`).

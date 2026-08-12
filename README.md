@@ -187,14 +187,14 @@ arquivos serem disponibilizados.
 
 ---
 
-### 2. `POST /api/v1/classificar`
+### 2. `POST /predizer`
 
 Recebe um conteúdo técnico (título + texto) e retorna a categoria prevista,
 a probabilidade dessa previsão e uma lista de palavras-chave relevantes.
 
 **Requisição**
 ```
-POST /api/v1/classificar
+POST /predizer
 Content-Type: application/json
 ```
 
@@ -209,7 +209,7 @@ Content-Type: application/json
 |---|---|---|
 | `categoria` | string | Categoria prevista pelo modelo |
 | `probabilidade` | float (0 a 1) | Confiança do modelo na categoria prevista |
-| `informacoes_adicionais` | array de strings | Até 5 palavras-chave extraídas do texto (termos com maior peso TF-IDF) |
+| `Palavras_Chave` | array de strings | Até 5 palavras-chave extraídas do texto (termos com maior peso TF-IDF) |
 
 **Respostas de erro**
 
@@ -227,7 +227,7 @@ Content-Type: application/json
 
 **Requisição**
 ```bash
-curl -X POST http://127.0.0.1:8001/api/v1/classificar \
+curl -X POST http://127.0.0.1:8000/predizer \
   -H "Content-Type: application/json" \
   -d '{
     "titulo": "Introdução ao Spring Boot",
@@ -238,9 +238,9 @@ curl -X POST http://127.0.0.1:8001/api/v1/classificar \
 **Resposta**
 ```json
 {
-  "categoria": "Tecnologia",
-  "probabilidade": 0.6129,
-  "informacoes_adicionais": ["java", "apis", "introdução", "utilizando", "básicos"]
+  "categoria": "Programação",
+  "probabilidade": 0.95,
+  "Palavras_Chave": ["Spring Boot", "APIs REST", "Java"]
 }
 ```
 
@@ -248,7 +248,7 @@ curl -X POST http://127.0.0.1:8001/api/v1/classificar \
 
 **Requisição**
 ```bash
-curl -X POST http://127.0.0.1:8001/api/v1/classificar \
+curl -X POST http://127.0.0.1:8000/predizer \
   -H "Content-Type: application/json" \
   -d '{
     "titulo": "O que é Machine Learning",
@@ -259,9 +259,9 @@ curl -X POST http://127.0.0.1:8001/api/v1/classificar \
 **Resposta (formato)**
 ```json
 {
-  "categoria": "Ciência",
-  "probabilidade": 0.78,
-  "informacoes_adicionais": ["machine", "learning", "dados", "aprendam", "sistemas"]
+  "categoria": "Inteligência Artificial",
+  "probabilidade": 0.92,
+  "Palavras_Chave": ["Machine Learning", "inteligência artificial", "dados"]
 }
 ```
 
@@ -269,7 +269,7 @@ curl -X POST http://127.0.0.1:8001/api/v1/classificar \
 
 **Requisição**
 ```bash
-curl -X POST http://127.0.0.1:8001/api/v1/classificar \
+curl -X POST http://127.0.0.1:8000/predizer \
   -H "Content-Type: application/json" \
   -d '{
     "titulo": "",

@@ -17,6 +17,7 @@ import numpy as np
 
 MODELS_DIR = Path(__file__).resolve().parent.parent / "models"
 VECTORIZER_PATH = MODELS_DIR / "vectorizer.pkl"
+VECTORIZER_KEYWORDS_PATH = MODELS_DIR / "tfidf_keywords.pkl"
 MODEL_PATH = MODELS_DIR / "modelo.pkl"
 
 # Quantidade de palavras-chave retornadas em informacoes_adicionais
@@ -31,12 +32,13 @@ class ClassificationService:
     def __init__(self) -> None:
         self._vectorizer = None
         self._model = None
+        self._vectorizer_keywords = None
 
     def load(self) -> None:
         if not VECTORIZER_PATH.exists() or not MODEL_PATH.exists():
             raise ModelNotLoadedError(
                 f"Arquivos do modelo não encontrados em {MODELS_DIR}. "
-                "Copie vectorizer.pkl e modelo.pkl para essa pasta (veja o README)."
+                "Copie vectorizer.pkl, modelo.pkl e tfidf_keywords.pkl para essa pasta (veja o README)."
             )
 
         with open(VECTORIZER_PATH, "rb") as f:
@@ -44,50 +46,69 @@ class ClassificationService:
 
         with open(MODEL_PATH, "rb") as f:
             self._model = pickle.load(f)
+        
+        # Carregar o vectorizer específico para extração de keywords
+        # (usa 3000 features e ngram_range=(1,2) para capturar termos compostos)
+        if VECTORIZER_KEYWORDS_PATH.exists():
+            with open(VECTORIZER_KEYWORDS_PATH, "rb") as f:
+                self._vectorizer_keywords = pickle.load(f)
+        else:
+            # Fallback: usar o vectorizer principal se keywords não existir
+            self._vectorizer_keywords = self._vectorizer
 
     @property
     def is_loaded(self) -> bool:
-        return self._vectorizer is not None and self._model is not None
+        return (
+            self._vectorizer is not None
+            and self._model is not None
+            and self._vectorizer_keywords is not None
+        )
 
-    def _extrair_palavras_chave(self, texto_vetorizado, top_n: int = TOP_N_KEYWORDS) -> list[str]:
+    def _extrair_palavras_chave(self, texto: str, top_n: int = TOP_N_KEYWORDS) -> list[str]:
         """
-        Usa o próprio TF-IDF (já treinado) para pegar os termos com maior peso
-        dentro do texto recebido. Não depende do modelo de classificação.
+        Extrai as top_n palavras/termos mais relevantes do texto usando TF-IDF.
+        
+        Usa o vetorizador específico para keywords (tfidf_keywords) que foi
+        treinado com ngram_range=(1, 2) para capturar termos compostos como
+        "Spring Boot", "Machine Learning", etc.
+        
+        Implementação baseada na função do notebook TechMind.
         """
-        feature_names = np.array(self._vectorizer.get_feature_names_out())
-        linha = texto_vetorizado.toarray()[0]
+        vetor = self._vectorizer_keywords.transform([texto])
+        vetor_denso = vetor.toarray()[0]
 
-        indices_ordenados = np.argsort(linha)[::-1]
+        # Se o vetor está vazio (texto sem features), retorna lista vazia
+        if vetor_denso.sum() == 0:
+            return []
 
-        palavras_chave: list[str] = []
-        for idx in indices_ordenados:
-            if linha[idx] <= 0:
-                break
-            palavras_chave.append(feature_names[idx])
-            if len(palavras_chave) >= top_n:
-                break
+        # Pega os índices dos top_n valores mais altos
+        indices_top = vetor_denso.argsort()[::-1][:top_n]
+        
+        # Filtra apenas valores positivos (com peso no TF-IDF)
+        indices_top = [i for i in indices_top if vetor_denso[i] > 0]
 
-        return palavras_chave
+        # Converte índices para palavras usando o vocabulário do vetorizador
+        vocab_array = np.array(self._vectorizer_keywords.get_feature_names_out())
+        return [vocab_array[i] for i in indices_top]
 
-    def classificar(self, texto: str) -> dict:
+    def classificar(self, titulo: str, texto: str) -> dict:
         if not self.is_loaded:
             raise ModelNotLoadedError("Modelo ainda não foi carregado.")
 
-        # Nota: o modelo foi treinado com "titulo + texto" concatenados.
-        # O Back-End Java hoje manda só "texto" (MlPredicaoRequest(String texto)),
-        # então a classificação fica um pouco menos precisa do que no treino
-        # original — mas segue funcional. Se o contrato Java passar a incluir
-        # o título no futuro, essa é a linha a ajustar.
-        texto_vetorizado = self._vectorizer.transform([texto])
+        # Junta o título e o texto como feito no Colab
+        texto_completo = f"{titulo} {texto}"
 
-        probabilidades = self._model.predict_proba(texto_vetorizado)[0]
+        # 1. Pega as probabilidades passando o texto PURO para o Pipeline do modelo
+        probabilidades = self._model.predict_proba([texto_completo])[0]
         classes = self._model.classes_
 
         indice_predito = int(np.argmax(probabilidades))
         categoria = str(classes[indice_predito])
         confianca = float(probabilidades[indice_predito])
 
-        palavras_chave = self._extrair_palavras_chave(texto_vetorizado)
+        # 2. Extrai as palavras-chave passando o texto PURO
+        # (já que a sua função _extrair_palavras_chave faz o .transform internamente)
+        palavras_chave = self._extrair_palavras_chave(texto_completo)
 
         return {
             "categoria": categoria,
