@@ -7,7 +7,7 @@ import { Component, input } from '@angular/core';
   templateUrl: './card.html',
 })
 export class Card {
-  titleCard = input.required<string>()
+  titleCard = input<string>('')
   
   subtitle = input<string>('')
   imageUrl = input<string>('')
