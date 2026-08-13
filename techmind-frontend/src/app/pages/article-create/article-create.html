@@ -2,23 +2,27 @@
     <app-header />
 </div>
 
-<main class="main-content h-screen place-content-center">
+<main class="main-content min-h-screen place-content-center">
 
     <app-tabs [tabs]="tabs" class="md:mt-10" />
 
     <ng-template #dadosTpl>
         <form (ngSubmit)="onSubmit()" class="forms-block max-w-3xl mx-auto">
             <label>Título</label>
-            <input type="text" name="titulo" [(ngModel)]="titulo" class="w-full border rounded-md p-2 mb-3" />
+            <input type="text" name="titulo" [(ngModel)]="titulo" class="w-full border rounded-md p-2 mb-3" maxlength="50" />
 
             <label>Conteúdo</label>
-            <textarea name="texto" [(ngModel)]="texto" rows="8" class="w-full border rounded-md p-2 mb-3"></textarea>
+            <textarea name="texto" [(ngModel)]="texto" rows="8" class="w-full border rounded-md p-2 mb-3" maxlength="1000"></textarea>
 
             <div class="flex items-center gap-3">
                 <button type="submit" class="px-4 py-2 rounded-md text-white bg-primary hover:bg-primary/70">
                     Classificar e Publicar
                 </button>
-                <div *ngIf="errorMsg() as err" class="text-red-600">{{ err }}</div>
+                @if (errorMsg()) {
+                <div class="text-red-600">
+                    {{ errorMsg() }}
+                </div>
+                }
             </div>
         </form>
     </ng-template>
@@ -46,7 +50,11 @@
                     [disabled]="saving()">
                     {{ saving() ? 'Enviando...' : 'Enviar CSV' }}
                 </button>
-                <div *ngIf="errorMsg() as err" class="text-red-600">{{ err }}</div>
+                @if(errorMsg()) {
+                <div class="text-red-600">
+                    {{ errorMsg() }}
+                </div>
+                }
             </div>
         </div>
     </ng-template>
