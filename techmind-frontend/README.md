@@ -4,17 +4,42 @@
 
 <br/>
 
-<h2 align="center">
+<h3 align="center">
     <img 
-        width="70%"
+        width="75%"
         height="auto"
         src="./public/preview.jpeg"
     >
-</h2>
+</h3>
 
 <br/>
 
-## Lista de Comandos
+## 📁 ESTRUTURA 
+
+```
+    techmind-frontend
+        |-- public/
+        |   |-- imgs/
+        |-- src/
+        |   |-- app/
+        |   |   |-- core /
+        |   |   |-- layout/
+        |   |   |-- pages/
+        |   |   |-- shared/
+        |   |   |-- styles/
+        |   |   |-- utils/
+        |   |   |-- app.config.ts
+        |   |   |-- app.routes.ts
+        |   |   |-- app.spec.ts
+        |   |   |-- app.ts
+        |   |-- environments/
+        |   |   |-- env.prod.ts
+        |   |   |-- env.ts
+```
+
+<br/>
+
+## ⌨ LISTA DE COMANDOS
 
 ### Dependências
 
@@ -61,3 +86,19 @@
     ```bash
     npm run build-prod
     ```
+
+<br/>
+
+## 📦 FERRAMENTAS USADAS
+
+- Angular v20+
+
+- TypeScript
+
+- Tailwind CSS
+
+- PrimeNG
+
+- PrimeIcons / Angular
+
+- Chart.js + ng2 Charts
