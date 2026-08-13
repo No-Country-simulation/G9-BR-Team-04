@@ -1,0 +1,116 @@
+<app-header />
+
+<main class="main-content min-h-screen place-content-center">
+  <section class="p-6 md:px-9">
+
+    <div class="mb-5 flex flex-wrap items-end justify-between gap-5">
+      <div>
+        <h1 class="mb-1  text-2xl font-bold">
+          Conteúdos catalogados
+        </h1>
+        <p class="text-[13px] text-[#3b4152]">
+          Busque por título ou filtre por categoria
+        </p>
+      </div>
+
+      <!-- Busca -->
+      <div class="relative min-w-[280px]">
+        <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-base font-bold text-[#8b93a8]">
+          <svg data-p-icon="search" [size]="16"></svg>
+        </span>
+
+        <input type="text" [(ngModel)]="termoBusca" placeholder="Buscar por título..."
+          class="w-full rounded border border-[#dde1ea] bg-white py-2.5 pl-9 pr-3.5 text-[13.5px] outline-none focus:border-[#0d7d72]" />
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="mb-[18px] flex flex-wrap gap-2">
+      <button *ngFor="let categoria of categorias" type="button" (click)="selecionarCategoria(categoria)"
+        [class.bg-tertiary]="categoria === filtroAtivo" [class.border-tertiary]="categoria === filtroAtivo"
+        [class.text-tertiary]="categoria === filtroAtivo"
+        class="rounded-full border border-[#dde1ea] bg-white px-3 py-[5px] font-secondary text-[11px] tracking-[0.02em] text-[#3b4152] transition hover:border-[#0d7d72]">
+        {{ categoria }}
+      </button>
+    </div>
+
+    <!-- Contagem -->
+    <div class="mb-3.5 font-secondary text-[11px] uppercase tracking-[0.04em] text-[#8b93a8]">
+      {{ conteudosFiltrados.length }}
+      {{ conteudosFiltrados.length === 1 ? 'resultado' : 'resultados' }}
+    </div>
+
+    <!-- Erro carregamento -->
+    <div *ngIf="erroCarregamento" class="py-16 text-center text-[#a6adbd]">
+      <p class="mb-1 text-[13.5px]">
+        <strong>Erro de conexão</strong>
+      </p>
+
+      <p class="text-[13.5px]">
+        Não foi possível carregar os dados da nuvem. A API pode estar indisponível.
+      </p>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="carregando && conteudos.length === 0" class="py-16 text-center font-secondary text-xs text-[#8b93a8]">
+      Carregando conteúdos...
+    </div>
+
+    <!-- Lista -->
+    <div *ngIf="!erroCarregamento && !carregando || conteudos.length > 0" class="flex flex-col gap-2.5">
+      <ng-container *ngIf="conteudosFiltrados.length > 0; else emptyState">
+
+        <article *ngFor="let conteudo of conteudosFiltrados"
+          class="grid grid-cols-1 items-start gap-3 rounded-md border border-[#dde1ea] bg-white p-4 px-[18px] transition hover:border-[#c4cbdb] hover:shadow-[0_2px_10px_rgba(19,23,34,.06)] md:grid-cols-[1fr_auto]">
+          <div>
+            <h2 class="mb-1.5 text-base font-semibold text-[#131722]">
+              {{ conteudo.titulo }}
+            </h2>
+
+            <p class="mb-2.5 max-w-[60ch] text-[13px] leading-6 text-[#3b4152]">
+              {{ preview(conteudo.texto) }}
+            </p>
+
+            <div class="flex flex-wrap max-sm:mt-6 items-center gap-2.5">
+              <span
+                class="rounded-full bg-[#e3f3f1] px-2.5 py-[3px] font-secondary text-[11px] font-bold text-[#0d7d72]">
+                {{ conteudo.categoria }}
+              </span>
+
+              <span class="rounded-full bg-[#faf1e2] px-2 py-0.5 font-secondary text-[11px] text-[#c2740a]">
+                {{ porcentagem(conteudo.probabilidade) }}% confiança
+              </span>
+
+              <span *ngFor="let palavra of conteudo.palavrasChave | slice:0:3"
+                class="rounded bg-[#262c3d] px-2 py-[3px] font-secondary text-[11px] text-[#c9cedb]">
+                {{ palavra }}
+              </span>
+            </div>
+          </div>
+
+          <time class="whitespace-nowrap text-right font-secondary text-[10.5px] text-[#a6adbd]">
+            {{ conteudo.criadoEm }}
+          </time>
+        </article>
+
+      </ng-container>
+
+      <ng-template #emptyState>
+        <div class="py-[60px] text-center text-[#a6adbd]">
+          <div class="mb-2.5 text-[32px]">⌕</div>
+
+          <p class="my-1 text-[13.5px]">
+            <strong>Nenhum conteúdo encontrado</strong>
+          </p>
+
+          <p class="my-1 text-[13.5px]">
+            Ajuste a busca ou cadastre um novo conteúdo ao lado.
+          </p>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+
+</main>
+
+<app-footer />
