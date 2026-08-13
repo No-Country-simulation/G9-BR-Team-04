@@ -10,6 +10,17 @@ export class ConteudoService {
   private http = inject(HttpClient);
   private baseUrl = `${environment.apiUrl}/conteudo`;
 
+
+  buscarTodos(): Observable<Conteudo[]> {
+    return this.http.get<Conteudo[]>(this.baseUrl)
+      .pipe(catchError(this.handleError))
+  }
+
+  buscarPorId(id: number): Observable<Conteudo> {
+    return this.http.get<Conteudo>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
   buscarPorTitulo(titulo: string): Observable<Conteudo[]> {
     return this.http.get<Conteudo[]>(`${this.baseUrl}/titulo`, {
       params: { titulo }
@@ -32,6 +43,17 @@ export class ConteudoService {
       .pipe(catchError(this.handleError));
   }
 
+  atualizar(id: number, conteudo: Partial<Conteudo>): Observable<Conteudo> {
+    return this.http.put<Conteudo>(`${this.baseUrl}/${id}`, conteudo)
+      .pipe(catchError(this.handleError));
+  }
+
+  apagar(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(this.handleError));
+  }
+
+
   /**
    * Upload em lote via arquivo (ex: CSV).
    * O endpoint no Postman está como urlencoded/vazio — o mais correto para
@@ -45,6 +67,7 @@ export class ConteudoService {
     return this.http.post<Conteudo[]>(`${this.baseUrl}/lote`, formData)
       .pipe(catchError(this.handleError));
   }
+
 
   private handleError(error: HttpErrorResponse) {
     let mensagem = 'Ocorreu um erro inesperado.';
@@ -62,4 +85,5 @@ export class ConteudoService {
     console.error('Erro na requisição de Conteúdo:', error);
     return throwError(() => new Error(mensagem));
   }
+
 }
