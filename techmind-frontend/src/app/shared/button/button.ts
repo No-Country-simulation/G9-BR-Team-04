@@ -6,6 +6,7 @@ import { PIcon } from '@primeicons/angular/p-icon';
   selector: 'app-button',
   imports: [PIcon],
   templateUrl: './button.html',
+  styleUrl: './button.css'
 })
 export class Button {
 
