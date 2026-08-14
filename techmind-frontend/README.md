@@ -22,7 +22,9 @@
         |   |-- imgs/
         |-- src/
         |   |-- app/
-        |   |   |-- core /
+        |   |   |-- core/
+        |   |   |   |-- models/
+        |   |   |   |-- services/
         |   |   |-- layout/
         |   |   |-- pages/
         |   |   |-- shared/
@@ -36,6 +38,22 @@
         |   |   |-- env.prod.ts
         |   |   |-- env.ts
 ```
+
+### Core
+
+- Tudo que existe apenas uma vez na aplicação, como modelos, consumo de API's, etc.
+
+### Shared
+
+- O que for reutilizável, basicamente para componentes.
+
+### Layout
+
+- Todos elementos presentes ou não na tela, como cabeçalho e rodapé.
+
+### Pages
+
+- As telas do projeto. 
 
 <br/>
 
