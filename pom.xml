@@ -79,6 +79,11 @@
 			<version>23.5.0.24.07</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
 		<!-- ========================================================= -->
 		<!-- Documentacao de API                                        -->
 		<!-- ========================================================= -->
@@ -86,16 +91,6 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.8.5</version>
-		</dependency>
-
-		<!-- ========================================================= -->
-		<!-- Ferramentas de desenvolvimento                             -->
-		<!-- ========================================================= -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
 		</dependency>
 
 		<!-- ========================================================= -->
@@ -113,21 +108,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
@@ -181,13 +161,6 @@
 			<!-- ========================================================= -->
 			<!-- CORREÇÃO DE VULNERABILIDADES – FORÇA VERSÕES SEGURAS     -->
 			<!-- ========================================================= -->
-
-			<!-- Jackson 2.x (com.fasterxml.jackson.core) -->
-			<dependency>
-				<groupId>com.fasterxml.jackson.core</groupId>
-				<artifactId>jackson-databind</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
 
 			<!-- Jackson 3.x (tools.jackson.core) – corrige CVE-2026-59889 para essa linha -->
 			<dependency>
