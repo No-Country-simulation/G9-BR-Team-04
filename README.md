@@ -4,15 +4,12 @@ Hackathon ONE G9 BR - Alura + Oracle
 
 [![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge&logo=oracle)](https://www.oracle.com/br/education/next-education/)
 ![Team](https://img.shields.io/badge/Team-SolutionSquad_/_Esquadrão_das_Soluções-6C2BD9?style=for-the-badge)
-
 ---
 
 ## 📌 Sobre o Projeto
-
 O **TechMind** é uma solução inteligente para organizar, classificar e enriquecer conteúdos técnicos utilizando técnicas de **Ciência de Dados**, uma **API REST desenvolvida em Java e Spring Boot** e integração com a **Oracle Cloud Infrastructure (OCI)**.
 
 A plataforma transforma conteúdos técnicos em informações estruturadas, facilitando sua organização, consulta e reutilização.
-
 ---
 
 ## ❗ Problema
@@ -27,7 +24,6 @@ Estudantes e profissionais de tecnologia consomem diariamente uma grande quantid
 * Conteúdos sobre diferentes tecnologias.
 
 Com esse volume de informações, torna-se difícil organizar, encontrar e reutilizar o conhecimento.
-
 O **TechMind** busca solucionar esse problema automatizando a análise e classificação dos conteúdos técnicos.
 
 ---
@@ -58,7 +54,6 @@ O resultado inclui:
 * Probabilidade da classificação;
 * Palavras-chave;
 * Informações adicionais.
-
 ---
 
 ## ✨ Funcionalidades
@@ -75,13 +70,9 @@ O resultado inclui:
 * ✅ Integração preparada para OCI
 * ✅ Testes automatizados
 * 🔄 Estrutura preparada para busca e recomendação
-
 ---
-
 # 🏗️ Arquitetura
-
 A aplicação foi organizada em camadas, separando responsabilidades entre API, regras de negócio, persistência e serviços externos.
-
 ```text
                     Usuário / Front-end
                            │
@@ -122,9 +113,7 @@ A integração com serviços externos é isolada por meio de uma camada específ
 ---
 
 # 🤖 Ciência de Dados
-
 O serviço de Ciência de Dados disponibiliza um modelo de Machine Learning treinado para classificar conteúdos técnicos e extrair palavras-chave relevantes.
-
 ## Fluxo
 
 ```text
@@ -146,7 +135,6 @@ Classificação
 ```
 
 ### Tecnologias
-
 * Python
 * Pandas
 * Scikit-Learn
@@ -156,13 +144,9 @@ Classificação
 * CalibratedClassifierCV
 
 ### Processamento
-
 O título e o texto do conteúdo são utilizados para gerar a representação TF-IDF.
-
 O modelo **SGDClassifier**, calibrado com **CalibratedClassifierCV**, retorna a categoria prevista e sua probabilidade.
-
 As palavras-chave são identificadas a partir dos termos com maior peso TF-IDF no texto recebido.
-
 ---
 
 # 🔧 Back-end
@@ -203,27 +187,21 @@ backend/
 Recebem as requisições HTTP e disponibilizam os endpoints.
 
 ### Services
-
 Concentram as regras de negócio e coordenam o processamento.
 
 ### DTOs
-
 Representam os dados de entrada e saída da API, evitando a exposição direta das entidades.
 
 ### Repositories
-
 Realizam o acesso à camada de persistência.
 
 ### Entities
-
 Representam os dados armazenados.
 
 ### Exceptions
-
 Centralizam o tratamento de erros.
 
 ### Integration
-
 Concentra a comunicação com serviços externos.
 
 ---
@@ -242,7 +220,6 @@ Endpoint principal para processamento de um conteúdo técnico.
   "texto": "Conteúdo sobre criação de APIs REST utilizando Java e Spring Boot."
 }
 ```
-
 ### Fluxo
 
 ```text
@@ -260,7 +237,6 @@ Classificação
     ↓
 Resposta
 ```
-
 ### Resposta
 
 ```json
@@ -275,7 +251,6 @@ Resposta
   ]
 }
 ```
-
 | Campo                    | Descrição                    |
 | ------------------------ | ---------------------------- |
 | `categoria`              | Categoria identificada       |
@@ -476,7 +451,6 @@ Recebe título e texto e retorna a classificação.
   ]
 }
 ```
-
 ### Erros principais
 
 | Código | Situação                    |
@@ -495,9 +469,7 @@ Os principais artefatos do modelo são:
 vectorizer.pkl
 modelo.pkl
 ```
-
 Eles foram gerados utilizando **scikit-learn 1.6.1**.
-
 Ao atualizar o modelo, é necessário garantir a compatibilidade da versão do Scikit-Learn para evitar problemas de desserialização.
 
 ---
@@ -578,7 +550,6 @@ TechMind/
 │   └── Collection da API
 └── README.md
 ```
-
 ---
 
 ## 👥 G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)
@@ -608,37 +579,27 @@ TechMind/
 * ✅ Documentação
 
 **🚧 Projeto em desenvolvimento contínuo.**
-
 ---
-
 # 🔮 Evoluções Futuras
 
 ### 🔎 Busca semântica
-
 Localizar conteúdos semelhantes mesmo quando utilizam termos diferentes.
 
 ### 💡 Recomendação
-
 Relacionar conteúdos e sugerir materiais relevantes.
 
 ### 📊 Dashboard
-
 Expandir a visualização de categorias, tecnologias, conteúdos e estatísticas.
 
 ### 🧠 Base de conhecimento
-
 Transformar os conteúdos classificados em uma base de conhecimento inteligente e reutilizável.
 
 ---
-
 # 🙏 Agradecimentos
 
 * **Oracle Next Education (ONE) G9 BR** – Pela oportunidade e mentoria;
 * **Oracle Cloud Infrastructure (OCI)** – Pela infraestrutura;
 * **Mentores e Organizadores** – Pelo suporte e orientação.
-
 ---
-
 ## ⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR
-
 **TechMind — Transformando informação em conhecimento estruturado.**
