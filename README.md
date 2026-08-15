@@ -200,7 +200,7 @@ TechMind/
 
 | Integrante | Função |
 |------------|--------|
-| **Arthur Carvalho Ferreira** | 💻 Back End Developer |
+| **Arthur Carvalho Ferreira** | 💻 Tech Lead & Back End Developer |
 | **Carlos Caique Borges de Souza** | 💻 Back End Developer |
 | **Gabriel Leal** | ☁️ DevOps Engineer |
 | **Jaqueline Silva Broccolo** | 🔗 Full Stack Developer |
