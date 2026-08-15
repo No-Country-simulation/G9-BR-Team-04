@@ -4,16 +4,6 @@
 
 <br/>
 
-<h3 align="center">
-    <img 
-        width="75%"
-        height="auto"
-        src="./public/preview.jpeg"
-    >
-</h3>
-
-<br/>
-
 ## 📁 ESTRUTURA 
 
 ```
