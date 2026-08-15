@@ -15,9 +15,9 @@ export class Header {
   imgAlt: string = 'Logo TechMind'
 
   pagesList = [
-    { icon: 'chart-bar', label: 'Dashboard', path: '/' },
     { icon: 'plus-circle', label: 'Novo Conteúdo', path: '/new-article' },
-    { icon: 'list', label: 'Artigos', path: '/articles-list' }
+    { icon: 'list', label: 'Artigos', path: '/articles-list' },
+    { icon: 'eye', label: 'Analisar API', path: '/analytics' },
   ]
 
   sidebarOpen = signal(false)

@@ -1,0 +1,33 @@
+<app-header />
+
+<main class="main-content min-h-screen">
+    <div class="p-6">
+        <h1 class="text-2xl font-bold mb-6">Observabilidade da Plataforma</h1>
+
+        @if (loading()) {
+        <p class="text-gray-400">Carregando status...</p>
+        } @else if (error()) {
+        <p class="text-red-500">{{ error() }}</p>
+        } @else {
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <app-card title="Status Geral (Health)">
+                @if (health(); as h) {
+                <span class="inline-block px-3 py-1 rounded-full text-sm font-medium"
+                    [class.bg-green-100]="h.status === 'UP'" [class.text-green-700]="h.status === 'UP'"
+                    [class.bg-red-100]="h.status === 'DOWN'" [class.text-red-700]="h.status === 'DOWN'">
+                    {{ h.status }}
+                </span>
+                }
+            </app-card>
+
+            <app-card title="Métricas Disponíveis">
+                <p class="text-sm text-gray-500">{{ metricsNames().length }} métricas expostas</p>
+            </app-card>
+
+        </div>
+        }
+    </div>
+</main>
+
+<app-footer />
