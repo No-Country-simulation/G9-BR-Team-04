@@ -398,11 +398,19 @@ Os conteúdos classificados são persistidos na base de conhecimento, permitindo
 
 ---
 
-# ☁️ Oracle Cloud Infrastructure
+# ☁️ Oracle Cloud Infrastructure (OCI)
 
-O projeto foi desenvolvido considerando a integração com o ecossistema **Oracle Cloud Infrastructure (OCI)**.
+O **TechMind foi implantado na Oracle Cloud Infrastructure (OCI)**, utilizando o **Oracle Object Storage** para armazenamento de arquivos.
 
-A arquitetura utiliza Oracle Database e possui infraestrutura preparada para evolução em nuvem, incluindo armazenamento de dados e arquivos.
+A utilização da OCI faz parte da arquitetura da solução, permitindo integrar a aplicação aos serviços de nuvem da Oracle.
+
+### Serviços utilizados
+
+* ☁️ **Oracle Cloud Infrastructure (OCI)**
+* 📦 **Object Storage** — armazenamento de arquivos
+* 🗄️ **Oracle Database** — persistência dos dados da aplicação
+
+A integração com a nuvem permite que o projeto evolua de um ambiente local para uma infraestrutura em cloud, mantendo a separação entre aplicação, dados e arquivos.
 
 ---
 
@@ -507,7 +515,9 @@ TechMind/
 * ✅ Interface Angular
 * ✅ Teste ponta a ponta
 * ✅ Documentação
-
+* ✅ Integração com OCI
+* ✅ Deploy na OCI
+  
 ### Próximas evoluções
 
 * 🔄 Login e autenticação no front-end
