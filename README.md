@@ -1,534 +1,469 @@
 # 🚀 TechMind
-Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções)
-Hackathon ONE G9 BR - Alura + Oracle
 
-[![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge&logo=oracle)](https://www.oracle.com/br/education/next-education/)
-![Team](https://img.shields.io/badge/Team-SolutionSquad_/_Esquadrão_das_Soluções-6C2BD9?style=for-the-badge)
+**Projeto do G9-BR-Team-04 — SolutionSquad (Esquadrão das Soluções)**
+**Hackathon Oracle Next Education (ONE) G9 BR — Alura + Oracle**
+
+[![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge\&logo=oracle)](https://www.oracle.com/br/education/next-education/)
+![Team](https://img.shields.io/badge/Team-SolutionSquad-6C2BD9?style=for-the-badge)
+
 ---
 
 ## 📌 Sobre o Projeto
-O **TechMind** é uma solução inteligente para organizar, classificar e enriquecer conteúdos técnicos utilizando técnicas de **Ciência de Dados**, uma **API REST desenvolvida em Java e Spring Boot** e integração com a **Oracle Cloud Infrastructure (OCI)**.
 
-A plataforma transforma conteúdos técnicos em informações estruturadas, facilitando sua organização, consulta e reutilização.
+O **TechMind** é uma solução inteligente para **organizar, classificar e enriquecer conteúdos técnicos**, utilizando **Ciência de Dados, Machine Learning, API REST e Oracle Database**.
+
+A plataforma recebe conteúdos como documentações, cursos, artigos, tutoriais e anotações e transforma essas informações em dados estruturados, facilitando sua organização, consulta e reutilização.
+
+O sistema é composto por três camadas:
+
+* 🧠 **Ciência de Dados:** classificação e extração de palavras-chave;
+* ⚙️ **Back-end:** regras de negócio, integração e persistência;
+* 🖥️ **Front-end:** cadastro e consulta dos conteúdos.
+
 ---
 
 ## ❗ Problema
 
-Estudantes e profissionais de tecnologia consomem diariamente uma grande quantidade de:
+Estudantes e profissionais de tecnologia lidam diariamente com grande quantidade de informações técnicas.
 
-* Documentações;
-* Cursos;
-* Artigos;
-* Tutoriais;
-* Anotações;
-* Conteúdos sobre diferentes tecnologias.
+Documentações, cursos, artigos, tutoriais e anotações podem ficar dispersos, dificultando:
 
-Com esse volume de informações, torna-se difícil organizar, encontrar e reutilizar o conhecimento.
-O **TechMind** busca solucionar esse problema automatizando a análise e classificação dos conteúdos técnicos.
+* Organização;
+* Localização;
+* Classificação;
+* Reutilização do conhecimento.
+
+O TechMind busca solucionar esse problema automatizando a classificação e organização dos conteúdos.
 
 ---
 
 ## 💡 Solução
 
-O sistema recebe um conteúdo técnico e utiliza **Machine Learning** e **Processamento de Linguagem Natural (NLP)** para analisar suas informações.
+O usuário fornece um **título e um texto**. O sistema processa essas informações utilizando Machine Learning e retorna:
 
-O TechMind realiza:
+* **Categoria** do conteúdo;
+* **Confiança da classificação**;
+* **Palavras-chave relevantes**;
+* Conteúdo classificado e persistido na base de conhecimento.
 
-* Classificação automática;
-* Extração de palavras-chave;
-* Identificação de informações relevantes;
-* Processamento individual;
-* Processamento em lote por CSV;
-* Retorno estruturado em JSON;
-* Integração entre Back-end e Ciência de Dados.
+Também é possível realizar o cadastro de vários conteúdos por meio de **arquivo CSV**.
 
 ---
 
-## 🎯 Objetivo
-
-Disponibilizar uma API capaz de receber conteúdos técnicos, processá-los por meio de um modelo de Machine Learning e retornar informações estruturadas.
-
-O resultado inclui:
-
-* Categoria;
-* Probabilidade da classificação;
-* Palavras-chave;
-* Informações adicionais.
----
-
-## ✨ Funcionalidades
-
-* ✅ Classificação automática de conteúdos
-* ✅ Extração de palavras-chave
-* ✅ API REST
-* ✅ Processamento individual
-* ✅ Processamento em lote por CSV
-* ✅ Validação de dados
-* ✅ Tratamento de erros
-* ✅ Persistência
-* ✅ Integração com Ciência de Dados
-* ✅ Integração preparada para OCI
-* ✅ Testes automatizados
-* 🔄 Estrutura preparada para busca e recomendação
----
 # 🏗️ Arquitetura
-A aplicação foi organizada em camadas, separando responsabilidades entre API, regras de negócio, persistência e serviços externos.
+
+O TechMind utiliza uma arquitetura em três camadas:
+
 ```text
-                    Usuário / Front-end
-                           │
-                           ▼
-                 API REST - Spring Boot
-                           │
-                           ▼
-                     Controllers
-                           │
-                           ▼
-                       Services
-                           │
-              ┌────────────┼────────────┐
-              │            │            │
-              ▼            ▼            ▼
-            DTOs      Validação    Persistência
-                                       │
-                                       ▼
-                                Repository / JPA
+                    👤 Usuário
+                       │
+                       ▼
+              🖥️ Front-end Angular
+                       │
+                       ▼
+            ⚙️ API REST Java/Spring Boot
+                       │
+              ┌────────┴─────────┐
+              │                  │
+              ▼                  ▼
+       🧠 API Python        🗄️ Oracle Database
+          FastAPI
               │
               ▼
-      Serviço de Classificação
+       Machine Learning
+        TF-IDF + SGD
               │
               ▼
-       API Ciência de Dados
-             FastAPI
-              │
-              ▼
-       Modelo de Machine Learning
-          TF-IDF + SGDClassifier
-              │
-              ▼
-        Resultado em JSON
+       Categoria + Confiança
+       + Palavras-chave
 ```
 
-A integração com serviços externos é isolada por meio de uma camada específica, representada pelo **OciClassifierService**.
+### Fluxo principal
+
+```text
+Usuário cadastra conteúdo
+          ↓
+Front-end Angular
+          ↓
+POST /conteudo
+          ↓
+Back-end Java
+          ↓
+Verificação SHA-256
+          ↓
+Conteúdo já existe?
+     ↙              ↘
+   Sim               Não
+    ↓                 ↓
+Reutiliza        API FastAPI
+resultado             ↓
+                  Machine Learning
+                       ↓
+                 Classificação
+                       ↓
+              Oracle Database
+                       ↓
+                 Resultado
+                       ↓
+                  Front-end
+```
+
+A comunicação entre o Back-end e o serviço de Ciência de Dados possui mecanismos de resiliência para lidar com indisponibilidade ou falhas do classificador.
 
 ---
 
-# 🤖 Ciência de Dados
-O serviço de Ciência de Dados disponibiliza um modelo de Machine Learning treinado para classificar conteúdos técnicos e extrair palavras-chave relevantes.
-## Fluxo
+# 🧠 Ciência de Dados
 
-```text
-Dados
-  ↓
-Limpeza e preparação
-  ↓
-TF-IDF
-  ↓
-Treinamento
-  ↓
-SGDClassifier
-  ↓
-Avaliação
-  ↓
-API FastAPI
-  ↓
-Classificação
-```
+A API de Ciência de Dados foi desenvolvida em **Python + FastAPI** e é responsável exclusivamente pela classificação dos conteúdos.
+
+O front-end não acessa diretamente a API de Ciência de Dados. A comunicação ocorre através do Back-end Java.
 
 ### Tecnologias
+
 * Python
-* Pandas
-* Scikit-Learn
 * FastAPI
+* Pandas
+* Scikit-learn 1.6.1
+* NLTK
+* NumPy
 * TF-IDF
 * SGDClassifier
 * CalibratedClassifierCV
 
-### Processamento
-O título e o texto do conteúdo são utilizados para gerar a representação TF-IDF.
-O modelo **SGDClassifier**, calibrado com **CalibratedClassifierCV**, retorna a categoria prevista e sua probabilidade.
-As palavras-chave são identificadas a partir dos termos com maior peso TF-IDF no texto recebido.
 ---
 
-# 🔧 Back-end
+## 📊 Dataset
 
-O Back-end é responsável por coordenar o funcionamento da aplicação.
+O dataset inicial foi baseado no **MTEB-BR/wikipedia-categories**, contendo textos da Wikipedia em português.
 
-Foi desenvolvido em **Java com Spring Boot**, seguindo uma arquitetura REST.
+Após limpeza, tratamento e enriquecimento manual, o dataset final possui:
 
-### Principais responsabilidades
+* **2.560 textos**
+* **13 categorias**
+* **90 novos textos técnicos produzidos pela equipe**
+* Vocabulário TF-IDF de **23.860 termos**
 
-* Receber requisições HTTP;
-* Validar os dados;
-* Aplicar regras de negócio;
-* Comunicar-se com a API de Ciência de Dados;
-* Processar arquivos CSV;
-* Persistir informações;
-* Tratar exceções;
-* Retornar respostas estruturadas em JSON.
+As categorias foram ajustadas para representar melhor o domínio do projeto, incluindo conteúdos relacionados a Tecnologia, Ciência, Plantas, História, Medicina, entre outras.
 
 ---
 
-## 🧩 Estrutura do Back-end
+## 🤖 Treinamento do Modelo
+
+O processamento utiliza:
 
 ```text
-backend/
-├── controller/
-├── service/
-├── dto/
-├── repository/
-├── entity/
-├── exception/
-├── config/
-└── integration/
+Título + Texto
+      ↓
+Pré-processamento
+      ↓
+TF-IDF
+      ↓
+SGDClassifier
+      ↓
+CalibratedClassifierCV
+      ↓
+Categoria + Probabilidade
 ```
 
-### Controllers
+Foram testados diferentes algoritmos de classificação.
 
-Recebem as requisições HTTP e disponibilizam os endpoints.
+O modelo escolhido para produção foi o:
 
-### Services
-Concentram as regras de negócio e coordenam o processamento.
+**SGDClassifier + CalibratedClassifierCV**
 
-### DTOs
-Representam os dados de entrada e saída da API, evitando a exposição direta das entidades.
+com **82,81% de acurácia** no conjunto de teste.
 
-### Repositories
-Realizam o acesso à camada de persistência.
+Além da classificação, um segundo TF-IDF é utilizado para identificar as **5 palavras-chave de maior relevância** do conteúdo.
 
-### Entities
-Representam os dados armazenados.
-
-### Exceptions
-Centralizam o tratamento de erros.
-
-### Integration
-Concentra a comunicação com serviços externos.
-
----
-
-# 🌐 API REST
-
-## `POST /conteudo`
-
-Endpoint principal para processamento de um conteúdo técnico.
-
-### Requisição
-
-```json
-{
-  "titulo": "Introdução ao Spring Boot",
-  "texto": "Conteúdo sobre criação de APIs REST utilizando Java e Spring Boot."
-}
-```
-### Fluxo
-
-```text
-Requisição
-    ↓
-Controller
-    ↓
-Validação
-    ↓
-ConteudoService
-    ↓
-API de Ciência de Dados
-    ↓
-Classificação
-    ↓
-Resposta
-```
-### Resposta
-
-```json
-{
-  "categoria": "Tecnologia",
-  "probabilidade": 0.6129,
-  "informacoes_adicionais": [
-    "java",
-    "apis",
-    "spring",
-    "básicos"
-  ]
-}
-```
-| Campo                    | Descrição                    |
-| ------------------------ | ---------------------------- |
-| `categoria`              | Categoria identificada       |
-| `probabilidade`          | Confiança da classificação   |
-| `informacoes_adicionais` | Palavras-chave identificadas |
-
----
-
-# 📄 Processamento em Lote
-
-## `POST /conteudo/lote`
-
-Permite processar vários conteúdos por meio de um arquivo CSV.
-
-```text
-CSV
- ↓
-Validação
- ↓
-Leitura dos registros
- ↓
-Processamento
- ↓
-Classificação
- ↓
-Resultados
-```
-
-O processamento em lote permite:
-
-* Automatizar tarefas;
-* Processar grandes volumes;
-* Utilizar bases existentes;
-* Reduzir trabalho manual.
-
----
-
-# 🔗 Integração com Ciência de Dados
-
-O Back-end Java realiza a comunicação interna com a API FastAPI.
-
-O serviço envia:
-
-```json
-{
-  "titulo": "Título do conteúdo",
-  "texto": "Texto do conteúdo"
-}
-```
-
-E recebe:
-
-```json
-{
-  "categoria": "Tecnologia",
-  "probabilidade": 0.6129,
-  "informacoes_adicionais": [
-    "java",
-    "spring",
-    "apis"
-  ]
-}
-```
-
-O resultado é utilizado pelo **ConteudoService** para construir a resposta final da API.
-
-Essa separação permite que o consumidor utilize o Back-end sem precisar conhecer os detalhes do modelo de Machine Learning.
-
----
-
-# ☁️ Integração com OCI
-
-O projeto possui uma camada específica para integração com a **Oracle Cloud Infrastructure (OCI)**.
-
-A integração é representada pelo:
-
-```text
-OciClassifierService
-```
-
-A separação dessa responsabilidade proporciona:
-
-* Menor acoplamento;
-* Maior testabilidade;
-* Melhor manutenção;
-* Facilidade para evolução da infraestrutura;
-* Separação de responsabilidades.
-
----
-
-# 💾 Persistência
-
-O projeto utiliza **JPA/Hibernate** para acesso e persistência dos dados.
-
-A estrutura inclui:
-
-* Entities;
-* Repositories;
-* JPA;
-* Hibernate;
-* ORM.
-
-A persistência prepara o sistema para armazenar conteúdos processados, usuários e resultados das classificações.
-
----
-
-# 🔐 Usuários
-
-O projeto possui estrutura para gerenciamento de usuários, permitindo futuras funcionalidades como:
-
-* Cadastro;
-* Controle de acesso;
-* Personalização;
-* Histórico;
-* Organização de conteúdos por usuário.
-
----
-
-# ✅ Validação e Tratamento de Erros
-
-A API realiza validações antes do processamento.
-
-São considerados:
-
-* Campos obrigatórios;
-* Título e texto não vazios;
-* Estrutura do JSON;
-* Formato do CSV;
-* Arquivo enviado corretamente.
-
-O tratamento de exceções contempla situações como:
-
-* Dados inválidos;
-* Usuário não encontrado;
-* E-mail já existente;
-* Erros de processamento;
-* Falhas inesperadas.
-
----
-
-# 🧪 Testes
-
-O projeto possui testes automatizados principalmente nos componentes de:
-
-* Controllers;
-* Services.
-
-Os testes ajudam a validar regras de negócio, endpoints, cenários inválidos e possíveis regressões.
-
----
-
-# 🧠 API de Ciência de Dados
-
-A API de Ciência de Dados é um serviço interno consumido pelo Back-end.
-
-| Informação   | Valor                   |
-| ------------ | ----------------------- |
-| Base local   | `http://127.0.0.1:8001` |
-| Formato      | JSON                    |
-| Documentação | `/docs`                 |
-| Framework    | FastAPI                 |
-
-## `GET /health`
-
-Verifica o funcionamento do serviço.
-
-```json
-{
-  "status": "ok",
-  "modelo_carregado": true
-}
-```
-
-## `POST /api/v1/classificar`
-
-Recebe título e texto e retorna a classificação.
-
-### Entrada
-
-```json
-{
-  "titulo": "O que é Machine Learning",
-  "texto": "Machine Learning permite que sistemas aprendam padrões a partir de dados."
-}
-```
-
-### Saída
-
-```json
-{
-  "categoria": "Ciência",
-  "probabilidade": 0.78,
-  "informacoes_adicionais": [
-    "machine",
-    "learning",
-    "dados",
-    "sistemas"
-  ]
-}
-```
-### Erros principais
-
-| Código | Situação                    |
-| ------ | --------------------------- |
-| `422`  | Dados inválidos ou ausentes |
-| `503`  | Modelo não carregado        |
-| `500`  | Erro inesperado             |
-
----
-
-# 📦 Versionamento do Modelo
-
-Os principais artefatos do modelo são:
+### Artefatos do modelo
 
 ```text
 vectorizer.pkl
 modelo.pkl
+tfidf_keywords.pkl
 ```
-Eles foram gerados utilizando **scikit-learn 1.6.1**.
-Ao atualizar o modelo, é necessário garantir a compatibilidade da versão do Scikit-Learn para evitar problemas de desserialização.
+
+Esses arquivos são carregados pela API FastAPI na inicialização, evitando a necessidade de treinar novamente o modelo durante a execução.
 
 ---
 
-# 🛠️ Tecnologias
+# ⚙️ Back-end
 
-### Back-end
+O Back-end é a camada central da aplicação.
 
-* Java
-* Spring Boot
-* Spring Web
-* Spring Data / JPA
+Foi desenvolvido com:
+
+* Java 21
+* Spring Boot 4.1
+* Spring Data JPA
 * Hibernate
-* Jakarta Validation
-* Maven
+* Spring Modulith
+* Resilience4j
+* OpenCSV
+* Springdoc OpenAPI
+* Actuator
+* Micrometer
+* OpenTelemetry
 
-### Ciência de Dados
+Suas principais responsabilidades são:
 
-* Python
-* FastAPI
-* Pandas
-* Scikit-Learn
-* TF-IDF
-* SGDClassifier
+* Receber requisições;
+* Validar dados;
+* Aplicar regras de negócio;
+* Comunicar-se com a API de Ciência de Dados;
+* Persistir os resultados;
+* Processar arquivos CSV;
+* Tratar erros;
+* Retornar respostas estruturadas.
 
-### Front-end
+---
 
-* Angular 20+
+# 🌐 Principais Endpoints
+
+### `POST /conteudo`
+
+Cadastra e classifica um conteúdo técnico.
+
+```json
+{
+  "titulo": "Programação orientada a objetos",
+  "texto": "A programação orientada a objetos é um paradigma de programação baseado no conceito de objetos."
+}
+```
+
+Resposta:
+
+```json
+{
+  "categoria": "Tecnologia",
+  "confianca": 0.9854,
+  "palavras_chave": [
+    "programação",
+    "objetos",
+    "orientada",
+    "paradigma",
+    "encapsulamento"
+  ]
+}
+```
+
+### `GET /conteudo/titulo`
+
+Realiza busca paginada por título.
+
+### `GET /conteudo/categoria`
+
+Realiza busca paginada por categoria.
+
+### `GET /conteudo/relacionados/{id}`
+
+Retorna conteúdos relacionados da mesma categoria.
+
+### `POST /conteudo/lote`
+
+Permite cadastro em lote através de arquivo CSV.
+
+### `/users`
+
+Disponibiliza operações de CRUD de usuários no Back-end.
+
+Os endpoints principais estão documentados na documentação técnica do projeto.
+
+---
+
+# 📄 Cadastro em Lote
+
+O endpoint:
+
+```text
+POST /conteudo/lote
+```
+
+aceita arquivos CSV contendo:
+
+```text
+titulo,texto
+```
+
+O arquivo é validado e cada registro é processado individualmente.
+
+Ao final, o sistema apresenta um relatório contendo:
+
+* Total de registros;
+* Sucessos;
+* Falhas;
+* Motivo das falhas.
+
+O limite documentado para o arquivo é de **10 MB**.
+
+---
+
+# 🔄 Deduplicação Inteligente
+
+Antes de enviar um conteúdo para classificação, o Back-end calcula um **hash SHA-256** do texto.
+
+```text
+Novo conteúdo
+      ↓
+SHA-256
+      ↓
+Já existe?
+   ↙     ↘
+ Sim      Não
+  ↓        ↓
+Reutiliza  IA
+resultado  ↓
+          Salva
+```
+
+Quando o conteúdo já foi classificado, o sistema reutiliza o resultado existente e evita uma nova chamada à IA.
+
+Isso reduz processamento desnecessário e mantém a consistência da classificação.
+
+---
+
+# 🛡️ Resiliência
+
+A comunicação com a API de Ciência de Dados utiliza **Resilience4j**.
+
+São utilizados:
+
+* **Circuit Breaker**
+* **Retry**
+* **Bulkhead**
+* **Fallback**
+
+Esses mecanismos ajudam a evitar que uma falha no serviço de classificação comprometa toda a aplicação.
+
+O Circuit Breaker trabalha com janela de chamadas, o Retry realiza novas tentativas em caso de falha e o Bulkhead limita chamadas simultâneas ao classificador.
+
+---
+
+# 🖥️ Front-end
+
+A interface web foi desenvolvida com:
+
+* Angular 21+
 * TypeScript
 * Tailwind CSS
 * PrimeNG
 * PrimeIcons
-* Chart.js
-* ng2 Charts
+* RxJS
+* Angular Signals
 
-### Cloud
+A aplicação utiliza arquitetura **zoneless**, com Angular Signals para gerenciamento do estado reativo.
 
-* Oracle Cloud Infrastructure (OCI)
+### Principais telas
+
+### 📝 Novo Conteúdo
+
+Permite:
+
+* Cadastro manual;
+* Inserção de título e texto;
+* Upload de CSV para cadastro em lote.
+
+### 📚 Artigos
+
+Exibe os conteúdos classificados, permitindo:
+
+* Busca por título;
+* Filtro por categoria;
+* Contagem de resultados.
+
+### 🔎 Detalhes
+
+Ao selecionar um conteúdo, é exibido um popup contendo:
+
+* Texto completo;
+* Categoria;
+* Confiança da classificação;
+* Palavras-chave.
 
 ---
 
-# 📋 Como Executar
+# 🗄️ Banco de Dados
 
-1. Clone o repositório.
-2. Instale as dependências da API de Ciência de Dados.
-3. Instale as dependências do Back-end.
-4. Inicie a API FastAPI.
-5. Inicie a aplicação Spring Boot.
-6. Utilize o Swagger ou Postman para testar os endpoints.
+O projeto utiliza **Oracle Database** para persistência dos conteúdos classificados.
+
+A aplicação foi validada localmente utilizando Oracle através de Docker.
+
+O Back-end utiliza:
+
+* Spring Data JPA;
+* Hibernate;
+* Oracle JDBC Driver.
+
+Os conteúdos classificados são persistidos na base de conhecimento, permitindo sua consulta posterior.
 
 ---
 
-# 📊 Exemplos de Uso
+# ☁️ Oracle Cloud Infrastructure
 
-| Conteúdo                        | Categoria        |
-| ------------------------------- | ---------------- |
-| Introdução ao Spring Boot       | **Backend**      |
-| Manipulação de dados com Pandas | **Data Science** |
-| Configuração com Docker         | **DevOps**       |
+O projeto foi desenvolvido considerando a integração com o ecossistema **Oracle Cloud Infrastructure (OCI)**.
+
+A arquitetura utiliza Oracle Database e possui infraestrutura preparada para evolução em nuvem, incluindo armazenamento de dados e arquivos.
+
+---
+
+# 🧪 Testes e Validação
+
+A solução foi validada de ponta a ponta em ambiente local:
+
+```text
+Angular
+   ↓
+Spring Boot
+   ↓
+FastAPI
+   ↓
+Machine Learning
+   ↓
+Oracle Database
+```
+
+Foram testados:
+
+* Cadastro individual;
+* Classificação automática;
+* Busca por título;
+* Filtro por categoria;
+* Visualização dos detalhes;
+* Cadastro em lote via CSV;
+* Arquivos com erros;
+* Deduplicação;
+* Falhas na comunicação com a API de IA;
+* Resiliência do Back-end.
+
+---
+
+# 📈 Resultados do Modelo
+
+| Indicador                      |         Resultado |
+| ------------------------------ | ----------------: |
+| Dataset final                  |  **2.560 textos** |
+| Categorias                     |            **13** |
+| Textos técnicos adicionados    |            **90** |
+| Vocabulário TF-IDF             | **23.860 termos** |
+| Acurácia do modelo em produção |        **82,81%** |
+| F1 macro na validação cruzada  |         **0,822** |
+
+O modelo apresentou melhor desempenho em categorias com vocabulário mais característico, enquanto **Ciência** foi uma das categorias mais desafiadoras devido à sobreposição de termos com Tecnologia e outras áreas.
+
+---
+
+# 🛠️ Stack Tecnológica
+
+| Camada              | Tecnologias                                               |
+| ------------------- | --------------------------------------------------------- |
+| 🧠 Ciência de Dados | Python, FastAPI, Scikit-learn, Pandas, NLTK, NumPy        |
+| ⚙️ Back-end         | Java 21, Spring Boot 4.1, JPA, Hibernate, Spring Modulith |
+| 🛡️ Resiliência     | Resilience4j                                              |
+| 🖥️ Front-end       | Angular 21+, TypeScript, Tailwind CSS, PrimeNG, RxJS      |
+| 🗄️ Banco           | Oracle Database                                           |
+| ☁️ Cloud            | Oracle Cloud Infrastructure (OCI)                         |
+| 🐳 Infraestrutura   | Docker                                                    |
+| 📊 Observabilidade  | Actuator, Micrometer, OpenTelemetry                       |
 
 ---
 
@@ -537,19 +472,53 @@ Ao atualizar o modelo, é necessário garantir a compatibilidade da versão do S
 ```text
 TechMind/
 ├── backend/
-│   └── API REST - Spring Boot
+│   └── API REST - Java / Spring Boot
 ├── ciencia-dados/
 │   ├── API FastAPI
 │   ├── Modelos
-│   └── Notebooks
-├── dashboard/
-│   └── Interface visual
+│   └── Notebook
+├── frontend/
+│   └── Angular
 ├── dataset/
 │   └── Dados utilizados
 ├── postman/
 │   └── Collection da API
 └── README.md
 ```
+
+---
+
+# 🚧 Status
+
+### Implementado
+
+* ✅ Dataset e preparação dos dados
+* ✅ Treinamento e avaliação do modelo
+* ✅ API de Ciência de Dados
+* ✅ API REST Java
+* ✅ Classificação automática
+* ✅ Extração de palavras-chave
+* ✅ Persistência no Oracle
+* ✅ Cadastro individual
+* ✅ Cadastro em lote via CSV
+* ✅ Busca e filtro de conteúdos
+* ✅ Deduplicação por SHA-256
+* ✅ Circuit Breaker, Retry e Bulkhead
+* ✅ Interface Angular
+* ✅ Teste ponta a ponta
+* ✅ Documentação
+
+### Próximas evoluções
+
+* 🔄 Login e autenticação no front-end
+* 🔄 Dashboard de visualização
+* 🔄 Configuração para deploy em domínios separados
+* 🔄 Autenticação entre Back-end e API de Ciência de Dados
+* 🔄 Busca semântica
+* 🔄 Sistema de recomendação
+
+Os endpoints de usuários já estão implementados no Back-end, mas ainda não são consumidos pelo front-end nesta versão.
+
 ---
 
 ## 👥 G9-BR-Team-04 – SolutionSquad (Esquadrão das Soluções)
@@ -564,42 +533,18 @@ TechMind/
 | **Marcus Corrêa Lopes Guedes**    | 📌 Project Manager / Front End Developer        | [LinkedIn](https://www.linkedin.com/in/marcusguedes/)  |
 | **Rayssa Santos**                 | 🤖 Data Scientist                               | [LinkedIn](https://www.linkedin.com/in/rayssasnt )     |
 | **Simone Silva**                  | 💻 Back End Developer / 📚 Documentation & Demo | [LinkedIn](https://www.linkedin.com/in/simone-fsilva/) |
----
-
-# 🔄 Status
-
-* ✅ Escopo definido
-* ✅ Dataset criado
-* ✅ Modelo treinado
-* ✅ API desenvolvida
-* ✅ API de Ciência de Dados
-* ✅ Dashboard
-* 🔄 Integração com OCI
-* 🔄 Deploy
-* ✅ Documentação
-
-**🚧 Projeto em desenvolvimento contínuo.**
----
-# 🔮 Evoluções Futuras
-
-### 🔎 Busca semântica
-Localizar conteúdos semelhantes mesmo quando utilizam termos diferentes.
-
-### 💡 Recomendação
-Relacionar conteúdos e sugerir materiais relevantes.
-
-### 📊 Dashboard
-Expandir a visualização de categorias, tecnologias, conteúdos e estatísticas.
-
-### 🧠 Base de conhecimento
-Transformar os conteúdos classificados em uma base de conhecimento inteligente e reutilizável.
 
 ---
+
 # 🙏 Agradecimentos
 
-* **Oracle Next Education (ONE) G9 BR** – Pela oportunidade e mentoria;
-* **Oracle Cloud Infrastructure (OCI)** – Pela infraestrutura;
-* **Mentores e Organizadores** – Pelo suporte e orientação.
+Agradecemos à **Oracle Next Education (ONE)**, **Alura**, mentores e organizadores pela oportunidade de participar do Hackathon e colocar em prática conhecimentos de desenvolvimento, Ciência de Dados, Cloud e trabalho em equipe.
+
 ---
-## ⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR
-**TechMind — Transformando informação em conhecimento estruturado.**
+
+## ⭐ TechMind
+
+**Transformando informação em conhecimento estruturado.**
+
+Projeto desenvolvido para o **Hackathon Oracle Next Education (ONE) G9 BR — Alura + Oracle**.
+
