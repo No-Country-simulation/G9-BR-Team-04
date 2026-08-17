@@ -94,12 +94,37 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 | **Arquitetura** | Spring Modulith |
 | **API** | REST / JSON |
 | **Persistência** | Oracle Database |
-| **Cloud** | Oracle Cloud Infrastructure (OCI) |
+| **Cloud** | Oracle Cloud Infrastructure (OCI) — Object Storage |
 | **Cache** | Redis |
 | **Resiliência** | Resilience4j — Circuit Breaker, Retry e Bulkhead |
 | **Observabilidade** | Spring Boot Actuator, Prometheus e OpenTelemetry |
 | **Testes** | JUnit e k6 |
 | **Build / Dependências** | Maven |
+
+---
+
+## 🔄 Arquitetura Funcional — Fluxo da Solução
+
+O TechMind utiliza uma arquitetura desacoplada, conectando a aplicação ao serviço de Machine Learning responsável pelo processamento e classificação dos conteúdos técnicos.
+
+```text
+Conteúdo Técnico
+       ↓
+Frontend / Aplicação
+       ↓
+API REST — Spring Boot
+       ↓
+Serviço de Machine Learning
+       ↓
+Classificação + Confiança + Palavras-chave
+       ↓
+Oracle Database / Redis
+       ↓
+Consulta e Reutilização do Conhecimento
+
+       ↕
+OCI Object Storage
+```
 
 ---
 
@@ -200,9 +225,11 @@ Execute o backend :
 
 ## ☁️ Oracle Cloud Infrastructure
 
-A OCI faz parte da arquitetura do projeto, atendendo ao requisito de integração em Cloud do Hackathon.
+A Oracle Cloud Infrastructure (OCI) faz parte da arquitetura do TechMind por meio do OCI Object Storage, utilizado para armazenamento de artefatos e recursos do projeto.
 
-> IMPORTANTE: detalhar aqui, antes da entrega final, exatamente quais serviços OCI estão efetivamente implantados e utilizados pela versão apresentada no Demo Day.
+Essa integração permite manter os arquivos de forma centralizada e disponível na infraestrutura Cloud, atendendo ao requisito obrigatório de utilização de um serviço OCI no Hackathon.
+
+> OCI utilizada: Oracle Cloud Infrastructure — Object Storage
 
 --- 
 
@@ -252,7 +279,7 @@ Content-Type: multipart/form-data
 
 O TechMind processa os registros, identifica conteúdos já existentes e organiza os novos materiais automaticamente.
 
-> Resultado: menos catalogação manual e uma base de conhecimento mais estruturada, pesquisável e reutilizável.
+> Resultado: Menos catalogação manual e uma base de conhecimento mais estruturada, pesquisável e reutilizável.
  
 ---
 
@@ -309,4 +336,4 @@ G9-BR-Team-04/
 
 ---
 
-## ⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
+⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
