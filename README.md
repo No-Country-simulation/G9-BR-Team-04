@@ -4,11 +4,9 @@
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?logo=springboot&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-Machine%20Learning-3776AB?logo=python&logoColor=white)
-
 ![Oracle](https://img.shields.io/badge/Oracle-Database-F80000?logo=oracle&logoColor=white)
 ![OCI](https://img.shields.io/badge/Oracle%20Cloud-OCI-F80000?logo=oracle&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-Cache-DC382D?logo=redis&logoColor=white)
-
 ![REST API](https://img.shields.io/badge/API-REST-009688)
 ![Tests](https://img.shields.io/badge/Tests-Automated-2EA44F)
 
