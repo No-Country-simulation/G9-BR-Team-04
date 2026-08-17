@@ -1,6 +1,7 @@
 # 🧠 TechMind
 ![Hackathon](https://img.shields.io/badge/Hackathon-ONE%20G9-7B2CBF)
 
+
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?logo=springboot&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-Machine%20Learning-3776AB?logo=python&logoColor=white)
