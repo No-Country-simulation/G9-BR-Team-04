@@ -333,7 +333,7 @@ G9-BR-Team-04/
 | **Jaqueline Silva Broccolo** | 🔗 Full Stack Developer |
 | **Marcus Corrêa Lopes Guedes** | 📌 Project Manager & Front End Developer & Demo |
 | **Rayssa Santos** | 🤖 Data Scientist |
-| **Simone Silva** | 💻 Back End Developer & Demo |
+| **Simone Silva** | 💻 Back End Developer & Demo | 
 
 ---
 
