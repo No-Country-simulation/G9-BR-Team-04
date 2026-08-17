@@ -259,13 +259,15 @@ Um estudante salva um material sobre desenvolvimento de APIs com Java e Spring B
 
 Entrada:
 
+```text
 {
   "titulo": "Introdução ao Spring Boot",
   "texto": "Neste conteúdo são apresentados conceitos para criação de APIs REST utilizando Java e Spring Boot."
 }
-
+```
 Resultado esperado:
 
+```text
 {
   "categoria": "Backend",
   "probabilidade": 0.89,
@@ -275,6 +277,7 @@ Resultado esperado:
     "API REST"
   ]
 }
+```
 
 2. Consulta de conteúdos organizados
 
@@ -282,7 +285,9 @@ Após o processamento, estudantes ou profissionais podem localizar conteúdos ar
 
 Exemplo:
 
+```text
 GET /conteudo/categoria/Backend
+```
 
 O sistema retorna os conteúdos classificados naquela categoria, permitindo reutilizar o conhecimento já organizado.
 
@@ -291,8 +296,10 @@ O sistema retorna os conteúdos classificados naquela categoria, permitindo reut
 Uma plataforma educacional ou equipe técnica pode importar vários conteúdos de uma única vez por meio de um arquivo CSV.
 
 POST /conteudo/lote
+```
 Content-Type: multipart/form-data
 
+```
 O TechMind processa os registros, identifica conteúdos já existentes e organiza os novos materiais automaticamente.
 
 > Resultado: Menos catalogação manual e uma base de conhecimento mais estruturada, pesquisável e reutilizável.
