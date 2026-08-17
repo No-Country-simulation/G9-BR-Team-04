@@ -50,23 +50,37 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 **MVP**
 
 ✅ Processamento de conteúdos técnicos
+
 ✅ Classificação automática por Machine Learning
+
 ✅ Retorno estruturado em JSON
+
 ✅ API REST
+
 ✅ Validação de entrada e tratamento de erros
+
 ✅ Persistência de dados
+
 ✅ Integração com OCI
 
 **Funcionalidades adicionais**
 
 🔎 Consulta por título e categoria
+
 🔗 Recomendação de conteúdos relacionados
+
 📄 Processamento em lote via CSV
+
 ⚡ Cache com Redis
+
 🔐 Deduplicação de conteúdo com SHA-256
+
 🛡️ Resiliência com Circuit Breaker, Retry e Bulkhead
+
 🧪 Testes automatizados
+
 📊 Observabilidade e métricas
+
 📈 Testes de carga com k6
 
 ---
