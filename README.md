@@ -66,7 +66,7 @@ O TechMind utiliza uma arquitetura em três camadas:
               ┌────────┴─────────┐
               │                  │
               ▼                  ▼
-       🧠 API Python        🗄️ Oracle Database
+       🧠 API Python        🗄️ Oracle Database 
           FastAPI
               │
               ▼
@@ -538,11 +538,10 @@ Os endpoints de usuários já estão implementados no Back-end, mas ainda não s
 | **Arthur Carvalho Ferreira**      | 💻 Back End Developer                           | [LinkedIn](https://www.linkedin.com/in/arthur-fernando-carvalho-ferreira-96542772?utm_source=share_via&utm_content=profile&utm_medium=member_android )                            |
 | **Carlos Caique Borges de Souza** | 💻 Back End Developer                           | [LinkedIn](https://www.linkedin.com/in/devcaiqueborges)|
 | **Gabriel Leal**                  | ☁️ DevOps Engineer                              | [LinkedIn](https://www.linkedin.com/in/gabriellincolnleal )|
-| **Jaqueline Silva Broccolo**      | 🔗 Full Stack Developer                         | [LinkedIn](https://www.linkedin.com/in/jaqueline-silva-broccolo/ )                         |
-| **Lucas Aoki**                    | 📊 Data Analyst                                 | [LinkedIn](LINKEDIN_LUCAS)                             |
+| **Jaqueline Silva Broccolo**      | 🔗 Full Stack Developer                         | [LinkedIn](https://www.linkedin.com/in/jaqueline-silva-broccolo/ )                       |
 | **Marcus Corrêa Lopes Guedes**    | 📌 Project Manager / Front End Developer        | [LinkedIn](https://www.linkedin.com/in/marcusguedes/)  |
 | **Rayssa Santos**                 | 🤖 Data Scientist                               | [LinkedIn](https://www.linkedin.com/in/rayssasnt )     |
-| **Simone Silva**                  | 💻 Back End Developer / 📚 Documentation & Demo | [LinkedIn](https://www.linkedin.com/in/simone-fsilva/) |
+| **Simone Silva**                  | 💻 Back End Developer / 📚 Documentation  | [LinkedIn](https://www.linkedin.com/in/simone-fsilva/) |
 
 ---
 
