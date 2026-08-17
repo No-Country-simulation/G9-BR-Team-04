@@ -151,6 +151,46 @@ Content-Type: application/json
 
 ---
 
+## 📦 Processamento em lote
+
+A plataforma também permite processar múltiplos conteúdos por meio de arquivos CSV:
+
+POST /conteudo/lote
+
+Content-Type: multipart/form-data
+
+**Esse recurso permite ampliar o uso da solução para bases maiores de conhecimento.**
+
+---
+
+## ▶️ Como executar
+
+Pré-requisitos
+
+- Java 21
+- Maven
+- Python
+- Oracle Database
+- Redis
+- Git
+
+Clone o projeto :
+
+```text
+git clone https://github.com/No-Country-simulation/G9-BR-Team-04.git
+cd G9-BR-Team-04
+```
+Configure as variáveis de ambiente necessárias para banco de dados e serviços externos.
+
+Execute o backend :
+
+```text
+./mvnw spring-boot:run
+```
+Para funcionamento completo da aplicação, o serviço de Machine Learning e as dependências utilizadas pela arquitetura também devem estar disponíveis.
+
+---
+
 ## 🧪 Exemplos de Uso
 
 | 📄 Conteúdo Técnico | 🏷️ Categoria |
