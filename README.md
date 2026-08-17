@@ -85,21 +85,24 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ---
 
-## 🏗️ Arquitetura e Ttecnologias
+## 🏗️ Arquitetura e Tecnologias
 
-```text
-Camada	Tecnologias
-Machine Learning	Python / Ciência de Dados
-Backend	Java 21 / Spring Boot
-API	REST / JSON
-Persistência	Oracle Database
-Cloud	Oracle Cloud Infrastructure — OCI
-Cache	Redis
-Resiliência	Resilience4j
-Observabilidade	Actuator / Prometheus / OpenTelemetry
-Testes	JUnit / k6
-Arquitetura	Spring Modulith
-```
+## 🏗️ Arquitetura e Tecnologias
+
+| Camada | Tecnologia / Ferramenta |
+|---|---|
+| **Ciência de Dados / ML** | Python |
+| **Back-End** | Java 21, Spring Boot |
+| **Arquitetura** | Spring Modulith |
+| **API** | REST / JSON |
+| **Persistência** | Oracle Database |
+| **Cloud** | Oracle Cloud Infrastructure (OCI) |
+| **Cache** | Redis |
+| **Resiliência** | Resilience4j — Circuit Breaker, Retry e Bulkhead |
+| **Observabilidade** | Spring Boot Actuator, Prometheus e OpenTelemetry |
+| **Testes** | JUnit e k6 |
+| **Build / Dependências** | Maven |
+
 ---
 
 ## 🤖 Ciência de Dados
