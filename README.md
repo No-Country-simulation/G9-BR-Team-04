@@ -1,7 +1,6 @@
 # 🧠 TechMind
 ![Hackathon](https://img.shields.io/badge/Hackathon-ONE%20G9-7B2CBF)
 
-
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?logo=springboot&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-Machine%20Learning-3776AB?logo=python&logoColor=white)
@@ -17,69 +16,58 @@ Projeto desenvolvido pelo **G9-BR-Team-04** para o **Hackathon ONE G9 | Oracle +
 
 ---
 
-## 📌 Sobre o Projeto
+## ❗ O problema
 
-O TechMind é uma solução inteligente para organizar, classificar e enriquecer conteúdos técnicos utilizando técnicas de Ciência de Dados e integração com o Oracle Cloud Infrastructure (OCI) para armazenamento de dados e arquivos.
+Profissionais e estudantes de tecnologia consomem diariamente grandes volumes de documentação, artigos, cursos, tutoriais e anotações. Com o tempo, organizar e recuperar essas informações se torna um desafio.
 
-A plataforma auxilia estudantes e profissionais de tecnologia a transformar grandes volumes de informações em conhecimento estruturado e reutilizável.
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=FFD43B)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Oracle Cloud Infrastructure](https://img.shields.io/badge/Oracle_Cloud_Infrastructure-F80000?style=for-the-badge&logo=oracle&logoColor=white)
----
-
-## ❗ Problema
-
-Estudantes e profissionais da área de tecnologia consomem diariamente diversos conteúdos como:
-
-- Documentações
-- Cursos
-- Artigos
-- Tutoriais
-- Anotações técnicas
-  
-
-Com o grande volume de informações, torna-se difícil organizar, encontrar e reutilizar esses conhecimentos.
-
-O TechMind busca solucionar esse desafio automatizando a organização e classificação desses conteúdos.
+O **TechMind** foi desenvolvido para reduzir esse esforço, utilizando Inteligência Artificial e Ciência de Dados para automatizar a organização do conhecimento técnico.
 
 ---
 
-## 💡 Solução Proposta
+## 💡 A solução
 
-A solução recebe textos técnicos e utiliza técnicas de Machine Learning para analisar o conteúdo e retornar informações estruturadas.
+A plataforma recebe conteúdos técnicos e utiliza um modelo de Machine Learning para processá-los e retornar informações estruturadas, como:
 
-O sistema realiza:
+classificação temática;
+nível de confiança da classificação;
+palavras-chave;
+conteúdos relacionados;
+consulta por categorias;
+processamento individual ou em lote.
 
-- Classificação automática de conteúdos;
-- Extração de palavras-chave;
-- Identificação de conteúdos relacionados;
-- Organização inteligente da base de conhecimento.
+Os resultados são disponibilizados em **JSON por meio de uma API REST**, permitindo integração com outras aplicações.
   
 ---
+
 ## 🎯 Objetivo
 
-Receber um conteúdo técnico, processá-lo utilizando um modelo de Machine Learning e retornar informações organizadas, como:
-
-- Categoria
-- Palavras-chave
-- Conteúdos relacionados em formato JSON.
+Desenvolver um **MVP funcional para organização inteligente de conteúdos técnicos**, utilizando Ciência de Dados e Machine Learning para automatizar sua classificação e enriquecimento, facilitando a consulta, descoberta e reutilização do conhecimento por estudantes, profissionais e equipes.
 
 ---
 
   ## ✨ Funcionalidades
+  
+**MVP**
 
-✅ Classificação automática de conteúdo técnico
+✅ Processamento de conteúdos técnicos
+✅ Classificação automática por Machine Learning
+✅ Retorno estruturado em JSON
+✅ API REST
+✅ Validação de entrada e tratamento de erros
+✅ Persistência de dados
+✅ Integração com OCI
 
-✅ Extração de palavras-chave
+**Funcionalidades adicionais**
 
-✅ Recomendação de conteúdos relacionados
-
-✅ API REST para integração
-
-✅ Persistência utilizando OCI Object Storage
-
-✅ Dashboard de visualização
+🔎 Consulta por título e categoria
+🔗 Recomendação de conteúdos relacionados
+📄 Processamento em lote via CSV
+⚡ Cache com Redis
+🔐 Deduplicação de conteúdo com SHA-256
+🛡️ Resiliência com Circuit Breaker, Retry e Bulkhead
+🧪 Testes automatizados
+📊 Observabilidade e métricas
+📈 Testes de carga com k6
 
 ---
 
