@@ -106,9 +106,6 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ## 🔄 Arquitetura Funcional — Fluxo da Solução
 
-O TechMind utiliza uma arquitetura desacoplada, conectando a aplicação ao serviço de Machine Learning responsável pelo processamento e classificação dos conteúdos técnicos.
-
-```text
 O TechMind utiliza uma arquitetura desacoplada, separando a aplicação Back-End do serviço responsável pela inferência de Machine Learning.
 
 Os artefatos do modelo treinado são armazenados no **OCI Object Storage** e carregados pela **API Python durante sua inicialização**.
