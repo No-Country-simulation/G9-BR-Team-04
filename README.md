@@ -1,5 +1,6 @@
 # 🧠 TechMind
 ![Hackathon](https://img.shields.io/badge/Hackathon-ONE%20G9-7B2CBF)
+![Squad Solutions](https://img.shields.io/badge/Squad%20Solutions-Esquadr%C3%A3o%20de%20Solu%C3%A7%C3%B5es-6C3EB8?style=flat)
 
 ![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?logo=springboot&logoColor=white)
