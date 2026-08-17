@@ -89,7 +89,8 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 | Camada | Tecnologia / Ferramenta |
 |---|---|
-| **Ciência de Dados / ML** | Python |
+| **Ciência de Dados / ML** | Python, TF-IDF, modelo de classificação |
+| **API de ML** | Python |
 | **Back-End** | Java 21, Spring Boot |
 | **Arquitetura** | Spring Modulith |
 | **API** | REST / JSON |
@@ -108,22 +109,37 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 O TechMind utiliza uma arquitetura desacoplada, conectando a aplicação ao serviço de Machine Learning responsável pelo processamento e classificação dos conteúdos técnicos.
 
 ```text
-Conteúdo Técnico
-       ↓
-Frontend / Aplicação
-       ↓
-API REST — Spring Boot
-       ↓
-Serviço de Machine Learning
-       ↓
-Classificação + Confiança + Palavras-chave
-       ↓
-Oracle Database / Redis
-       ↓
-Consulta e Reutilização do Conhecimento
+O TechMind utiliza uma arquitetura desacoplada, separando a aplicação Back-End do serviço responsável pela inferência de Machine Learning.
 
-       ↕
-OCI Object Storage
+Os artefatos do modelo treinado são armazenados no **OCI Object Storage** e carregados pela **API Python durante sua inicialização**.
+
+```text
+                     OCI Object Storage
+                            │
+              ┌─────────────┴─────────────┐
+              │  modelo.pkl               │
+              │  vectorizer_.pkl          │
+              │  tfidf_keywords.pkl       │
+              └─────────────┬─────────────┘
+                            │
+                     download no startup
+                            ↓
+                      API Python / ML
+                            │
+                            ↓
+Conteúdo Técnico → API REST Spring Boot
+                            │
+                            ↓
+                    Serviço de ML
+                            │
+                            ↓
+          Categoria + Confiança + Palavras-chave
+                            │
+                            ↓
+                  Oracle Database / Redis
+                            │
+                            ↓
+             Consulta e Reutilização
 ```
 
 ---
@@ -225,12 +241,15 @@ Execute o backend :
 
 ## ☁️ Oracle Cloud Infrastructure
 
-A Oracle Cloud Infrastructure (OCI) faz parte da arquitetura do TechMind por meio do OCI Object Storage, utilizado para armazenamento de artefatos e recursos do projeto.
+O **OCI Object Storage** é utilizado para armazenar os três artefatos gerados durante o treinamento do modelo de Machine Learning:
 
-Essa integração permite manter os arquivos de forma centralizada e disponível na infraestrutura Cloud, atendendo ao requisito obrigatório de utilização de um serviço OCI no Hackathon.
+- `modelo.pkl` — classificador treinado;
+- `vectorizer_.pkl` — vetorizador TF-IDF utilizado na classificação;
+- `tfidf_keywords.pkl` — vetorizador TF-IDF utilizado na extração de palavras-chave.
 
-> OCI utilizada: Oracle Cloud Infrastructure — Object Storage
+Na inicialização, a **API Python realiza o download desses artefatos diretamente do OCI Object Storage** e os carrega para execução das inferências.
 
+Essa arquitetura desacopla os artefatos de Machine Learning da aplicação, facilitando seu armazenamento, distribuição e atualização.
 --- 
 
 ## 🧪 Exemplos de Uso
