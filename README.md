@@ -151,7 +151,7 @@ Content-Type: application/json
 }
 ```
 
-**A estrutura da resposta pode variar conforme o processamento realizado pelo modelo.**
+> **A estrutura da resposta pode variar conforme o processamento realizado pelo modelo.**
 
 ---
 
@@ -161,7 +161,9 @@ A plataforma também permite processar múltiplos conteúdos por meio de arquivo
 
 POST /conteudo/lote
 
+```text
 Content-Type: multipart/form-data
+```
 
 **Esse recurso permite ampliar o uso da solução para bases maiores de conhecimento.**
 
@@ -191,32 +193,80 @@ Execute o backend :
 ```text
 ./mvnw spring-boot:run
 ```
-Para funcionamento completo da aplicação, o serviço de Machine Learning e as dependências utilizadas pela arquitetura também devem estar disponíveis.
+
+> **Para funcionamento completo da aplicação, o serviço de Machine Learning e as dependências utilizadas pela arquitetura também devem estar disponíveis.**
 
 ---
 
+## ☁️ Oracle Cloud Infrastructure
+
+A OCI faz parte da arquitetura do projeto, atendendo ao requisito de integração em Cloud do Hackathon.
+
+> IMPORTANTE: detalhar aqui, antes da entrega final, exatamente quais serviços OCI estão efetivamente implantados e utilizados pela versão apresentada no Demo Day.
+
+--- 
+
 ## 🧪 Exemplos de Uso
 
-| 📄 Conteúdo Técnico | 🏷️ Categoria |
-|----------------------|--------------|
-| Introdução ao Spring Boot | 💻 **Backend** |
-| Manipulação de dados utilizando Pandas | 📊 **Data Science** |
-| Configuração de ambientes utilizando Docker | ☁️ **DevOps** |
+Exemplos de Uso
 
+1. Classificação de conteúdo técnico
+
+Um estudante salva um material sobre desenvolvimento de APIs com Java e Spring Boot. O TechMind processa o texto e identifica automaticamente sua categoria e informações relevantes.
+
+Entrada:
+
+{
+  "titulo": "Introdução ao Spring Boot",
+  "texto": "Neste conteúdo são apresentados conceitos para criação de APIs REST utilizando Java e Spring Boot."
+}
+
+Resultado esperado:
+
+{
+  "categoria": "Backend",
+  "probabilidade": 0.89,
+  "informacoes_adicionais": [
+    "Java",
+    "Spring Boot",
+    "API REST"
+  ]
+}
+
+2. Consulta de conteúdos organizados
+
+Após o processamento, estudantes ou profissionais podem localizar conteúdos armazenados por título ou categoria, facilitando a recuperação de materiais relacionados a determinado assunto.
+
+Exemplo:
+
+GET /conteudo/categoria/Backend
+
+O sistema retorna os conteúdos classificados naquela categoria, permitindo reutilizar o conhecimento já organizado.
+
+3. Processamento de conteúdos em lote
+
+Uma plataforma educacional ou equipe técnica pode importar vários conteúdos de uma única vez por meio de um arquivo CSV.
+
+POST /conteudo/lote
+Content-Type: multipart/form-data
+
+O TechMind processa os registros, identifica conteúdos já existentes e organiza os novos materiais automaticamente.
+
+> Resultado: menos catalogação manual e uma base de conhecimento mais estruturada, pesquisável e reutilizável.
+ 
 ---
 
 ## 📂 Estrutura do Projeto
 
 ```text
-TechMind/
-├── backend/
-│   └── API REST Spring Boot
-├── ciencia-dados/
-│   └── Modelos e notebooks ML
-├── dashboard/
-│   └── Interface visual
-├── dataset/
-│   └── Dados utilizados
+G9-BR-Team-04/
+├── src/
+│   ├── main/
+│   │   ├── java/          # API e regras de negócio
+│   │   └── resources/     # Configurações
+│   └── test/              # Testes automatizados
+├── grafana-load-tests/    # Testes de carga com k6
+├── pom.xml                # Dependências Maven
 └── README.md
 ```
 ---
