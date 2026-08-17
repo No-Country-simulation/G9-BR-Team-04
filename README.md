@@ -330,7 +330,6 @@ G9-BR-Team-04/
 | **Carlos Caique Borges de Souza** | 💻 Back End Developer |
 | **Gabriel Leal** | ☁️ DevOps Engineer |
 | **Jaqueline Silva Broccolo** | 🔗 Full Stack Developer |
-| **Lucas Aoki** | 📊 Data Analyst |
 | **Marcus Corrêa Lopes Guedes** | 📌 Project Manager & Front End Developer & Demo |
 | **Rayssa Santos** | 🤖 Data Scientist |
 | **Simone Silva** | 💻 Back End Developer & 📚 Documentation & Demo |
