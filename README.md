@@ -125,14 +125,18 @@ O serviço de classificação é desacoplado do backend Java e disponibilizado p
 
 ## 📡 Exemplo de utilização da API
 
-Requisição
+**Requisição**
+
 POST /conteudo
+
 Content-Type: application/json
 {
   "titulo": "Introdução ao Spring Boot",
   "texto": "Neste conteúdo são apresentados conceitos para criação de APIs REST utilizando Java e Spring Boot."
 }
-Resposta
+
+**Resposta**
+
 {
   "categoria": "Backend",
   "probabilidade": 0.89,
@@ -143,7 +147,7 @@ Resposta
   ]
 }
 
-A estrutura da resposta pode variar conforme o processamento realizado pelo modelo.
+**A estrutura da resposta pode variar conforme o processamento realizado pelo modelo.**
 
 ---
 
