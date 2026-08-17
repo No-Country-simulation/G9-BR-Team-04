@@ -129,14 +129,17 @@ O serviço de classificação é desacoplado do backend Java e disponibilizado p
 
 POST /conteudo
 
+```text
 Content-Type: application/json
 {
   "titulo": "Introdução ao Spring Boot",
   "texto": "Neste conteúdo são apresentados conceitos para criação de APIs REST utilizando Java e Spring Boot."
 }
+```
 
 **Resposta**
 
+```text
 {
   "categoria": "Backend",
   "probabilidade": 0.89,
@@ -146,6 +149,7 @@ Content-Type: application/json
     "API REST"
   ]
 }
+```
 
 **A estrutura da resposta pode variar conforme o processamento realizado pelo modelo.**
 
