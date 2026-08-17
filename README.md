@@ -63,7 +63,7 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ✅ Integração com OCI
 
-**Funcionalidades adicionais**
+**Funcionalidades Adicionais**
 
 🔎 Consulta por título e categoria
 
@@ -85,24 +85,20 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ---
 
-## 🏗️ Arquitetura da Solução
+## 🏗️ Arquitetura e Ttecnologias
 
 ```text
-
-             Usuário
-                │
-                ▼
-     API REST (Spring Boot)
-                │
-                ▼
- Modelo de Machine Learning
-            (Python)
-                │
-                ▼
- Processamento do Conteúdo
-          │              │
-          ▼              ▼
- Retorno em JSON   OCI Object Storage
+Camada	Tecnologias
+Machine Learning	Python / Ciência de Dados
+Backend	Java 21 / Spring Boot
+API	REST / JSON
+Persistência	Oracle Database
+Cloud	Oracle Cloud Infrastructure — OCI
+Cache	Redis
+Resiliência	Resilience4j
+Observabilidade	Actuator / Prometheus / OpenTelemetry
+Testes	JUnit / k6
+Arquitetura	Spring Modulith
 ```
 ---
 
