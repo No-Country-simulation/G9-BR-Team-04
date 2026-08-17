@@ -87,8 +87,6 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ## 🏗️ Arquitetura e Tecnologias
 
-## 🏗️ Arquitetura e Tecnologias
-
 | Camada | Tecnologia / Ferramenta |
 |---|---|
 | **Ciência de Dados / ML** | Python |
@@ -105,38 +103,13 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ---
 
-## 🤖 Ciência de Dados
+## 🧠 Ciência de Dados
 
-O modelo utiliza técnicas de Processamento de Linguagem Natural (NLP) para analisar conteúdos técnicos.
+O modelo de Machine Learning é responsável por analisar o conteúdo técnico e gerar sua classificação.
 
-Etapas:
+O pipeline contempla etapas de preparação e tratamento dos textos, transformação dos dados, treinamento, avaliação e disponibilização do modelo para consumo pela aplicação.
 
-- Coleta e preparação dos dados;
-- Limpeza dos textos;
-- Tratamento dos dados;
-- Transformação utilizando TF-IDF;
-- Treinamento do modelo;
-- Avaliação dos resultados;
-- Disponibilização do modelo para consumo pela API REST.
-
-## 🛠️ Tecnologias Utilizadas
-
-### Ciência de Dados
-
-- Python
-- Pandas
-- Scikit-Learn 
-- TF-IDF
-
-### Back-end
-
-- Java
-- Spring Boot
-
-### Cloud
-
-- Oracle Cloud Infrastructure (OCI)
-- Object Storage
+O serviço de classificação é desacoplado do backend Java e disponibilizado por API, facilitando sua evolução e integração com outros sistemas.
 
 ---
 
@@ -150,34 +123,30 @@ Etapas:
 
 ---
 
-## 📡 Como Utilizar a API
+## 📡 Exemplo de utilização da API
 
-### Endpoint
-
-POST `/conteudo`
-
-### Exemplo de Requisição
-
-```json
+Requisição
+POST /conteudo
+Content-Type: application/json
 {
   "titulo": "Introdução ao Spring Boot",
-  "texto": "Neste conteúdo são apresentados os conceitos básicos para criação de APIs REST utilizando Java e Spring Boot."
+  "texto": "Neste conteúdo são apresentados conceitos para criação de APIs REST utilizando Java e Spring Boot."
 }
-```
-
-### Exemplo de Resposta
-
-```json
+Resposta
 {
   "categoria": "Backend",
-  "probabilidade": 0.94,
-  "palavras_chave": [
+  "probabilidade": 0.89,
+  "informacoes_adicionais": [
     "Java",
     "Spring Boot",
     "API REST"
   ]
 }
-```
+
+A estrutura da resposta pode variar conforme o processamento realizado pelo modelo.
+
+---
+
 ## 🧪 Exemplos de Uso
 
 | 📄 Conteúdo Técnico | 🏷️ Categoria |
