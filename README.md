@@ -336,4 +336,4 @@ G9-BR-Team-04/
 
 ---
 
-⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
+## ⭐ Projeto desenvolvido para o Hackathon Oracle Next Education (ONE) G9 BR.
