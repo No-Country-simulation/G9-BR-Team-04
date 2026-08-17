@@ -123,7 +123,7 @@ O serviço de classificação é desacoplado do backend Java e disponibilizado p
 
 ---
 
-## 📡 Exemplo de utilização da API
+## 📡 Exemplo de Utilização da API
 
 **Requisição**
 
@@ -155,7 +155,7 @@ Content-Type: application/json
 
 ---
 
-## 📦 Processamento em lote
+## 📦 Processamento em Lote
 
 A plataforma também permite processar múltiplos conteúdos por meio de arquivos CSV:
 
@@ -169,7 +169,7 @@ Content-Type: multipart/form-data
 
 ---
 
-## ▶️ Como executar
+## ▶️ Como Executar
 
 Pré-requisitos
 
