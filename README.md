@@ -328,12 +328,12 @@ G9-BR-Team-04/
 | Integrante | Função |
 |------------|--------|
 | **Arthur Carvalho Ferreira** | 💻 Tech Lead & Back End Developer |
-| **Carlos Caique Borges de Souza** | 💻 Back End Developer |
+| **Carlos Caique Borges de Souza** | 💻 Back End Developer & 📚 Documentation |
 | **Gabriel Leal** | ☁️ DevOps Engineer |
 | **Jaqueline Silva Broccolo** | 🔗 Full Stack Developer |
 | **Marcus Corrêa Lopes Guedes** | 📌 Project Manager & Front End Developer & Demo |
 | **Rayssa Santos** | 🤖 Data Scientist |
-| **Simone Silva** | 💻 Back End Developer & 📚 Documentation & Demo |
+| **Simone Silva** | 💻 Back End Developer & Demo |
 
 ---
 
