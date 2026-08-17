@@ -343,9 +343,9 @@ G9-BR-Team-04/
 - ✅ Criação do dataset
 - ✅ Treinamento do modelo
 - ✅ Desenvolvimento da API
-- 🔄 Integração com OCI
-- 🔄 Dashboard
-- 🔄 Deploy
+- ✅ Definição do escopo Integração com OCI
+- ✅ Definição do escopo Dashboard
+- ✅ Deploy
 - ✅ Documentação inicial
 
 🚧 Projeto em desenvolvimento contínuo.
