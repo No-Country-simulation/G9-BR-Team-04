@@ -1,11 +1,20 @@
-# 🚀 TechMind
+# 🧠 TechMind
+![Hackathon](https://img.shields.io/badge/Hackathon-ONE%20G9-7B2CBF)
 
-Projeto do G9 BR Team 04 (SolutionSquad/Esquadrão das Soluções)
+![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?logo=springboot&logoColor=white)
+![Python](https://img.shields.io/badge/Python-Machine%20Learning-3776AB?logo=python&logoColor=white)
 
-Hackathon ONE G9 BR - Alura + Oracle
+![Oracle](https://img.shields.io/badge/Oracle-Database-F80000?logo=oracle&logoColor=white)
+![OCI](https://img.shields.io/badge/Oracle%20Cloud-OCI-F80000?logo=oracle&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-Cache-DC382D?logo=redis&logoColor=white)
 
-[![Hackathon ONE G9 BR](https://img.shields.io/badge/Hackathon-ONE_G9_BR-orange?style=for-the-badge&logo=oracle)](https://www.oracle.com/br/education/next-education/)
-![Team](https://img.shields.io/badge/Team-SolutionSquad_/_Esquadrão_das_Soluções-6C2BD9?style=for-the-badge)
+![REST API](https://img.shields.io/badge/API-REST-009688)
+![Tests](https://img.shields.io/badge/Tests-Automated-2EA44F)
+
+*Organização inteligente de conteúdos técnicos com Ciência de Dados, Machine Learning e Cloud.*
+
+Projeto desenvolvido pelo **G9-BR-Team-04** para o **Hackathon ONE G9 | Oracle + Alura**, com o objetivo de transformar conteúdos técnicos dispersos em conhecimento estruturado, pesquisável e reutilizável.
 
 ---
 
