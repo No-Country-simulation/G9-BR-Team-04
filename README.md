@@ -317,14 +317,14 @@ O TechMind processa os registros, identifica conteúdos já existentes e organiz
 ## 📂 Estrutura do Projeto
 
 ```text
-G9-BR-Team-04/
-├── src/
-│   ├── main/
-│   │   ├── java/          # API e regras de negócio
-│   │   └── resources/     # Configurações
-│   └── test/              # Testes automatizados
-├── grafana-load-tests/    # Testes de carga com k6
-├── pom.xml                # Dependências Maven
+TechMind/
+├── backend/
+│   └── API REST - Java / Spring Boot
+├── api-python/
+│   ├── app/            (API FastAPI)
+│   └── models/          (artefatos do modelo de ML)
+├── frontend/
+│   └── Angular
 └── README.md
 ```
 ---
