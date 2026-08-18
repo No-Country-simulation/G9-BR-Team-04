@@ -64,6 +64,8 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ✅ Integração com OCI
 
+✅ Interface web para cadastro e consulta
+
 **Funcionalidades Adicionais**
 
 🔎 Consulta por título e categoria
@@ -95,8 +97,9 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 | **Back-End** | Java 21, Spring Boot |
 | **Arquitetura** | Spring Modulith |
 | **API** | REST / JSON |
-| **Persistência** | Oracle Database |
-| **Cloud** | Oracle Cloud Infrastructure (OCI) — Object Storage |
+| **Front-End** |	Angular | TypeScript| Tailwind CSS| PrimeNG|
+| **Persistência** | Oracle Database (executado localmente, via Docker)|
+| **Cloud** | Oracle Cloud Infrastructure (OCI) — Object Storage (armazenamento dos artefatos do modelo)|
 | **Cache** | Redis |
 | **Resiliência** | Resilience4j — Circuit Breaker, Retry e Bulkhead |
 | **Observabilidade** | Spring Boot Actuator, Prometheus e OpenTelemetry |
@@ -147,6 +150,8 @@ Conteúdo Técnico → API REST Spring Boot
 O modelo de Machine Learning é responsável por analisar o conteúdo técnico e gerar sua classificação.
 
 O pipeline contempla etapas de preparação e tratamento dos textos, transformação dos dados, treinamento, avaliação e disponibilização do modelo para consumo pela aplicação.
+
+O dataset utilizado no treinamento possui 2.560 textos distribuídos em 13 categorias, com um vocabulário TF-IDF de 23.860 termos. O modelo escolhido para produção foi um SGDClassifier combinado com CalibratedClassifierCV, alcançando 82,81% de acurácia no conjunto de teste.
 
 O serviço de classificação é desacoplado do backend Java e disponibilizado por API, facilitando sua evolução e integração com outros sistemas.
 
@@ -247,6 +252,8 @@ O **OCI Object Storage** é utilizado para armazenar os três artefatos gerados 
 
 Na inicialização, a **API Python realiza o download desses artefatos diretamente do OCI Object Storage** e os carrega para execução das inferências.
 
+O banco de dados Oracle utilizado pela aplicação roda localmente, via Docker. Neste momento, a integração com a nuvem está concentrada no armazenamento dos artefatos do modelo de ML; o deploy da aplicação como um todo na OCI ainda não foi realizado e faz parte das próximas evoluções do projeto.
+
 Essa arquitetura desacopla os artefatos de Machine Learning da aplicação, facilitando seu armazenamento, distribuição e atualização.
 --- 
 
@@ -332,24 +339,39 @@ G9-BR-Team-04/
 | **Gabriel Leal**                  | ☁️ DevOps Engineer                              | [GitHub](https://github.com/Gabriel-Lincoln-Leal) | [LinkedIn](https://www.linkedin.com/in/gabriellincolnleal) |
 | **Jaqueline Silva Broccolo**      | 🔗 Full Stack Developer                         | [GitHub](https://github.com/jlinebsilva ) | [LinkedIn](https://www.linkedin.com/in/jaqueline-silva-broccolo/) |
 | **Marcus Corrêa Lopes Guedes**    | 📌 Project Manager / Front End Developer        | [GitHub](https://github.com/MCLG1661) | [LinkedIn](https://www.linkedin.com/in/marcusguedes/) |
-| **Rayssa Santos**                 | 🤖 Data Scientist                               | [GitHub](LINK) | [LinkedIn](https://www.linkedin.com/in/rayssasnt) |
+| **Rayssa Santos**                 | 🤖 Data Scientist                               | [GitHub](https://github.com/rayssasnt) | [LinkedIn](https://www.linkedin.com/in/rayssasnt) |
 | **Simone Silva**                  | 💻 Back End Developer / 📚 Documentation        | [GitHub](https://github.com/Simoneerp ) | [LinkedIn](https://www.linkedin.com/in/simone-fsilva/) |
 
 
 ---
+### Implementado
 
-## 🔄 Status do Projeto
+* ✅ Dataset e preparação dos dados
+* ✅ Treinamento e avaliação do modelo
+* ✅ API de Ciência de Dados
+* ✅ API REST Java
+* ✅ Classificação automática
+* ✅ Extração de palavras-chave
+* ✅ Persistência no Oracle
+* ✅ Cadastro individual
+* ✅ Cadastro em lote via CSV
+* ✅ Busca e filtro de conteúdos
+* ✅ Deduplicação por SHA-256
+* ✅ Circuit Breaker, Retry e Bulkhead
+* ✅ Interface Angular
+* ✅ Teste ponta a ponta
+* ✅ Documentação
+* ✅ Integração com OCI Object Storage
 
-- ✅ Definição do escopo
-- ✅ Criação do dataset
-- ✅ Treinamento do modelo
-- ✅ Desenvolvimento da API
-- ✅ Definição do escopo Integração com OCI
-- ✅ Definição do escopo Dashboard
-- ✅ Deploy
-- ✅ Documentação inicial
+### Próximas evoluções
 
-🚧 Projeto em desenvolvimento contínuo.
+* 🔄 Login e autenticação no front-end
+* 🔄 Dashboard de visualização
+* 🔄 Deploy da aplicação na OCI
+* 🔄 Configuração para deploy em domínios separados
+* 🔄 Autenticação entre Back-end e API de Ciência de Dados
+* 🔄 Busca semântica
+* 🔄 Sistema de recomendação
 ---
 
 ## 🙏 Agradecimentos
