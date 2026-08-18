@@ -94,7 +94,7 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 |---|---|
 | **Ciência de Dados / ML** | Python, TF-IDF, modelo de classificação |
 | **API de ML** | Python |
-| **Back-End** | Java 21, Spring Boot |
+| **Back-End** | Java 21, Spring Boot 4.1 |
 | **Arquitetura** | Spring Modulith |
 | **API** | REST / JSON |
 | **Front-End** |	Angular | TypeScript| Tailwind CSS| PrimeNG|
@@ -317,14 +317,11 @@ O TechMind processa os registros, identifica conteúdos já existentes e organiz
 ## 📂 Estrutura do Projeto
 
 ```text
-TechMind/
-├── backend/
-│   └── API REST - Java / Spring Boot
-├── api-python/
-│   ├── app/            (API FastAPI)
-│   └── models/          (artefatos do modelo de ML)
-├── frontend/
-│   └── Angular
+G9-BR-Team-04/
+├── backend/       # API REST - Java / Spring Boot
+├── api-python/    # API de Machine Learning - Python / FastAPI
+├── frontend/      # Aplicação web - Angular
+├── .gitignore
 └── README.md
 ```
 ---
