@@ -1,0 +1,18 @@
+@reference '../../styles/global.css';
+
+
+.btn-build {
+    @apply px-4 py-2 rounded-md;
+}
+
+.default {
+    @apply text-white bg-primary hover:bg-primary/70;
+}
+
+.custom {}
+
+.secondary {
+    @apply flex flex-row w-46 max-w-54 border text-sm; 
+    @apply font-secondary text-shadow-black gap-2 justify-center items-center;
+    @apply bg-transparent hover:bg-secondary/40 hover:font-bold;
+}

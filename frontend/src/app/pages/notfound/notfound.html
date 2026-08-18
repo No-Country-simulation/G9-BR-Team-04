@@ -1,0 +1,23 @@
+<div class="fixed w-screen">
+    <app-header />
+</div>
+
+<main class="flex flex-col px-4 h-screen place-content-center">
+    <div class="">
+        <div class="flex justify-center">
+            <svg data-p-icon="rectangle-xmark" [size]="96"></svg>
+        </div>
+
+        <h1 class="text-4xl font-bold text-center my-8">
+            404 - Página Não Encontrada
+        </h1>
+
+        <h2 class="mb-2 text-lg text-center text-slate-600">
+            A página que você está procurando não existe ou foi movida.
+        </h2>
+    </div>
+
+    <div class="flex place-content-center mt-6">
+        <app-button textButton="Voltar" (click)="goBack()" />
+    </div>
+</main>

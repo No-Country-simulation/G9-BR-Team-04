@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+    --color-primary: #0f2f56;
+    
+    --color-secondary: #4F46E5;
+    --color-secondary-60: #8582FF;
+    --color-secondary-70: #A4A1FF;
+
+    --color-tertiary: #10B981;
+    --color-dark: #0F172A;
+    --color-lightblue: #72b4f1;
+    --color-neutral: #64748B;
+
+
+    /** FONTS */
+    --font-primary: "Inter", sans-serif;
+    --font-secondary: "JetBrains Mono", monospace;
+
+}
+
+@layer base {
+    * {
+        @apply scroll-smooth;
+        @apply font-primary;
+    }
+
+    h1 {
+        @apply text-2xl font-bold;
+    }
+
+    h2 {
+        @apply text-lg font-medium;
+    }
+
+    .main-content {
+        @apply flex flex-col;
+        @apply p-4 lg:p-8 xl:py-8;
+        @apply bg-gray-100;
+    }
+
+    .grid-3-responsive {
+        @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+        @apply mb-4;
+    }
+
+    .grid-2-responsive {
+        @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+        @apply mb-4;
+    }
+
+    .grid-1-responsive {
+        @apply grid grid-cols-1 gap-4;
+        @apply mb-4;
+    }
+
+    .hover-link {
+        @apply hover:text-blue-100;
+    }
+
+    .forms-block {
+        @apply flex flex-col;
+
+    }
+
+    label {
+        @apply text-sm pt-4 pb-1;
+    }
+
+    .forms-block input, textarea {
+        @apply border rounded-md p-2 mb-3;
+    }
+    
+}
+
+@layer utilities {}

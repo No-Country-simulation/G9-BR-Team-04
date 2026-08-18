@@ -1,0 +1,13 @@
+<button class="btn-build custom : custom ? default">
+
+    @if (iconLeft()) {
+    <svg [pIcon]="iconLeft()"></svg>
+    }
+
+    {{ textButton() }}
+
+    @if (iconRight()) {
+    <svg [pIcon]="iconRight()"></svg>
+    }
+
+</button>

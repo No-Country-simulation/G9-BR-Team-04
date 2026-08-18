@@ -1,0 +1,10 @@
+node_modules/
+target/
+.venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+dist/
+.angular/
+logs/
