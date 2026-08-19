@@ -53,7 +53,7 @@ Confira a demonstração do **TechMind funcionando de ponta a ponta**, desde o c
 [![TechMind - Demonstração Oficial](assets/techmind-video-capa.jpg)](https://youtu.be/ts-b0Md-Qoo)
 
 <p align="center">
-  <strong>▶️ Clique na imagem para assistir à demonstração do TechMind</strong>
+  <strong>▶️ Clique na imagem para assistir à demonstração do TechMind</strong> 
 </p>
 
 ---
