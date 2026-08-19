@@ -50,7 +50,7 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 Confira a demonstração do **TechMind funcionando de ponta a ponta**, desde o cadastro de um conteúdo técnico até sua classificação automática, identificação do nível de confiança, extração de palavras-chave e organização na base de conhecimento.
 
-[![TechMind - Demonstração Oficial](https://img.youtube.com/vi/ts-b0Md-Qoo/maxresdefault.jpg)](https://youtu.be/ts-b0Md-Qoo)
+[![TechMind - Demonstração Oficial](assets/techmind-video-capa.jpg)](https://youtu.be/ts-b0Md-Qoo)
 
 <p align="center">
   <strong>▶️ Clique na imagem para assistir à demonstração do TechMind</strong>
