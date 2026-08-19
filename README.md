@@ -46,15 +46,32 @@ Desenvolver um **MVP funcional para organização inteligente de conteúdos téc
 
 ---
 
-## 🎬 TechMind em funcionamento
+## 🎬 TechMind em Funcionamento
 
 Confira a demonstração do **TechMind funcionando de ponta a ponta**, desde o cadastro de um conteúdo técnico até sua classificação automática, identificação do nível de confiança, extração de palavras-chave e organização na base de conhecimento.
 
-[![TechMind - Demonstração Oficial](assets/techmind-video-capa.jpg)](https://youtu.be/ts-b0Md-Qoo)
+<p align="center">
+  <a href="https://youtu.be/ts-b0Md-Qoo">
+    <img src="techmind-video-capa.jpg" alt="Demonstração do TechMind" width="850">
+  </a>
+</p>
 
 <p align="center">
-  <strong>▶️ Clique na imagem para assistir à demonstração do TechMind</strong> 
+  <strong>▶️ Clique na imagem para assistir à demonstração do TechMind no YouTube</strong>
 </p>
+
+### 🔎 O que é apresentado na demonstração
+
+- Cadastro de um novo conteúdo técnico;
+- Processamento automático do texto;
+- Classificação do conteúdo por **Machine Learning**;
+- Exibição do **nível de confiança** da classificação;
+- Extração automática de **palavras-chave**;
+- Armazenamento do conteúdo processado;
+- Consulta dos conteúdos na base de conhecimento;
+- Busca e filtragem por categoria.
+
+> 💡 A demonstração apresenta o funcionamento integrado do **Front-End em Angular**, **Back-End em Java + Spring Boot**, **microsserviço de Machine Learning em Python**, **Oracle Database** e **Oracle Cloud Infrastructure (OCI)**.
 
 ---
 
@@ -330,9 +347,10 @@ O TechMind processa os registros, identifica conteúdos já existentes e organiz
 
 ```text
 G9-BR-Team-04/
-├── backend/       # API REST - Java / Spring Boot
-├── api-python/    # API de Machine Learning - Python / FastAPI
-├── frontend/      # Aplicação web - Angular
+├── backend/                    # API REST - Java / Spring Boot
+├── api-python/                 # API de Machine Learning - Python / FastAPI
+├── frontend/                   # Aplicação web - Angular
+├── techmind-video-capa.jpg     # Capa clicável da demonstração
 ├── .gitignore
 └── README.md
 ```
